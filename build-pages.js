@@ -18,7 +18,7 @@ const PAGES = [
 
   { slug: "rig", titleKey: "rig.heading", build: buildRig },
   { slug: "cards", titleKey: "cardsPage.heading", build: buildCards },
-  { slug: "protocols", titleKey: "protocols.heading", build: buildProtocols },
+  { slug: "friends", titleKey: "friends.heading", build: buildFriends },
   { slug: "ranking", titleKey: "ranking.heading", build: buildRanking },
   { slug: "play", titleKey: "play.heading", build: buildPlay },
 ];
@@ -27,7 +27,7 @@ function nav(slug, lang) {
   const items = [
     { key: "rig", url: "rig.html" },
     { key: "cards", url: "cards.html" },
-    { key: "protocols", url: "protocols.html" },
+    { key: "friends", url: "friends.html" },
     { key: "ranking", url: "ranking.html" },
     { key: "play", url: "play.html" },
   ];
@@ -101,18 +101,6 @@ function head({ slug, titleKey, description, keywords, ogTitle, ogDescription, l
   </head>`;
 }
 
-function modal() {
-  return `
-    <div class="sr-only" id="store-modal" role="dialog" aria-modal="true" aria-hidden="true">
-      <div class="modal">
-        <p class="modal-line">[ STORE LINK ]</p>
-        <h3 class="modal-title" id="store-title">Get the game</h3>
-        <p class="modal-text" id="store-text">Loading…</p>
-        <button type="button" class="btn btn-ghost" data-close data-i18n="hero.modalClose"></button>
-      </div>
-    </div>`;
-}
-
 function footer() {
   return `
     <footer class="footer">
@@ -120,7 +108,7 @@ function footer() {
       <p class="footer-links" id="footer-links">
         <a href="rig.html" data-i18n="nav.rig"></a> ·
         <a href="cards.html" data-i18n="nav.cards"></a> ·
-        <a href="protocols.html" data-i18n="nav.protocols"></a> ·
+        <a href="friends.html" data-i18n="nav.friends"></a> ·
         <a href="ranking.html" data-i18n="nav.ranking"></a> ·
         <a href="play.html" data-i18n="nav.play"></a>
       </p>
@@ -180,11 +168,8 @@ ${head({
           <p class="lede" data-i18n="hero.lede"></p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" data-store="ios" href="play.html">
-              <span data-i18n="hero.ctaIos"></span>
-            </a>
-            <a class="btn btn-primary" data-store="android" href="play.html">
-              <span data-i18n="hero.ctaAndroid"></span>
+            <a class="btn btn-primary" data-store="download" href="play.html">
+              <span data-i18n="hero.cta"></span>
             </a>
           </div>
 
@@ -247,13 +232,9 @@ ${head({
             <p class="section-sub" data-i18n="extra.ctaSub"></p>
           </header>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="ios" href="play.html">
-              <span data-i18n="extra.ctaStoreIos"></span>
-              <span class="btn-sub" data-i18n="extra.ctaStoreIosSub"></span>
-            </a>
-            <a class="btn btn-primary btn-lg" data-store="android" href="play.html">
-              <span data-i18n="extra.ctaStoreAndroid"></span>
-              <span class="btn-sub" data-i18n="extra.ctaStoreAndroidSub"></span>
+            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+              <span data-i18n="hero.cta"></span>
+              <span class="btn-sub" data-i18n="extra.ctaSub"></span>
             </a>
           </div>
         </div>
@@ -261,7 +242,6 @@ ${head({
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>
@@ -351,7 +331,6 @@ ${head({
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>
@@ -448,7 +427,6 @@ ${head({
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>
@@ -456,12 +434,12 @@ ${head({
   };
 }
 
-function buildProtocols() {
+function buildFriends() {
   return function render(lang) {
     return `
 ${head({
-  slug: "protocols",
-  titleKey: "protocols.heading",
+  slug: "friends",
+  titleKey: "friends.heading",
   description: "Auto",
   keywords: "Auto",
   ogTitle: "Auto",
@@ -472,67 +450,85 @@ ${head({
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="scanlines" aria-hidden="true"></div>
 
-    ${nav("protocols", lang)}
+    ${nav("friends", lang)}
 
     <main>
       <section class="subhero">
         <div class="wrap">
           <header class="section-head">
-            <p class="kicker" data-i18n="protocols.kicker"></p>
-            <h1 class="section-title" data-i18n="protocols.heading"></h1>
-            <p class="section-sub" data-i18n="protocols.sub"></p>
+            <p class="kicker" data-i18n="friends.kicker"></p>
+            <h1 class="section-title" data-i18n="friends.heading"></h1>
+            <p class="section-sub" data-i18n="friends.sub"></p>
           </header>
         </div>
       </section>
 
       <section class="section">
-        <ol class="protocols-list">
-          <li class="protocol" data-accent="blue">
-            <div class="protocol-num">P/01</div>
-            <div class="protocol-body">
-              <h3 data-i18n="protocols.empTitle"></h3>
-              <p data-i18n="protocols.empBody"></p>
-            </div>
-          </li>
-          <li class="protocol" data-accent="red">
-            <div class="protocol-num">P/02</div>
-            <div class="protocol-body">
-              <h3 data-i18n="protocols.malTitle"></h3>
-              <p data-i18n="protocols.malBody"></p>
-            </div>
-          </li>
-          <li class="protocol" data-accent="yellow">
-            <div class="protocol-num">P/03</div>
-            <div class="protocol-body">
-              <h3 data-i18n="protocols.heistTitle"></h3>
-              <p data-i18n="protocols.heistBody"></p>
-            </div>
-          </li>
-          <li class="protocol" data-accent="green">
-            <div class="protocol-num">P/04</div>
-            <div class="protocol-body">
-              <h3 data-i18n="protocols.overrideTitle"></h3>
-              <p data-i18n="protocols.overrideBody"></p>
-            </div>
-          </li>
-          <li class="protocol" data-accent="purple">
-            <div class="protocol-num">P/05</div>
-            <div class="protocol-body">
-              <h3 data-i18n="protocols.swapTitle"></h3>
-              <p data-i18n="protocols.swapBody"></p>
-            </div>
-          </li>
-        </ol>
+        <div class="section-inner">
+          <header class="section-head">
+            <h2 class="section-title" data-i18n="friends.howTitle"></h2>
+            <p class="section-sub" data-i18n="friends.howSub"></p>
+          </header>
+          <div class="steps">
+            <article class="step">
+              <h3 data-i18n="friends.step1Title"></h3>
+              <p data-i18n="friends.step1Body"></p>
+            </article>
+            <article class="step">
+              <h3 data-i18n="friends.step2Title"></h3>
+              <p data-i18n="friends.step2Body"></p>
+            </article>
+            <article class="step">
+              <h3 data-i18n="friends.step3Title"></h3>
+              <p data-i18n="friends.step3Body"></p>
+            </article>
+            <article class="step">
+              <h3 data-i18n="friends.step4Title"></h3>
+              <p data-i18n="friends.step4Body"></p>
+            </article>
+          </div>
+        </div>
+      </section>
 
-        <div class="protocol-callout">
-          <h3 data-i18n="protocols.when"></h3>
-          <p data-i18n="protocols.whenBody"></p>
+      <section class="section">
+        <div class="section-inner">
+          <div class="extra-grid">
+            <article class="extra-card">
+              <p class="kicker" data-i18n="friends.card1Kicker"></p>
+              <h3 data-i18n="friends.card1Title"></h3>
+              <p data-i18n="friends.card1Body"></p>
+            </article>
+            <article class="extra-card">
+              <p class="kicker" data-i18n="friends.card2Kicker"></p>
+              <h3 data-i18n="friends.card2Title"></h3>
+              <p data-i18n="friends.card2Body"></p>
+            </article>
+            <article class="extra-card">
+              <p class="kicker" data-i18n="friends.card3Kicker"></p>
+              <h3 data-i18n="friends.card3Title"></h3>
+              <p data-i18n="friends.card3Body"></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--cta">
+        <div class="section-inner">
+          <header class="section-head">
+            <h2 class="section-title" data-i18n="friends.ctaTitle"></h2>
+            <p class="section-sub" data-i18n="friends.ctaSub"></p>
+          </header>
+          <div class="cta-row">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+              <span data-i18n="hero.cta"></span>
+              <span class="btn-sub" data-i18n="extra.ctaSub"></span>
+            </a>
+          </div>
         </div>
       </section>
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>
@@ -605,7 +601,6 @@ ${head({
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>
@@ -645,13 +640,9 @@ ${head({
       <section class="section section--cta">
         <div class="section-inner">
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="ios" href="#">
-              <span data-i18n="play.ios"></span>
-              <span class="btn-sub" data-i18n="play.iosSub"></span>
-            </a>
-            <a class="btn btn-primary btn-lg" data-store="android" href="#">
-              <span data-i18n="play.android"></span>
-              <span class="btn-sub" data-i18n="play.androidSub"></span>
+            <a class="btn btn-primary btn-lg" data-store="download" href="#">
+              <span data-i18n="hero.cta"></span>
+              <span class="btn-sub" data-i18n="hero.ctaSub"></span>
             </a>
           </div>
         </div>
@@ -681,7 +672,6 @@ ${head({
     </main>
 
     ${footer()}
-    ${modal()}
     ${scripts()}
   </body>
 </html>

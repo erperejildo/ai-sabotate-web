@@ -380,53 +380,20 @@
   );
   document.querySelectorAll(revealSel).forEach((el) => io.observe(el));
 
-  // ---------- store modal ----------
-  const modal = document.getElementById("store-modal");
-  const modalTitle = document.getElementById("store-title");
-  const modalText = document.getElementById("store-text");
-
-  function isRealUrl(u) {
-    return u && !u.endsWith("#") && !/id000000000$/.test(u) && !/example/i.test(u);
-  }
-
-  function openModal(store) {
-    if (!modal) return;
-    modal.setAttribute("aria-hidden", "false");
-    const url = store === "ios" ? APP_STORE_URL : PLAY_STORE_URL;
-    const label =
-      store === "ios" ? dict.play?.ios || "App Store" : dict.play?.android || "Google Play";
-    if (isRealUrl(url)) {
-      const tmpl = dict.hero.modalTitleRedirect || "Redirecting";
-      modalTitle.textContent = `${tmpl} — ${label}`;
-      modalText.innerHTML = (dict.hero.modalTextRedirect || "Opening %url%").replace("%url%", url);
-      window.setTimeout(() => window.open(url, "_blank", "noopener"), 600);
-    } else {
-      modalTitle.textContent = dict.hero.modalTitlePending || "Pending";
-      modalText.innerHTML = dict.hero.modalTextPending || "—";
-    }
-  }
-
-  function closeModal() {
-    if (!modal) return;
-    modal.setAttribute("aria-hidden", "true");
+  // ---------- download button ----------
+  function isIOS() {
+    return (
+      /iPad|iPhone|iPod/.test(navigator.userAgent || "") ||
+      (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+    );
   }
 
   document.querySelectorAll("[data-store]").forEach((btn) => {
     btn.addEventListener("click", (e) => {
       e.preventDefault();
-      openModal(btn.getAttribute("data-store"));
+      window.open(isIOS() ? APP_STORE_URL : PLAY_STORE_URL, "_blank", "noopener");
     });
   });
-
-  if (modal) {
-    modal.addEventListener("click", (e) => {
-      if (e.target === modal) closeModal();
-    });
-    modal.querySelectorAll("[data-close]").forEach((c) => c.addEventListener("click", closeModal));
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") closeModal();
-    });
-  }
 
   // ---------- first render ----------
   render();

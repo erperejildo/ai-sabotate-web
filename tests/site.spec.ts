@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 const LANGS = ["en", "es"];
-const SLUGS = ["index", "rig", "cards", "protocols", "ranking", "play"];
+const SLUGS = ["index", "rig", "cards", "friends", "ranking", "play"];
 
 test.describe("AI Sabotage marketing site", () => {
   for (const lang of LANGS) {
@@ -123,29 +123,10 @@ test.describe("AI Sabotage marketing site", () => {
   });
 
   test("subpage nav link is marked active", async ({ page }) => {
-    await page.goto("/en/protocols.html");
+    await page.goto("/en/friends.html");
     const active = page.locator(".nav-links a.is-active");
     await expect(active).toHaveCount(1);
-    expect(await active.getAttribute("href")).toMatch(/protocols\.html$/);
-  });
-
-  test("ghost button keeps all four corners visible", async ({ page }) => {
-    await page.goto("/en/");
-    await page.locator('.hero-actions [data-store="ios"]').click();
-    const ghost = page.locator("#store-modal .btn.btn-ghost").first();
-    await expect(ghost).toBeVisible();
-    const box = await ghost.boundingBox();
-    expect(box).not.toBeNull();
-    // The ::before pseudo-element with the corner accent must exist and be inside the layout box.
-    const before = await ghost.evaluate((el) => {
-      const cs = getComputedStyle(el, "::before");
-      const w = parseFloat(cs.width);
-      const h = parseFloat(cs.height);
-      return { w, h, position: cs.position };
-    });
-    expect(before.position).toBe("absolute");
-    expect(before.w).toBeGreaterThan(0);
-    expect(before.h).toBeGreaterThan(0);
+    expect(await active.getAttribute("href")).toMatch(/friends\.html$/);
   });
 
   test("--text-dim is brighter than dark on dark", async ({ page }) => {
@@ -173,15 +154,6 @@ test.describe("AI Sabotage marketing site", () => {
     expect(text).not.toContain("v1.0.0");
     expect(text).not.toContain("60 mb");
     expect(text).not.toContain("12+");
-  });
-
-  test("store button opens the modal and Esc closes it", async ({ page }) => {
-    await page.goto("/en/play.html");
-    await page.locator('.btn[data-store="ios"]').first().click();
-    const modal = page.locator("#store-modal");
-    await expect(modal).toHaveAttribute("aria-hidden", "false");
-    await page.keyboard.press("Escape");
-    await expect(modal).toHaveAttribute("aria-hidden", "true");
   });
 
   test("no biology terms in either locale", async ({ page }) => {
@@ -231,14 +203,74 @@ test.describe("AI Sabotage marketing site", () => {
     }
   });
 
-  test("hero download buttons share the same style", async ({ page }) => {
+  test("single DOWNLOAD button opens the right store per platform", async ({ page }) => {
+    await page.addInitScript(() => {
+      (window as unknown as { __opened: string | null }).__opened = null;
+      window.open = ((url?: string | URL) => {
+        (window as unknown as { __opened: string | null }).__opened = String(url ?? "");
+        return null;
+      }) as typeof window.open;
+    });
     for (const lang of LANGS) {
       await page.goto(`/${lang}/`);
-      const ios = page.locator('.hero-actions [data-store="ios"]');
-      const android = page.locator('.hero-actions [data-store="android"]');
-      await expect(ios).toHaveClass(/btn-primary/);
-      await expect(android).toHaveClass(/btn-primary/);
-      expect(await android.getAttribute("class")).toBe(await ios.getAttribute("class"));
+      const btn = page.locator(".hero-actions [data-store]");
+      await expect(btn).toHaveCount(1);
+      await expect(btn).toHaveClass(/btn-primary/);
+      await btn.click();
+      const opened = await page.evaluate(
+        () => (window as unknown as { __opened: string | null }).__opened,
+      );
+      expect(String(opened)).toContain("play.google.com");
+    }
+  });
+
+  test("iOS user agent gets the App Store link", async ({ browser, baseURL }) => {
+    const ctx = await browser.newContext({
+      baseURL,
+      userAgent:
+        "Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1",
+    });
+    const page = await ctx.newPage();
+    await page.addInitScript(() => {
+      (window as unknown as { __opened: string | null }).__opened = null;
+      window.open = ((url?: string | URL) => {
+        (window as unknown as { __opened: string | null }).__opened = String(url ?? "");
+        return null;
+      }) as typeof window.open;
+    });
+    await page.goto("/en/");
+    await page.locator(".hero-actions [data-store]").click();
+    const opened = await page.evaluate(
+      () => (window as unknown as { __opened: string | null }).__opened,
+    );
+    expect(String(opened)).toContain("apps.apple.com");
+    await ctx.close();
+  });
+
+  test("friends page covers private matches with the right keywords", async ({ page }) => {
+    await page.goto("/en/friends.html");
+    const en = (await page.locator("body").innerText()).toLowerCase();
+    for (const term of ["play with friends", "private match", "invite", "multiplayer card game"]) {
+      expect(en, `EN friends page should mention "${term}"`).toContain(term);
+    }
+
+    await page.goto("/es/friends.html");
+    const es = (await page.locator("body").innerText()).toLowerCase();
+    for (const term of ["partida privada", "jugar con amigos", "multiplayer card game"]) {
+      expect(es, `ES friends page should mention "${term}"`).toContain(term);
+    }
+  });
+
+  test("protocols page is gone and no link points to it", async ({ page }) => {
+    for (const lang of LANGS) {
+      const res = await page.request.get(`/${lang}/protocols.html`);
+      expect(res.status(), `${lang}/protocols.html should not exist`).toBeGreaterThanOrEqual(400);
+
+      await page.goto(`/${lang}/`);
+      const hrefs = await page
+        .locator("a")
+        .evaluateAll((els) => els.map((a) => a.getAttribute("href") || ""));
+      expect(hrefs.filter((h) => h.includes("protocols")).length).toBe(0);
     }
   });
 
@@ -251,7 +283,7 @@ test.describe("AI Sabotage marketing site", () => {
 
   test("all card images on every page return 200", async ({ page }) => {
     for (const lang of LANGS) {
-      for (const slug of ["index", "rig", "cards", "protocols", "ranking", "play"]) {
+      for (const slug of ["index", "rig", "cards", "friends", "ranking", "play"]) {
         await page.goto(slug === "index" ? `/${lang}/` : `/${lang}/${slug}.html`);
         const sources = await page
           .locator("img")
