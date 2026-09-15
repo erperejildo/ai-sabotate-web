@@ -183,7 +183,7 @@ ${head({
             <a class="btn btn-primary" data-store="ios" href="play.html">
               <span data-i18n="hero.ctaIos"></span>
             </a>
-            <a class="btn btn-ghost" data-store="android" href="play.html">
+            <a class="btn btn-primary" data-store="android" href="play.html">
               <span data-i18n="hero.ctaAndroid"></span>
             </a>
           </div>
@@ -197,15 +197,15 @@ ${head({
 
           <div class="hero-art" aria-hidden="true">
             <div class="hand hand--left">
-              <img class="card-img glow-blue" src="../assets/img/cmp_neural_net.png" alt="" />
-              <img class="card-img glow-red" src="../assets/img/cmp_hardware.png" alt="" />
-              <img class="card-img glow-green" src="../assets/img/cmp_dataset.png" alt="" />
+              <img class="card-img glow-blue" src="../assets/img/cmp_neural_net.jpeg" alt="" />
+              <img class="card-img glow-red" src="../assets/img/cmp_hardware.jpeg" alt="" />
+              <img class="card-img glow-green" src="../assets/img/cmp_dataset.jpeg" alt="" />
             </div>
-            <img class="hero-core" src="../assets/img/cmp_quantum_core.png" alt="" />
+            <img class="hero-core" src="../assets/img/cmp_quantum_core.jpeg" alt="" />
             <div class="hand hand--right">
-              <img class="card-img glow-yellow" src="../assets/img/cmp_algorithm.png" alt="" />
-              <img class="card-img glow-purple" src="../assets/img/pro_data_heist.png" alt="" />
-              <img class="card-img glow-blue" src="../assets/img/def_neural_net.png" alt="" />
+              <img class="card-img glow-yellow" src="../assets/img/cmp_algorithm.jpeg" alt="" />
+              <img class="card-img glow-purple" src="../assets/img/pro_data_heist.jpeg" alt="" />
+              <img class="card-img glow-blue" src="../assets/img/def_neural_net.jpeg" alt="" />
             </div>
           </div>
         </div>
@@ -388,8 +388,48 @@ ${head({
         </div>
       </section>
 
-      <section class="section">
-        <div class="deck-grid" id="deck-grid"></div>
+      <section class="section deck-group" data-group="components">
+        <div class="section-inner">
+          <header class="section-head section-head--left">
+            <p class="kicker" data-i18n="cardsPage.groupComponentsKicker"></p>
+            <h2 class="section-title" data-i18n="cardsPage.groupComponents"></h2>
+            <p class="section-sub" data-i18n="cardsPage.groupComponentsSub"></p>
+          </header>
+          <div class="deck-grid" data-deck="components"></div>
+        </div>
+      </section>
+
+      <section class="section deck-group" data-group="threats">
+        <div class="section-inner">
+          <header class="section-head section-head--left">
+            <p class="kicker" data-i18n="cardsPage.groupThreatsKicker"></p>
+            <h2 class="section-title" data-i18n="cardsPage.groupThreats"></h2>
+            <p class="section-sub" data-i18n="cardsPage.groupThreatsSub"></p>
+          </header>
+          <div class="deck-grid" data-deck="threats"></div>
+        </div>
+      </section>
+
+      <section class="section deck-group" data-group="defenses">
+        <div class="section-inner">
+          <header class="section-head section-head--left">
+            <p class="kicker" data-i18n="cardsPage.groupDefensesKicker"></p>
+            <h2 class="section-title" data-i18n="cardsPage.groupDefenses"></h2>
+            <p class="section-sub" data-i18n="cardsPage.groupDefensesSub"></p>
+          </header>
+          <div class="deck-grid" data-deck="defenses"></div>
+        </div>
+      </section>
+
+      <section class="section deck-group" data-group="protocols">
+        <div class="section-inner">
+          <header class="section-head section-head--left">
+            <p class="kicker" data-i18n="cardsPage.groupProtocolsKicker"></p>
+            <h2 class="section-title" data-i18n="cardsPage.groupProtocols"></h2>
+            <p class="section-sub" data-i18n="cardsPage.groupProtocolsSub"></p>
+          </header>
+          <div class="deck-grid" data-deck="protocols"></div>
+        </div>
       </section>
 
       <section class="section">

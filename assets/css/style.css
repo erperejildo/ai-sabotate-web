@@ -539,6 +539,18 @@ button {
   text-align: center;
 }
 
+.section-head--left {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+.section-head--left .section-sub {
+  margin-left: 0;
+  max-width: 720px;
+}
+
 .kicker {
   margin: 0 0 var(--space-sm);
   font-family: var(--font-data);
@@ -818,13 +830,19 @@ button {
 }
 
 /* ---------- deck grid ---------- */
+.deck-group + .deck-group {
+  padding-top: 0;
+}
+
+.deck-group .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .deck-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: var(--space-md);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--space-lg);
 }
 
 .deck-card {
@@ -869,7 +887,8 @@ button {
   border-color: var(--quantum);
 }
 .deck-card[data-cat="threat"] .deck-card-img,
-.deck-card[data-cat="defense"] .deck-card-img {
+.deck-card[data-cat="defense"] .deck-card-img,
+.deck-card[data-cat="protocol"] .deck-card-img {
   border-color: var(--protocol-purple);
 }
 
