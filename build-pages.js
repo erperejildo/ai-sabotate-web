@@ -3,6 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 
+const SITE_BASE = "https://erperejildo.github.io/ai-sabotate-web";
 const ROOT = __dirname;
 const SHARED = path.join(ROOT, "shared");
 const enDir = path.join(ROOT, "en");
@@ -23,13 +24,12 @@ const PAGES = [
 ];
 
 function nav(slug, lang) {
-  const prefix = `/${lang}/`;
   const items = [
-    { key: "rig", url: `${prefix}rig.html` },
-    { key: "cards", url: `${prefix}cards.html` },
-    { key: "protocols", url: `${prefix}protocols.html` },
-    { key: "ranking", url: `${prefix}ranking.html` },
-    { key: "play", url: `${prefix}play.html` },
+    { key: "rig", url: "rig.html" },
+    { key: "cards", url: "cards.html" },
+    { key: "protocols", url: "protocols.html" },
+    { key: "ranking", url: "ranking.html" },
+    { key: "play", url: "play.html" },
   ];
   const links = items
     .map(
@@ -39,22 +39,22 @@ function nav(slug, lang) {
         }"></a>`,
     )
     .join("\n          ");
-  const homeHref = slug === "index" ? `${prefix}` : `${prefix}index.html`;
+  const homeHref = "index.html";
   const brandClass = slug === "index" ? "is-active" : "";
   const otherLang = lang === "en" ? "es" : "en";
   return `
     <header class="nav">
       <div class="wrap nav-inner">
         <a class="brand ${brandClass}" href="${homeHref}" aria-label="AI Sabotage home">
-          <span class="brand-mark" aria-hidden="true">[ ]</span>
-          <span class="brand-name">AI_SABOTAGE</span>
+          <span class="brand-mark" aria-hidden="true">[</span>
+          <span class="brand-name">AI SABOTAGE</span>
+          <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
           ${links}
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="${otherLang}" aria-label="Switch language"></button>
-          <a class="btn btn-primary" data-store="ios" href="${prefix}play.html" data-i18n="nav.getIos"></a>
         </div>
       </div>
     </header>
@@ -62,10 +62,8 @@ function nav(slug, lang) {
 }
 
 function head({ slug, titleKey, description, keywords, ogTitle, ogDescription, lang }) {
-  const pathHref =
-    lang === "en"
-      ? `/en/${slug === "index" ? "" : slug + ".html"}`
-      : `/es/${slug === "index" ? "" : slug + ".html"}`;
+  const file = slug === "index" ? "" : slug + ".html";
+  const abs = `${SITE_BASE}/${lang}/${file}`;
   return `<!doctype html>
 <html lang="${lang}" data-title-key="${titleKey}">
   <head>
@@ -83,7 +81,7 @@ function head({ slug, titleKey, description, keywords, ogTitle, ogDescription, l
     <meta property="og:title" content="${ogTitle}" data-i18n-attr="content:meta.ogTitle" />
     <meta property="og:description" content="${ogDescription}" data-i18n-attr="content:meta.ogDescription" />
     <meta property="og:image" content="../assets/img/icon.jpg" />
-    <meta property="og:url" content="https://ai-sabotage.com${pathHref}" />
+    <meta property="og:url" content="${abs}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="${ogTitle}" data-i18n-attr="content:meta.ogTitle" />
     <meta name="twitter:description" content="${ogDescription}" data-i18n-attr="content:meta.ogDescription" />
@@ -92,13 +90,13 @@ function head({ slug, titleKey, description, keywords, ogTitle, ogDescription, l
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="/en/${slug === "index" ? "" : slug + ".html"}" />
-    <link rel="alternate" hreflang="es" href="/es/${slug === "index" ? "" : slug + ".html"}" />
+    <link rel="alternate" hreflang="en" href="${SITE_BASE}/en/${file}" />
+    <link rel="alternate" hreflang="es" href="${SITE_BASE}/es/${file}" />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
 
-    <link rel="canonical" href="https://ai-sabotage.com${pathHref}" />
+    <link rel="canonical" href="${abs}" />
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>`;
 }
@@ -182,10 +180,10 @@ ${head({
           <p class="lede" data-i18n="hero.lede"></p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" data-store="ios" href="${lang === "en" ? "/en/play.html" : "/es/play.html"}">
+            <a class="btn btn-primary" data-store="ios" href="play.html">
               <span data-i18n="hero.ctaIos"></span>
             </a>
-            <a class="btn btn-ghost" data-store="android" href="${lang === "en" ? "/en/play.html" : "/es/play.html"}">
+            <a class="btn btn-ghost" data-store="android" href="play.html">
               <span data-i18n="hero.ctaAndroid"></span>
             </a>
           </div>
@@ -249,11 +247,11 @@ ${head({
             <p class="section-sub" data-i18n="extra.ctaSub"></p>
           </header>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="ios" href="${lang === "en" ? "/en/play.html" : "/es/play.html"}">
+            <a class="btn btn-primary btn-lg" data-store="ios" href="play.html">
               <span data-i18n="extra.ctaStoreIos"></span>
               <span class="btn-sub" data-i18n="extra.ctaStoreIosSub"></span>
             </a>
-            <a class="btn btn-primary btn-lg" data-store="android" href="${lang === "en" ? "/en/play.html" : "/es/play.html"}">
+            <a class="btn btn-primary btn-lg" data-store="android" href="play.html">
               <span data-i18n="extra.ctaStoreAndroid"></span>
               <span class="btn-sub" data-i18n="extra.ctaStoreAndroidSub"></span>
             </a>
@@ -672,9 +670,9 @@ fs.writeFileSync(
   <head>
     <meta charset="utf-8" />
     <title>AI Sabotage</title>
-    <meta http-equiv="refresh" content="0; url=/en/" />
+    <meta http-equiv="refresh" content="0; url=./en/" />
     <link rel="canonical" href="/en/" />
-    <script>window.location.replace("/en/");</script>
+    <script>window.location.replace("./en/");</script>
   </head>
   <body>
     <p>Redirecting to <a href="/en/">/en/</a></p>

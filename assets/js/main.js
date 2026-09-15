@@ -18,8 +18,10 @@
     })();
     if (stored && supported.includes(stored)) return stored;
 
-    const path = (window.location.pathname.split("/")[1] || "").toLowerCase();
-    if (supported.includes(path)) return path;
+    // directory of the current document, e.g. "/ai-sabotate-web/en/rig.html" -> ".../en"
+    const dir = window.location.pathname.replace(/\/[^/]*$/, "").toLowerCase();
+    if (/(^|\/)es$/.test(dir)) return "es";
+    if (/(^|\/)en$/.test(dir)) return "en";
 
     const nav = (navigator.language || "en").toLowerCase();
     if (nav.startsWith("es")) return "es";
@@ -80,11 +82,16 @@
       try {
         localStorage.setItem("lang", target);
       } catch (_) {}
-      // translate URL path: /en/foo.html <-> /es/foo.html
+      // translate URL path: <base>/en/<file> <-> <base>/es/<file> (preserves any base path)
       const path = window.location.pathname;
-      const m = path.match(/^\/(en|es)(\/.*)?$/);
-      const rest = m ? m[2] || "/" : path.replace(/^\/(en|es)/, "");
-      const next = "/" + target + (rest === "/" ? "/" : rest);
+      const m = path.match(/\/(en|es)(\/[^/]*)?$/);
+      let next;
+      if (m) {
+        next = path.replace(/\/(en|es)(\/[^/]*)?$/, `/${target}/${m[2] ? m[2].slice(1) : ""}`);
+      } else {
+        const file = path.substring(path.lastIndexOf("/") + 1) || "index.html";
+        next = `../${target}/${file}`;
+      }
       window.location.href = next || "/";
     });
   });
