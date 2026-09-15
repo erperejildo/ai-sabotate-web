@@ -139,7 +139,7 @@ button {
   display: flex;
   align-items: center;
   gap: var(--space-lg);
-  padding: var(--space-md) 0;
+  padding: var(--space-md) var(--space-lg);
 }
 
 .brand {
@@ -222,6 +222,7 @@ button {
   .nav-inner {
     flex-wrap: wrap;
     gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
   }
   .nav-links {
     order: 3;
@@ -1280,65 +1281,6 @@ button {
 }
 
 .footer-links a:hover {
-  color: var(--neural-blue);
-}
-
-/* ---------- modal ---------- */
-#store-modal {
-  position: fixed;
-  inset: 0;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  background: rgba(13, 13, 18, 0.85);
-  backdrop-filter: blur(6px);
-  z-index: 50;
-}
-
-#store-modal[aria-hidden="false"] {
-  display: flex;
-}
-
-.modal {
-  max-width: 420px;
-  width: calc(100% - 32px);
-  padding: var(--space-lg);
-  background: var(--surface);
-  border: var(--border-w) solid var(--neural-blue);
-  border-radius: var(--radius-md);
-  box-shadow: 0 0 40px rgba(0, 208, 255, 0.3);
-  text-align: center;
-}
-
-.modal-line {
-  margin: 0 0 var(--space-sm);
-  font-family: var(--font-data);
-  font-size: 11px;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--neural-blue);
-}
-
-.modal-title {
-  margin: 0 0 var(--space-md);
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 20px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.modal-text {
-  margin: 0 0 var(--space-lg);
-  font-size: 13px;
-  color: var(--text-dim);
-}
-
-.modal-text code {
-  font-family: var(--font-data);
-  background: var(--surface-alt);
-  padding: 2px 6px;
-  border-radius: var(--radius-sm);
   color: var(--neural-blue);
 }
 
