@@ -101,7 +101,7 @@
     // ---------- components ----------
     {
       group: "components",
-      img: "cmp_hardware.jpeg",
+      img: "cmp_hardware.png",
       cat: "hardware",
       name: { en: "Hardware Component", es: "Componente de Hardware" },
       tag: "tagComponent",
@@ -112,7 +112,7 @@
     },
     {
       group: "components",
-      img: "cmp_dataset.jpeg",
+      img: "cmp_dataset.png",
       cat: "dataset",
       name: { en: "Dataset Component", es: "Componente de Dataset" },
       tag: "tagComponent",
@@ -123,7 +123,7 @@
     },
     {
       group: "components",
-      img: "cmp_neural_net.jpeg",
+      img: "cmp_neural_net.png",
       cat: "neural",
       name: { en: "Neural Net Component", es: "Componente de Red Neuronal" },
       tag: "tagComponent",
@@ -134,7 +134,7 @@
     },
     {
       group: "components",
-      img: "cmp_algorithm.jpeg",
+      img: "cmp_algorithm.png",
       cat: "algorithm",
       name: { en: "Algorithm Component", es: "Componente de Algoritmo" },
       tag: "tagComponent",
@@ -145,7 +145,7 @@
     },
     {
       group: "components",
-      img: "cmp_quantum_core.jpeg",
+      img: "cmp_quantum_core.png",
       cat: "quantum",
       name: { en: "Quantum Core (Wildcard)", es: "Quantum Core (comodín)" },
       tag: "tagWildcard",
@@ -157,7 +157,7 @@
     // ---------- threats ----------
     {
       group: "threats",
-      img: "thr_hardware.jpeg",
+      img: "thr_hardware.png",
       cat: "threat",
       name: { en: "Hardware Threat", es: "Amenaza de Hardware" },
       tag: "tagThreat",
@@ -168,7 +168,7 @@
     },
     {
       group: "threats",
-      img: "thr_dataset.jpeg",
+      img: "thr_dataset.png",
       cat: "threat",
       name: { en: "Dataset Threat", es: "Amenaza de Dataset" },
       tag: "tagThreat",
@@ -179,7 +179,7 @@
     },
     {
       group: "threats",
-      img: "thr_neural_net.jpeg",
+      img: "thr_neural_net.png",
       cat: "threat",
       name: { en: "Neural Net Threat", es: "Amenaza de Red Neuronal" },
       tag: "tagThreat",
@@ -190,7 +190,7 @@
     },
     {
       group: "threats",
-      img: "thr_algorithm.jpeg",
+      img: "thr_algorithm.png",
       cat: "threat",
       name: { en: "Algorithm Threat", es: "Amenaza de Algoritmo" },
       tag: "tagThreat",
@@ -201,7 +201,7 @@
     },
     {
       group: "threats",
-      img: "thr_quantum.jpeg",
+      img: "thr_quantum.png",
       cat: "threat",
       name: { en: "Quantum Threat (Wildcard)", es: "Amenaza Quantum (comodín)" },
       tag: "tagThreat",
@@ -213,7 +213,7 @@
     // ---------- defenses ----------
     {
       group: "defenses",
-      img: "def_hardware.jpeg",
+      img: "def_hardware.png",
       cat: "defense",
       name: { en: "Hardware Defense", es: "Defensa de Hardware" },
       tag: "tagDefense",
@@ -224,7 +224,7 @@
     },
     {
       group: "defenses",
-      img: "def_dataset.jpeg",
+      img: "def_dataset.png",
       cat: "defense",
       name: { en: "Dataset Defense", es: "Defensa de Dataset" },
       tag: "tagDefense",
@@ -235,7 +235,7 @@
     },
     {
       group: "defenses",
-      img: "def_neural_net.jpeg",
+      img: "def_neural_net.png",
       cat: "defense",
       name: { en: "Neural Net Defense", es: "Defensa de Red Neuronal" },
       tag: "tagDefense",
@@ -246,7 +246,7 @@
     },
     {
       group: "defenses",
-      img: "def_algorithm.jpeg",
+      img: "def_algorithm.png",
       cat: "defense",
       name: { en: "Algorithm Defense", es: "Defensa de Algoritmo" },
       tag: "tagDefense",
@@ -257,7 +257,7 @@
     },
     {
       group: "defenses",
-      img: "def_quantum.jpeg",
+      img: "def_quantum.png",
       cat: "defense",
       name: { en: "Quantum Defense (Wildcard)", es: "Defensa Quantum (comodín)" },
       tag: "tagDefense",
@@ -269,7 +269,7 @@
     // ---------- protocols ----------
     {
       group: "protocols",
-      img: "pro_data_heist.jpeg",
+      img: "pro_data_heist.png",
       cat: "protocol",
       name: { en: "Data Heist", es: "Robo de datos" },
       tag: "tagProtocol",
@@ -280,7 +280,7 @@
     },
     {
       group: "protocols",
-      img: "pro_protocol_swap.jpeg",
+      img: "pro_protocol_swap.png",
       cat: "protocol",
       name: { en: "Protocol Swap", es: "Intercambio de protocolo" },
       tag: "tagProtocol",
@@ -291,7 +291,7 @@
     },
     {
       group: "protocols",
-      img: "pro_malware_migration.jpeg",
+      img: "pro_malware_migration.png",
       cat: "protocol",
       name: { en: "Malware Migration", es: "Migración de malware" },
       tag: "tagProtocol",
@@ -302,7 +302,7 @@
     },
     {
       group: "protocols",
-      img: "pro_emp_purge.jpeg",
+      img: "pro_emp_purge.png",
       cat: "protocol",
       name: { en: "EMP Purge", es: "Purga EMP" },
       tag: "tagProtocol",
@@ -313,7 +313,7 @@
     },
     {
       group: "protocols",
-      img: "pro_system_override.jpeg",
+      img: "pro_system_override.png",
       cat: "protocol",
       name: { en: "System Override", es: "Anulación del sistema" },
       tag: "tagProtocol",

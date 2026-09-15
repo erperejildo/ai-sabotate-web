@@ -77,7 +77,7 @@ test.describe("AI Sabotage marketing site", () => {
       const srcs = await page
         .locator(".deck-card-img")
         .evaluateAll((imgs) => imgs.map((i) => (i as HTMLImageElement).getAttribute("src") || ""));
-      expect(srcs.every((s) => s.endsWith(".jpeg"))).toBe(true);
+      expect(srcs.every((s) => s.endsWith(".png"))).toBe(true);
     }
   });
 
