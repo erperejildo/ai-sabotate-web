@@ -4,109 +4,232 @@
   const cfg = window.AI_SABOTAGE_CONFIG || {};
   const APP_STORE_URL = cfg.APP_STORE_URL || "#";
   const PLAY_STORE_URL = cfg.PLAY_STORE_URL || "#";
+  const I18N = window.I18N || { en: {}, es: {} };
 
-  // --- Dynamic deck grid (avoids hand-writing 12 cards in HTML) ---
+  // ---------- language ----------
+  function detectLang() {
+    const supported = ["en", "es"];
+    const stored = (() => {
+      try {
+        return localStorage.getItem("lang");
+      } catch (_) {
+        return null;
+      }
+    })();
+    if (stored && supported.includes(stored)) return stored;
+
+    const path = (window.location.pathname.split("/")[1] || "").toLowerCase();
+    if (supported.includes(path)) return path;
+
+    const nav = (navigator.language || "en").toLowerCase();
+    if (nav.startsWith("es")) return "es";
+    return "en";
+  }
+
+  const lang = detectLang();
+  const dict = I18N[lang] || I18N.en;
+
+  // ---------- render: data-i18n attributes ----------
+  function render() {
+    document.documentElement.setAttribute("lang", lang);
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      const value = key.split(".").reduce((acc, k) => (acc == null ? undefined : acc[k]), dict);
+      if (typeof value === "string") el.textContent = value;
+    });
+    document.querySelectorAll("[data-i18n-html]").forEach((el) => {
+      const key = el.getAttribute("data-i18n-html");
+      const value = key.split(".").reduce((acc, k) => (acc == null ? undefined : acc[k]), dict);
+      if (typeof value === "string") el.innerHTML = value;
+    });
+    document.querySelectorAll("[data-i18n-attr]").forEach((el) => {
+      el.getAttribute("data-i18n-attr")
+        .split(";")
+        .forEach((pair) => {
+          const [attr, key] = pair.split(":").map((s) => s.trim());
+          if (!attr || !key) return;
+          const value = key.split(".").reduce((acc, k) => (acc == null ? undefined : acc[k]), dict);
+          if (typeof value === "string") el.setAttribute(attr, value);
+        });
+    });
+
+    // page <title>
+    const titleKeys = document.documentElement.getAttribute("data-title-key");
+    const t = document.querySelector("[data-title-meta]");
+    if (titleKeys && t) {
+      const v = titleKeys.split(".").reduce((acc, k) => (acc == null ? undefined : acc[k]), dict);
+      if (typeof v === "string") {
+        const tmpl = dict.titleTemplate || "%title%";
+        document.title = tmpl.replace("%title%", v);
+      }
+    }
+
+    // year stamp
+    const y = document.getElementById("year");
+    if (y && dict.footer && dict.footer.copy) {
+      const foot = document.querySelector("[data-i18n='footer.copy']");
+      if (foot)
+        foot.innerHTML = dict.footer.copy.replace("%year%", String(new Date().getFullYear()));
+    }
+  }
+
+  // ---------- language switcher ----------
+  document.querySelectorAll("[data-lang-switch]").forEach((btn) => {
+    const target = btn.getAttribute("data-lang-switch");
+    btn.textContent = I18N[target]?.nav?.langToggle || target.toUpperCase();
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      try {
+        localStorage.setItem("lang", target);
+      } catch (_) {}
+      // translate URL path: /en/foo.html <-> /es/foo.html
+      const path = window.location.pathname;
+      const m = path.match(/^\/(en|es)(\/.*)?$/);
+      const rest = m ? m[2] || "/" : path.replace(/^\/(en|es)/, "");
+      const next = "/" + target + (rest === "/" ? "/" : rest);
+      window.location.href = next || "/";
+    });
+  });
+
+  // ---------- deck (subpage only) ----------
   const DECK = [
     {
       img: "cmp_hardware.png",
       cat: "hardware",
-      name: "Hardware",
-      tag: "COMPONENT",
-      desc: "Power supply. Damaged by direct hits.",
+      name: { en: "Hardware", es: "Hardware" },
+      tag: "tagComponent",
+      desc: {
+        en: "Power supply. Damaged by direct hits.",
+        es: "Fuente de alimentación. Dañada por golpes directos.",
+      },
     },
     {
       img: "cmp_dataset.png",
       cat: "dataset",
-      name: "Dataset",
-      tag: "COMPONENT",
-      desc: "Training data. Salvage to restore health.",
+      name: { en: "Dataset", es: "Dataset" },
+      tag: "tagComponent",
+      desc: {
+        en: "Training data. Salvage to restore health.",
+        es: "Datos de entrenamiento. Recuperá salud con un salvataje.",
+      },
     },
     {
       img: "cmp_neural_net.png",
       cat: "neural",
-      name: "Neural Net",
-      tag: "COMPONENT",
-      desc: "Reasoning core. Highest throughput.",
+      name: { en: "Neural Net", es: "Red Neuronal" },
+      tag: "tagComponent",
+      desc: {
+        en: "Reasoning core. Highest throughput.",
+        es: "Núcleo de razonamiento. Máximo rendimiento.",
+      },
     },
     {
       img: "cmp_algorithm.png",
       cat: "algorithm",
-      name: "Algorithm",
-      tag: "COMPONENT",
-      desc: "Reasoning layer. Lock the slot.",
+      name: { en: "Algorithm", es: "Algoritmo" },
+      tag: "tagComponent",
+      desc: {
+        en: "Reasoning layer. Lock the slot.",
+        es: "Capa de razonamiento. Bloquea el slot.",
+      },
     },
     {
       img: "cmp_quantum_core.png",
       cat: "quantum",
-      name: "Quantum Core",
-      tag: "WILDCARD",
-      desc: "Counts as any missing component.",
+      name: { en: "Quantum Core", es: "Quantum Core" },
+      tag: "tagWildcard",
+      desc: {
+        en: "Counts as any missing component.",
+        es: "Vale como cualquier componente faltante.",
+      },
     },
     {
       img: "thr_hardware.png",
       cat: "threat",
-      name: "DDoS Flood",
-      tag: "THREAT",
-      desc: "Strips 1 HP from a Hardware slot.",
+      name: { en: "DDoS Flood", es: "Inundación DDoS" },
+      tag: "tagThreat",
+      desc: {
+        en: "Strips 1 HP from a Hardware slot.",
+        es: "Quita 1 HP a un slot de Hardware.",
+      },
     },
     {
       img: "thr_dataset.png",
       cat: "threat",
-      name: "Corrupt Weights",
-      tag: "THREAT",
-      desc: "Locks a Dataset slot for 1 turn.",
+      name: { en: "Corrupt Weights", es: "Pesos corruptos" },
+      tag: "tagThreat",
+      desc: {
+        en: "Locks a Dataset slot for 1 turn.",
+        es: "Bloquea un slot de Dataset por 1 turno.",
+      },
     },
     {
       img: "thr_neural_net.png",
       cat: "threat",
-      name: "Backprop Crash",
-      tag: "THREAT",
-      desc: "Disables a Neural Net until repaired.",
+      name: { en: "Backprop Crash", es: "Caída de backprop" },
+      tag: "tagThreat",
+      desc: {
+        en: "Disables a Neural Net until repaired.",
+        es: "Desactiva la Red Neuronal hasta repararla.",
+      },
     },
     {
       img: "def_hardware.png",
       cat: "defense",
-      name: "Firewall",
-      tag: "DEFENSE",
-      desc: "Blocks the next Hardware hit.",
+      name: { en: "Firewall", es: "Firewall" },
+      tag: "tagDefense",
+      desc: {
+        en: "Blocks the next Hardware hit.",
+        es: "Bloquea el próximo golpe a Hardware.",
+      },
     },
     {
       img: "def_dataset.png",
       cat: "defense",
-      name: "Checksum",
-      tag: "DEFENSE",
-      desc: "Restores 1 HP to a Dataset slot.",
+      name: { en: "Checksum", es: "Checksum" },
+      tag: "tagDefense",
+      desc: {
+        en: "Restores 1 HP to a Dataset slot.",
+        es: "Restaura 1 HP en un slot de Dataset.",
+      },
     },
     {
       img: "def_neural_net.png",
       cat: "defense",
-      name: "Grad Norm",
-      tag: "DEFENSE",
-      desc: "Stabilizes Neural Net health.",
+      name: { en: "Grad Norm", es: "Grad Norm" },
+      tag: "tagDefense",
+      desc: {
+        en: "Stabilizes Neural Net health.",
+        es: "Estabiliza la salud de la Red Neuronal.",
+      },
     },
     {
       img: "def_quantum.png",
       cat: "defense",
-      name: "Decoherence Shield",
-      tag: "DEFENSE",
-      desc: "Protects the Quantum Core wildcard.",
+      name: { en: "Decoherence Shield", es: "Escudo de decoherencia" },
+      tag: "tagDefense",
+      desc: {
+        en: "Protects the Quantum Core wildcard.",
+        es: "Protege al comodín Quantum Core.",
+      },
     },
   ];
 
   const grid = document.getElementById("deck-grid");
   if (grid) {
-    grid.innerHTML = DECK.map(
-      (c) => `
-      <article class="deck-card" data-cat="${c.cat}" data-name="${c.name}">
-        <span class="deck-card-tag">${c.tag}</span>
-        <img class="deck-card-img" src="assets/img/${c.img}" alt="${c.name}" loading="lazy" />
-        <h3 class="deck-card-name">${c.name}</h3>
-        <p class="deck-card-desc">${c.desc}</p>
-      </article>`,
-    ).join("");
+    grid.innerHTML = DECK.map((c) => {
+      const tagValue = (dict.cardsPage && dict.cardsPage[c.tag]) || "";
+      return `
+      <article class="deck-card" data-cat="${c.cat}">
+        <span class="deck-card-tag">${tagValue}</span>
+        <img class="deck-card-img" src="../assets/img/${c.img}" alt="${c.name[lang]}" loading="lazy" />
+        <h3 class="deck-card-name">${c.name[lang]}</h3>
+        <p class="deck-card-desc">${c.desc[lang]}</p>
+      </article>`;
+    }).join("");
   }
 
-  // --- Smooth-scroll for in-page anchors w/ offset for sticky nav ---
+  // ---------- in-page anchors (with offset for sticky nav) ----------
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("href");
@@ -119,19 +242,14 @@
     });
   });
 
-  // --- Year stamp ---
-  const y = document.getElementById("year");
-  if (y) y.textContent = String(new Date().getFullYear());
-
-  // --- Intersection-based reveal ---
+  // ---------- Intersection reveal ----------
   const revealSel =
-    ".section, .hero-actions, .hero-art, .deck-card, .protocol, .ranking li, .meta-grid > div";
+    ".section, .hero-actions, .hero-art, .deck-card, .protocol, .ranking li, .meta-grid > div, .extra-card, .step, .tier, .combo";
   document.querySelectorAll(revealSel).forEach((el) => {
     el.style.opacity = "0";
     el.style.transform = "translateY(12px)";
     el.style.transition = "opacity 600ms, transform 600ms";
   });
-
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -144,27 +262,31 @@
     },
     { threshold: 0.12 },
   );
-
   document.querySelectorAll(revealSel).forEach((el) => io.observe(el));
 
-  // --- Store buttons: real URL if configured, modal fallback otherwise ---
+  // ---------- store modal ----------
   const modal = document.getElementById("store-modal");
   const modalTitle = document.getElementById("store-title");
   const modalText = document.getElementById("store-text");
+
+  function isRealUrl(u) {
+    return u && !u.endsWith("#") && !/id000000000$/.test(u) && !/example/i.test(u);
+  }
 
   function openModal(store) {
     if (!modal) return;
     modal.setAttribute("aria-hidden", "false");
     const url = store === "ios" ? APP_STORE_URL : PLAY_STORE_URL;
-    const label = store === "ios" ? "App Store" : "Google Play";
-    if (url && !url.endsWith("#") && !/id000000000$/.test(url) && !/example/i.test(url)) {
-      modalTitle.textContent = `Redirecting to ${label}`;
-      modalText.innerHTML = `Opening <code>${url}</code>`;
+    const label =
+      store === "ios" ? dict.play?.ios || "App Store" : dict.play?.android || "Google Play";
+    if (isRealUrl(url)) {
+      const tmpl = dict.hero.modalTitleRedirect || "Redirecting";
+      modalTitle.textContent = `${tmpl} — ${label}`;
+      modalText.innerHTML = (dict.hero.modalTextRedirect || "Opening %url%").replace("%url%", url);
       window.setTimeout(() => window.open(url, "_blank", "noopener"), 600);
     } else {
-      modalTitle.textContent = `${label} link pending`;
-      modalText.innerHTML =
-        "Store URLs aren't wired up yet. Replace <code>APP_STORE_URL</code> / <code>PLAY_STORE_URL</code> in <code>assets/js/config.js</code>.";
+      modalTitle.textContent = dict.hero.modalTitlePending || "Pending";
+      modalText.innerHTML = dict.hero.modalTextPending || "—";
     }
   }
 
@@ -186,9 +308,13 @@
     });
     modal.querySelectorAll("[data-close]").forEach((c) => c.addEventListener("click", closeModal));
     document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") {
-        closeModal();
-      }
+      if (e.key === "Escape" && modal.getAttribute("aria-hidden") === "false") closeModal();
     });
   }
+
+  // ---------- first render ----------
+  render();
+
+  // expose for tests
+  window.__SITE_LANG__ = lang;
 })();
