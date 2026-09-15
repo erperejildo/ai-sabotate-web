@@ -95,15 +95,32 @@ window.I18N = {
     },
     cardsPage: {
       kicker: "[ 02 // DECK ]",
-      heading: "Three layers. Endless lines.",
-      sub: "Build a deck of components, threats and defenses. Every draw reshapes the field and forces a new plan in seconds.",
+      heading: "Four categories. Endless lines.",
+      sub: "Build a deck of components, threats, defenses and protocols. Every draw reshapes the field and forces a new plan in seconds.",
       title: "The cards",
       tagComponent: "COMPONENT",
       tagWildcard: "WILDCARD",
       tagThreat: "THREAT",
       tagDefense: "DEFENSE",
+      tagProtocol: "PROTOCOL",
+      groupComponentsKicker: "[ 02.1 // COMPONENTS ]",
+      groupComponents: "Components",
+      groupComponentsSub:
+        "The five organs of your AGI. Assemble four different healthy ones on your rig and the build is complete.",
+      groupThreatsKicker: "[ 02.2 // THREATS ]",
+      groupThreats: "Threats",
+      groupThreatsSub:
+        "Malware aimed at rival slots. Threats lower HP and lock slots — they don't destroy, so sabotage is a clock, not a kill.",
+      groupDefensesKicker: "[ 02.3 // DEFENSES ]",
+      groupDefenses: "Defenses",
+      groupDefensesSub:
+        "Firewalls, force-domes and sigils. Block an incoming hit, repair a damaged slot, or lock a component out of reach.",
+      groupProtocolsKicker: "[ 02.4 // SPECIAL PROTOCOLS ]",
+      groupProtocols: "Special Protocols",
+      groupProtocolsSub:
+        "Instant action programs that rewrite the board: steal, swap, migrate malware or purge every rival hand at once.",
       cardsDeep:
-        "Every card belongs to one of three layers. Components satisfy the win condition. Threats damage components. Defenses block, repair or pivot. On each layer there are 5 categories (Hardware, Dataset, Neural Net, Algorithm, Quantum) so every card can declare its slot. Knowing your rival's likely threats is what turns a good hand into a winning one.",
+        "Every card is a component, a threat, a defense or a special protocol. Components satisfy the win condition. Threats damage and lock rival slots. Defenses block, repair or pivot. Protocols rewrite the board outright. Each of the five suits (Hardware, Dataset, Neural Net, Algorithm and the Quantum wildcard) can appear on any card, so every card can declare its slot. Knowing your rival's likely threats is what turns a good hand into a winning one.",
       examplesTitle: "How they combine",
       comboATitle: "Stack overlap",
       comboABody:
@@ -267,15 +284,32 @@ window.I18N = {
     },
     cardsPage: {
       kicker: "[ 02 // MAZO ]",
-      heading: "Tres capas. Líneas infinitas.",
-      sub: "Arma un mazo de componentes, amenazas y defensas. Cada robo cambia el campo y obliga a un nuevo plan en segundos.",
+      heading: "Cuatro categorías. Líneas infinitas.",
+      sub: "Construye un mazo de componentes, amenazas, defensas y protocolos. Cada robo cambia el campo y obliga a un nuevo plan en segundos.",
       title: "Las cartas",
       tagComponent: "COMPONENTE",
       tagWildcard: "COMODÍN",
       tagThreat: "AMENAZA",
       tagDefense: "DEFENSA",
+      tagProtocol: "PROTOCOLO",
+      groupComponentsKicker: "[ 02.1 // COMPONENTES ]",
+      groupComponents: "Componentes",
+      groupComponentsSub:
+        "Los cinco órganos de tu AGI. Reúne cuatro distintos y sanos en tu rig y la construcción está completa.",
+      groupThreatsKicker: "[ 02.2 // AMENAZAS ]",
+      groupThreats: "Amenazas",
+      groupThreatsSub:
+        "Malware contra los slots rivales. Las amenazas bajan HP y bloquean slots — no destruyen, así que sabotear es un reloj, no una ejecución.",
+      groupDefensesKicker: "[ 02.3 // DEFENSAS ]",
+      groupDefenses: "Defensas",
+      groupDefensesSub:
+        "Firewalls, cúpulas de fuerza y sigilos. Bloquea un golpe entrante, repara un slot dañado o deja un componente fuera de alcance.",
+      groupProtocolsKicker: "[ 02.4 // PROTOCOLOS ESPECIALES ]",
+      groupProtocols: "Protocolos especiales",
+      groupProtocolsSub:
+        "Programas de acción instantánea que reescriben el tablero: roba, intercambia, migra malware o purga todas las manos rivales a la vez.",
       cardsDeep:
-        "Cada carta pertenece a una de tres capas. Los componentes cumplen la condición de victoria. Las amenazas dañan componentes. Las defensas bloquean, reparan o pivotean. Cada capa tiene 5 categorías (Hardware, Dataset, Red Neuronal, Algoritmo, Quantum), así que cualquier carta puede declarar su slot. Conocer las amenazas probables del rival es lo que convierte una buena mano en una mano ganadora.",
+        "Cada carta es un componente, una amenaza, una defensa o un protocolo especial. Los componentes cumplen la condición de victoria. Las amenazas dañan y bloquean slots rivales. Las defensas bloquean, reparan o pivotean. Los protocolos reescriben el tablero directamente. Los cinco palos (Hardware, Dataset, Red Neuronal, Algoritmo y el comodín Quantum) pueden aparecer en cualquier carta, así que toda carta puede declarar su slot. Conocer las amenazas probables del rival es lo que convierte una buena mano en una mano ganadora.",
       examplesTitle: "Cómo se combinan",
       comboATitle: "Apilamiento",
       comboABody:

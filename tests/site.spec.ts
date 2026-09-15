@@ -47,16 +47,38 @@ test.describe("AI Sabotage marketing site", () => {
 
   test("i18n swaps every label on subpage", async ({ page }) => {
     await page.goto("/en/cards.html");
-    const enDeckCount = await page.locator("#deck-grid .deck-card").count();
-    expect(enDeckCount).toBe(12);
+    const enDeckCount = await page.locator(".deck-card").count();
+    expect(enDeckCount).toBe(20);
 
     await page.goto("/es/cards.html");
-    const esDeckCount = await page.locator("#deck-grid .deck-card").count();
-    expect(esDeckCount).toBe(12);
+    const esDeckCount = await page.locator(".deck-card").count();
+    expect(esDeckCount).toBe(20);
 
-    const firstEsCard = await page.locator("#deck-grid .deck-card").first().innerText();
+    const firstEsCard = await page
+      .locator('[data-deck="components"] .deck-card')
+      .first()
+      .innerText();
     // use word boundary so "componente" doesn't false-positive
     expect(/\bcomponent\b/i.test(firstEsCard), firstEsCard).toBe(false);
+  });
+
+  test("cards page is split into 4 blocks with all 20 cards", async ({ page }) => {
+    const groups = ["components", "threats", "defenses", "protocols"];
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/cards.html`);
+      for (const group of groups) {
+        const section = page.locator(`.deck-group[data-group="${group}"]`);
+        await expect(section).toHaveCount(1);
+        await expect(section.locator(".section-title")).not.toHaveText("");
+        await expect(section.locator(`[data-deck="${group}"] .deck-card`)).toHaveCount(5);
+      }
+      await expect(page.locator(".deck-card")).toHaveCount(20);
+      // no stale .png card art left over
+      const srcs = await page
+        .locator(".deck-card-img")
+        .evaluateAll((imgs) => imgs.map((i) => (i as HTMLImageElement).getAttribute("src") || ""));
+      expect(srcs.every((s) => s.endsWith(".jpeg"))).toBe(true);
+    }
   });
 
   test("nav links go to real subpages, no 404s", async ({ page }) => {
@@ -109,8 +131,9 @@ test.describe("AI Sabotage marketing site", () => {
 
   test("ghost button keeps all four corners visible", async ({ page }) => {
     await page.goto("/en/");
-    const ghost = page.locator(".btn.btn-ghost").first();
-    await ghost.scrollIntoViewIfNeeded();
+    await page.locator('.hero-actions [data-store="ios"]').click();
+    const ghost = page.locator("#store-modal .btn.btn-ghost").first();
+    await expect(ghost).toBeVisible();
     const box = await ghost.boundingBox();
     expect(box).not.toBeNull();
     // The ::before pseudo-element with the corner accent must exist and be inside the layout box.
@@ -205,6 +228,17 @@ test.describe("AI Sabotage marketing site", () => {
     const lower = text.toLowerCase();
     for (const w of voseoWords) {
       expect(lower, `ES text should not contain voseo word "${w}"`).not.toContain(w);
+    }
+  });
+
+  test("hero download buttons share the same style", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/`);
+      const ios = page.locator('.hero-actions [data-store="ios"]');
+      const android = page.locator('.hero-actions [data-store="android"]');
+      await expect(ios).toHaveClass(/btn-primary/);
+      await expect(android).toHaveClass(/btn-primary/);
+      expect(await android.getAttribute("class")).toBe(await ios.getAttribute("class"));
     }
   });
 

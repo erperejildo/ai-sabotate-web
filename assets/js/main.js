@@ -98,140 +98,251 @@
 
   // ---------- deck (subpage only) ----------
   const DECK = [
+    // ---------- components ----------
     {
-      img: "cmp_hardware.png",
+      group: "components",
+      img: "cmp_hardware.jpeg",
       cat: "hardware",
-      name: { en: "Hardware", es: "Hardware" },
+      name: { en: "Hardware Component", es: "Componente de Hardware" },
       tag: "tagComponent",
       desc: {
-        en: "Power supply. Damaged by direct hits.",
-        es: "Fuente de alimentación. Dañada por golpes directos.",
+        en: "Power supply of the rig. If it goes down, everything it feeds goes dark.",
+        es: "Fuente de energía del rig. Si cae, todo lo que alimenta se apaga.",
       },
     },
     {
-      img: "cmp_dataset.png",
+      group: "components",
+      img: "cmp_dataset.jpeg",
       cat: "dataset",
-      name: { en: "Dataset", es: "Dataset" },
+      name: { en: "Dataset Component", es: "Componente de Dataset" },
       tag: "tagComponent",
       desc: {
-        en: "Training data. Salvage to restore health.",
-        es: "Datos de entrenamiento. Recuperá salud con un salvataje.",
+        en: "Training data. Feed the AGI, or salvage it to restore health.",
+        es: "Datos de entrenamiento. Alimenta a la AGI o recíclalos para restaurar salud.",
       },
     },
     {
-      img: "cmp_neural_net.png",
+      group: "components",
+      img: "cmp_neural_net.jpeg",
       cat: "neural",
-      name: { en: "Neural Net", es: "Red Neuronal" },
+      name: { en: "Neural Net Component", es: "Componente de Red Neuronal" },
       tag: "tagComponent",
       desc: {
-        en: "Reasoning core. Highest throughput.",
-        es: "Núcleo de razonamiento. Máximo rendimiento.",
+        en: "Reasoning core. Highest throughput in the rig.",
+        es: "Núcleo de razonamiento. El mayor rendimiento del rig.",
       },
     },
     {
-      img: "cmp_algorithm.png",
+      group: "components",
+      img: "cmp_algorithm.jpeg",
       cat: "algorithm",
-      name: { en: "Algorithm", es: "Algoritmo" },
+      name: { en: "Algorithm Component", es: "Componente de Algoritmo" },
       tag: "tagComponent",
       desc: {
-        en: "Reasoning layer. Lock the slot.",
-        es: "Capa de razonamiento. Bloquea el slot.",
+        en: "Reasoning layer. Lock the slot to keep it out of reach.",
+        es: "Capa de razonamiento. Bloquea el slot para dejarlo fuera de alcance.",
       },
     },
     {
-      img: "cmp_quantum_core.png",
+      group: "components",
+      img: "cmp_quantum_core.jpeg",
       cat: "quantum",
-      name: { en: "Quantum Core", es: "Quantum Core" },
+      name: { en: "Quantum Core (Wildcard)", es: "Quantum Core (comodín)" },
       tag: "tagWildcard",
       desc: {
-        en: "Counts as any missing component.",
-        es: "Vale como cualquier componente faltante.",
+        en: "Counts as any missing component. The most-sabotaged card in the deck.",
+        es: "Vale como cualquier componente faltante. La carta más saboteada del mazo.",
       },
     },
+    // ---------- threats ----------
     {
-      img: "thr_hardware.png",
+      group: "threats",
+      img: "thr_hardware.jpeg",
       cat: "threat",
-      name: { en: "DDoS Flood", es: "Inundación DDoS" },
+      name: { en: "Hardware Threat", es: "Amenaza de Hardware" },
       tag: "tagThreat",
       desc: {
-        en: "Strips 1 HP from a Hardware slot.",
-        es: "Quita 1 HP a un slot de Hardware.",
+        en: "Parasitic worm that strips HP from a Hardware slot.",
+        es: "Gusano parásito que quita HP a un slot de Hardware.",
       },
     },
     {
-      img: "thr_dataset.png",
+      group: "threats",
+      img: "thr_dataset.jpeg",
       cat: "threat",
-      name: { en: "Corrupt Weights", es: "Pesos corruptos" },
+      name: { en: "Dataset Threat", es: "Amenaza de Dataset" },
       tag: "tagThreat",
       desc: {
-        en: "Locks a Dataset slot for 1 turn.",
-        es: "Bloquea un slot de Dataset por 1 turno.",
+        en: "Data leech that locks a Dataset slot for 1 turn.",
+        es: "Sanguijuela de datos que bloquea un slot de Dataset por 1 turno.",
       },
     },
     {
-      img: "thr_neural_net.png",
+      group: "threats",
+      img: "thr_neural_net.jpeg",
       cat: "threat",
-      name: { en: "Backprop Crash", es: "Caída de backprop" },
+      name: { en: "Neural Net Threat", es: "Amenaza de Red Neuronal" },
       tag: "tagThreat",
       desc: {
-        en: "Disables a Neural Net until repaired.",
-        es: "Desactiva la Red Neuronal hasta repararla.",
+        en: "Spiked drone that disables a Neural Net until repaired.",
+        es: "Dron con púas que desactiva la Red Neuronal hasta repararla.",
       },
     },
     {
-      img: "def_hardware.png",
-      cat: "defense",
-      name: { en: "Firewall", es: "Firewall" },
-      tag: "tagDefense",
+      group: "threats",
+      img: "thr_algorithm.jpeg",
+      cat: "threat",
+      name: { en: "Algorithm Threat", es: "Amenaza de Algoritmo" },
+      tag: "tagThreat",
       desc: {
-        en: "Blocks the next Hardware hit.",
-        es: "Bloquea el próximo golpe a Hardware.",
+        en: "Clockwork spider that injects a logic bomb into an Algorithm.",
+        es: "Araña mecánica que inyecta una bomba lógica en un Algoritmo.",
       },
     },
     {
-      img: "def_dataset.png",
+      group: "threats",
+      img: "thr_quantum.jpeg",
+      cat: "threat",
+      name: { en: "Quantum Threat (Wildcard)", es: "Amenaza Quantum (comodín)" },
+      tag: "tagThreat",
+      desc: {
+        en: "Void serpent that hits the wildcard slot itself.",
+        es: "Serpiente del vacío que golpea al propio slot comodín.",
+      },
+    },
+    // ---------- defenses ----------
+    {
+      group: "defenses",
+      img: "def_hardware.jpeg",
       cat: "defense",
-      name: { en: "Checksum", es: "Checksum" },
+      name: { en: "Hardware Defense", es: "Defensa de Hardware" },
       tag: "tagDefense",
       desc: {
-        en: "Restores 1 HP to a Dataset slot.",
-        es: "Restaura 1 HP en un slot de Dataset.",
+        en: "Armored blast-shield that blocks the next Hardware hit.",
+        es: "Escudo blindado que bloquea el próximo golpe a Hardware.",
       },
     },
     {
-      img: "def_neural_net.png",
+      group: "defenses",
+      img: "def_dataset.jpeg",
       cat: "defense",
-      name: { en: "Grad Norm", es: "Grad Norm" },
+      name: { en: "Dataset Defense", es: "Defensa de Dataset" },
       tag: "tagDefense",
       desc: {
-        en: "Stabilizes Neural Net health.",
-        es: "Estabiliza la salud de la Red Neuronal.",
+        en: "Firewall lattice and checksum seals. Restores 1 HP to a Dataset slot.",
+        es: "Malla de firewall y sellos de checksum. Restaura 1 HP en un slot de Dataset.",
       },
     },
     {
-      img: "def_quantum.png",
+      group: "defenses",
+      img: "def_neural_net.jpeg",
       cat: "defense",
-      name: { en: "Decoherence Shield", es: "Escudo de decoherencia" },
+      name: { en: "Neural Net Defense", es: "Defensa de Red Neuronal" },
       tag: "tagDefense",
       desc: {
-        en: "Protects the Quantum Core wildcard.",
-        es: "Protege al comodín Quantum Core.",
+        en: "Force-dome drones that stabilize Neural Net health.",
+        es: "Drones de cúpula de fuerza que estabilizan la salud de la Red Neuronal.",
+      },
+    },
+    {
+      group: "defenses",
+      img: "def_algorithm.jpeg",
+      cat: "defense",
+      name: { en: "Algorithm Defense", es: "Defensa de Algoritmo" },
+      tag: "tagDefense",
+      desc: {
+        en: "Containment sigil that locks down an Algorithm slot.",
+        es: "Sigilo de contención que asegura un slot de Algoritmo.",
+      },
+    },
+    {
+      group: "defenses",
+      img: "def_quantum.jpeg",
+      cat: "defense",
+      name: { en: "Quantum Defense (Wildcard)", es: "Defensa Quantum (comodín)" },
+      tag: "tagDefense",
+      desc: {
+        en: "Prismatic shield-bubble protecting the Quantum Core.",
+        es: "Burbuja de escudo prismática que protege al Quantum Core.",
+      },
+    },
+    // ---------- protocols ----------
+    {
+      group: "protocols",
+      img: "pro_data_heist.jpeg",
+      cat: "protocol",
+      name: { en: "Data Heist", es: "Robo de datos" },
+      tag: "tagProtocol",
+      desc: {
+        en: "Steal any non-locked component from a rival's rig.",
+        es: "Roba cualquier componente sin bloquear del rig rival.",
+      },
+    },
+    {
+      group: "protocols",
+      img: "pro_protocol_swap.jpeg",
+      cat: "protocol",
+      name: { en: "Protocol Swap", es: "Intercambio de protocolo" },
+      tag: "tagProtocol",
+      desc: {
+        en: "Exchange one component between any two rigs (non-locked).",
+        es: "Intercambia un componente entre dos rigs (sin bloquear).",
+      },
+    },
+    {
+      group: "protocols",
+      img: "pro_malware_migration.jpeg",
+      cat: "protocol",
+      name: { en: "Malware Migration", es: "Migración de malware" },
+      tag: "tagProtocol",
+      desc: {
+        en: "Relocate your attached Threats onto rival free components.",
+        es: "Reubica tus amenazas adheridas en componentes libres rivales.",
+      },
+    },
+    {
+      group: "protocols",
+      img: "pro_emp_purge.jpeg",
+      cat: "protocol",
+      name: { en: "EMP Purge", es: "Purga EMP" },
+      tag: "tagProtocol",
+      desc: {
+        en: "All rivals discard their hands and skip their next draw.",
+        es: "Todos los rivales descartan su mano y pierden su próximo robo.",
+      },
+    },
+    {
+      group: "protocols",
+      img: "pro_system_override.jpeg",
+      cat: "protocol",
+      name: { en: "System Override", es: "Anulación del sistema" },
+      tag: "tagProtocol",
+      desc: {
+        en: "Swap your entire rig with a rival's rig, locked components included.",
+        es: "Intercambia tu rig completo con el de un rival, incluidos los bloqueados.",
       },
     },
   ];
 
-  const grid = document.getElementById("deck-grid");
-  if (grid) {
-    grid.innerHTML = DECK.map((c) => {
-      const tagValue = (dict.cardsPage && dict.cardsPage[c.tag]) || "";
-      return `
+  const grids = document.querySelectorAll("[data-deck]");
+  if (grids.length) {
+    const cardsPage = dict.cardsPage || {};
+
+    grids.forEach((grid) => {
+      const group = grid.getAttribute("data-deck");
+      grid.innerHTML = DECK.filter((c) => c.group === group)
+        .map((c) => {
+          const tagValue = cardsPage[c.tag] || "";
+          return `
       <article class="deck-card" data-cat="${c.cat}">
         <span class="deck-card-tag">${tagValue}</span>
         <img class="deck-card-img" src="../assets/img/${c.img}" alt="${c.name[lang]}" loading="lazy" />
         <h3 class="deck-card-name">${c.name[lang]}</h3>
         <p class="deck-card-desc">${c.desc[lang]}</p>
       </article>`;
-    }).join("");
+        })
+        .join("");
+    });
   }
 
   // ---------- in-page anchors (with offset for sticky nav) ----------
