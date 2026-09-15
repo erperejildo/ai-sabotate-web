@@ -1,7 +1,7 @@
 {
   "name": "AI Sabotage: Cyber Cards",
   "short_name": "AI Sabotage",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#0D0D12",
   "theme_color": "#0D0D12",

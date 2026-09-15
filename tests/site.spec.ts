@@ -65,8 +65,38 @@ test.describe("AI Sabotage marketing site", () => {
       .locator(".nav-links a, .brand")
       .evaluateAll((els) => els.map((a) => a.getAttribute("href") || ""))) {
       if (!href) continue;
-      const resp = await page.request.get(href);
-      expect(resp.status(), `link ${href}`).toBeLessThan(400);
+      // resolve relative hrefs against the current document, not the baseURL
+      const abs = new URL(href, page.url()).href;
+      const resp = await page.request.get(abs);
+      expect(resp.status(), `link ${abs}`).toBeLessThan(400);
+    }
+  });
+
+  test("header has no app download button", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/`);
+      await expect(page.locator("header.nav [data-store]")).toHaveCount(0);
+      await expect(page.locator("header.nav .btn.btn-primary")).toHaveCount(0);
+    }
+  });
+
+  test("brand reads [ AI SABOTAGE ]", async ({ page }) => {
+    await page.goto("/en/");
+    const brand = (await page.locator(".brand").innerText()).replace(/\s+/g, " ").trim();
+    expect(brand).toBe("[ AI SABOTAGE ]");
+  });
+
+  test("no paywall / no ads / no leaderboard copy anywhere", async ({ page }) => {
+    const banned = ["paywall", "no ads", "leaderboard", "sin anuncios"];
+    for (const lang of LANGS) {
+      for (const slug of SLUGS) {
+        const path = slug === "index" ? `/${lang}/` : `/${lang}/${slug}.html`;
+        await page.goto(path);
+        const text = (await page.locator("body").innerText()).toLowerCase();
+        for (const term of banned) {
+          expect(text, `${term} found on ${path}`).not.toContain(term);
+        }
+      }
     }
   });
 

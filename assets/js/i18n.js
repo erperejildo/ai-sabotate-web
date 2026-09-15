@@ -7,7 +7,7 @@ window.I18N = {
       description:
         "A cyberpunk strategy card game. Build the AGI before your rivals do. Online ranking, offline play, hot-seat with friends. Free on iOS and Android.",
       keywords:
-        "AI card game, cyberpunk, AGI, hacking game, robot games, card duel, strategy card game, two player, card game offline, ranking, leaderboard, set collection, artificial intelligence, offline, sabotage",
+        "AI card game, cyberpunk, AGI, hacking game, robot games, card duel, strategy card game, two player, card game offline, ranking, set collection, artificial intelligence, offline, sabotage",
       ogTitle: "AI Sabotage: Build the AGI",
       ogDescription: "Cyberpunk strategy card game. Top the global ranking.",
     },
@@ -60,7 +60,7 @@ window.I18N = {
       card3Body:
         "Collect components, threats and defenses across seasons. Every card has a rarity and a category. Decks are 20 cards, half components and half action. A good deck accounts for synergy and for the protocols you expect to face.",
       ctaTitle: "Pick your platform.",
-      ctaSub: "Free on iOS and Android. No paywall. The grid is open.",
+      ctaSub: "Free on iOS and Android. The grid is open.",
       ctaStoreIos: "App Store",
       ctaStoreIosSub: "iPhone · iPad",
       ctaStoreAndroid: "Google Play",
@@ -137,7 +137,7 @@ window.I18N = {
     ranking: {
       kicker: "[ 04 // RANKING ]",
       heading: "Online rivals. Global ladder.",
-      sub: "Climb the global leaderboard. +10 PTS per win, −5 for quitting. Stay online and stack the season.",
+      sub: "Climb the global ranking. +10 PTS per win, −5 for quitting. Stay online and stack the season.",
       title: "Ranking",
       col: { pos: "POS", player: "PLAYER", pts: "PTS" },
       howTitle: "How the ladder works",
@@ -156,7 +156,7 @@ window.I18N = {
     play: {
       kicker: "[ 05 // JACK IN ]",
       heading: "Pick your platform.",
-      sub: "Free on iOS and Android. No paywall. The grid is open.",
+      sub: "Free on iOS and Android. The grid is open.",
       title: "Play",
       ios: "App Store",
       iosSub: "iPhone · iPad",
@@ -166,7 +166,7 @@ window.I18N = {
       freeLine1: "Full single-player ladder, all 80+ cards unlocked.",
       freeLine2: "Hot-seat mode for 2–4 players on the same device.",
       freeLine3: "Online rivals with cross-platform matchmaking.",
-      freeLine4: "No ads. No pay-to-win. Just the game.",
+      freeLine4: "No pay-to-win. Just the game.",
       requirementsTitle: "Requirements",
       reqIos: "iOS 14 or later. iPhone 8 and up.",
       reqAndroid: "Android 9 or later. 2 GB RAM minimum.",
@@ -232,7 +232,7 @@ window.I18N = {
       card3Body:
         "Reúne componentes, amenazas y defensas a lo largo de las temporadas. Cada carta tiene una rareza y una categoría. Los mazos son de 20 cartas, mitad componentes y mitad acciones. Un buen mazo tiene sinergia y prevé los protocolos a los que se enfrentará.",
       ctaTitle: "Elige tu plataforma.",
-      ctaSub: "Gratis en iOS y Android. Sin paywall. La red está abierta.",
+      ctaSub: "Gratis en iOS y Android. La red está abierta.",
       ctaStoreIos: "App Store",
       ctaStoreIosSub: "iPhone · iPad",
       ctaStoreAndroid: "Google Play",
@@ -309,7 +309,7 @@ window.I18N = {
     ranking: {
       kicker: "[ 04 // RANKING ]",
       heading: "Rivales online. Escalera global.",
-      sub: "Sube en el leaderboard global. +10 PTS por victoria, −5 por retirarse. Quédate online y acumula la temporada.",
+      sub: "Sube en el ranking global. +10 PTS por victoria, −5 por retirarse. Quédate online y acumula la temporada.",
       title: "Ranking",
       col: { pos: "POS", player: "JUGADOR", pts: "PTS" },
       howTitle: "Cómo funciona la escalera",
@@ -328,7 +328,7 @@ window.I18N = {
     play: {
       kicker: "[ 05 // CONECTARSE ]",
       heading: "Elige tu plataforma.",
-      sub: "Gratis en iOS y Android. Sin paywall. La red está abierta.",
+      sub: "Gratis en iOS y Android. La red está abierta.",
       title: "Jugar",
       ios: "App Store",
       iosSub: "iPhone · iPad",
@@ -338,7 +338,7 @@ window.I18N = {
       freeLine1: "Escalera single-player completa, más de 80 cartas desbloqueadas.",
       freeLine2: "Modo hot-seat para 2–4 jugadores en el mismo dispositivo.",
       freeLine3: "Rivales online con matchmaking cross-platform.",
-      freeLine4: "Sin anuncios. Sin pay-to-win. Solo el juego.",
+      freeLine4: "Sin pay-to-win. Solo el juego.",
       requirementsTitle: "Requisitos",
       reqIos: "iOS 14 o superior. iPhone 8 en adelante.",
       reqAndroid: "Android 9 o superior. Mínimo 2 GB de RAM.",

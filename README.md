@@ -9,7 +9,7 @@ load times and perfect Lighthouse scores.
 - HTML, CSS, vanilla JS (no framework)
 - Prettier for formatting / linting
 - Playwright for end-to-end tests
-- GitLab CI for `prettier check` → `playwright test` → deploy to **GitHub Pages**
+- GitHub Actions for prettier + Playwright gates → deploy to **GitHub Pages**
 
 ## Structure
 
@@ -48,28 +48,34 @@ python3 -m http.server 4173
 # open http://127.0.0.1:4173
 ```
 
-## CI/CD (GitLab → GitHub Pages)
+## CI/CD (GitHub Actions → GitHub Pages)
 
-Required CI/CD variables (Settings → CI/CD → Variables) on GitLab:
+`.github/workflows/deploy.yml` runs on every push to `main` (or manually via
+`workflow_dispatch`):
 
-| name           | kind   | value                                                         |
-| -------------- | ------ | ------------------------------------------------------------- |
-| `GITHUB_TOKEN` | masked | A GitHub PAT with `repo` push access to the target repo.      |
-| `GITHUB_REPO`  | var    | `OWNER/REPO` of the GitHub repository hosting the Pages site. |
+1. `Prettier check` — `npm run format:check`
+2. `Run tests` — installs Chromium + `npm test` (Playwright)
+3. `Stage static site` — `npm run stage` builds `dist/` (site files + `.nojekyll`)
+4. Uploads the Pages artifact and deploys via `actions/deploy-pages`
+   (with the same competing-run cancellation + retry logic used by
+   `drodriguez-apps.github.io`), then smoke-tests `/`, `/en/`,
+   `/es/` and `/en/ranking.html` on the live URL.
 
-Pipeline:
+**One-time repo setup:** Settings → Pages → Build and deployment →
+Source = **GitHub Actions**. If it is left on "Deploy from a branch",
+GitHub's built-in `pages-build-deployment` workflow competes with this
+one and can publish the raw source instead of the built site.
 
-1. `prettier` — `prettier --check .` (format gate)
-2. `playwright` — installs Chromium + runs `npm run test`
-3. `deploy:pages` — pushes the static tree to the `gh-pages` branch of `$GITHUB_REPO`
-
-Triggers on `main`. Configure GitHub Pages in the target repo to
-publish from the `gh-pages` branch root.
+The site is served from a project subpath
+(`https://erperejildo.github.io/ai-sabotate-web/`), so every internal
+link is **relative**. `SITE_BASE` in `build-pages.js` drives the
+canonical/hreflang/og:url tags — update it there if a custom domain is
+added later.
 
 ## ASO keywords used on the site
 
 Primary (en-US): **AI card game**, **cyberpunk**, **sabotage**, **AGI**,
-**hacking game**, **robot**, **ranking**, **leaderboard**,
+**hacking game**, **robot**, **ranking**,
 **strategy game**, **card game offline**, **artificial intelligence**,
 **two player**, **set collection**, **offline**.
 
