@@ -141,6 +141,50 @@ test.describe("AI Sabotage marketing site", () => {
     }
   });
 
+  test("Spanish copy is Castilian (no Argentine voseo)", async ({ page }) => {
+    await page.goto("/es/");
+    const text = await page.locator("body").innerText();
+    // Voseo markers (impersonal -á/-é/-í, present -ás/-és/-ís). Common words also caught:
+    const voseoWords = [
+      "elegí",
+      "elegís",
+      "jugá",
+      "armá",
+      "decime",
+      "tenés",
+      "sabés",
+      "querés",
+      "podés",
+      "ganás",
+      "saboteá",
+      "guardá",
+      "robá",
+      "forzás",
+      "intercambiá",
+      "leé",
+      "subí",
+      "quedáte",
+      "acumulá",
+      "empezás",
+      "diseñá",
+      "parchá",
+      "usá",
+      "gastá",
+      "declarás",
+    ];
+    const lower = text.toLowerCase();
+    for (const w of voseoWords) {
+      expect(lower, `ES text should not contain voseo word "${w}"`).not.toContain(w);
+    }
+  });
+
+  test("footer year is rendered (no literal %year%)", async ({ page }) => {
+    await page.goto("/en/");
+    const footer = await page.locator(".footer").first().innerText();
+    expect(footer).not.toContain("%year%");
+    expect(footer).toMatch(/\d{4}/);
+  });
+
   test("all card images on every page return 200", async ({ page }) => {
     for (const lang of LANGS) {
       for (const slug of ["index", "rig", "cards", "protocols", "ranking", "play"]) {

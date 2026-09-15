@@ -64,12 +64,10 @@
       }
     }
 
-    // year stamp
-    const y = document.getElementById("year");
-    if (y && dict.footer && dict.footer.copy) {
-      const foot = document.querySelector("[data-i18n='footer.copy']");
-      if (foot)
-        foot.innerHTML = dict.footer.copy.replace("%year%", String(new Date().getFullYear()));
+    // year stamp — always replace; don't gate on a phantom span
+    const foot = document.querySelector("[data-i18n='footer.copy']");
+    if (foot && dict.footer && dict.footer.copy) {
+      foot.innerHTML = dict.footer.copy.replace("%year%", String(new Date().getFullYear()));
     }
   }
 
