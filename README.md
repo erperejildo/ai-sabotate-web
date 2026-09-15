@@ -1,54 +1,90 @@
-# ai-sabotage-web
+# AI Sabotage — Marketing Site
 
-This template should help get you started developing with Vue 3 in Vite.
+Static marketing site for **AI Sabotage: Cyber Cards** — a cyberpunk
+strategy card game. Built with vanilla HTML, CSS and JS for fast
+load times and perfect Lighthouse scores.
 
-## Recommended IDE Setup
+## Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+- HTML, CSS, vanilla JS (no framework)
+- Prettier for formatting / linting
+- Playwright for end-to-end tests
+- GitLab CI for `prettier check` → `playwright test` → deploy to **GitHub Pages**
 
-## Recommended Browser Setup
+## Structure
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vite.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+```
+.
+├── index.html
+├── manifest.webmanifest
+├── assets/
+│   ├── css/style.css
+│   ├── js/main.js
+│   ├── js/config.js            # APP_STORE_URL, PLAY_STORE_URL
+│   ├── fonts/Orbitron.ttf
+│   ├── fonts/JetBrainsMono.ttf
+│   └── img/                    # app icon + card images
+├── tests/site.spec.ts          # Playwright tests
+├── playwright.config.ts
+├── package.json
+├── .prettierrc.json
+└── .gitlab-ci.yml
 ```
 
-### Compile and Hot-Reload for Development
+## Local development
 
-```sh
-npm run dev
+```bash
+npm ci
+npx playwright install --with-deps chromium
+npm run test                # runs http server + Playwright tests
+npm run format              # one-shot format
+npm run format:check        # CI parity
 ```
 
-### Type-Check, Compile and Minify for Production
+Serve the site manually:
 
-```sh
-npm run build
+```bash
+python3 -m http.server 4173
+# open http://127.0.0.1:4173
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+## CI/CD (GitLab → GitHub Pages)
 
-```sh
-npm run test:unit
+Required CI/CD variables (Settings → CI/CD → Variables) on GitLab:
+
+| name           | kind   | value                                                         |
+| -------------- | ------ | ------------------------------------------------------------- |
+| `GITHUB_TOKEN` | masked | A GitHub PAT with `repo` push access to the target repo.      |
+| `GITHUB_REPO`  | var    | `OWNER/REPO` of the GitHub repository hosting the Pages site. |
+
+Pipeline:
+
+1. `prettier` — `prettier --check .` (format gate)
+2. `playwright` — installs Chromium + runs `npm run test`
+3. `deploy:pages` — pushes the static tree to the `gh-pages` branch of `$GITHUB_REPO`
+
+Triggers on `main`. Configure GitHub Pages in the target repo to
+publish from the `gh-pages` branch root.
+
+## ASO keywords used on the site
+
+Primary (en-US): **AI card game**, **cyberpunk**, **sabotage**, **AGI**,
+**hacking game**, **robot**, **ranking**, **leaderboard**,
+**strategy game**, **card game offline**, **artificial intelligence**,
+**two player**, **set collection**, **offline**.
+
+These mirror `keywords.md` of the underlying app.
+
+## Replacing app store links
+
+Edit `assets/js/config.js`:
+
+```js
+window.AI_SABOTAGE_CONFIG = {
+  APP_STORE_URL: "https://apps.apple.com/app/id<YOUR_ID>",
+  PLAY_STORE_URL: "https://play.google.com/store/apps/details?id=<PKG>",
+};
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Site visitors on iOS/Android devices are then auto-redirected; everyone
+else sees a modal that explains the link is pending.
