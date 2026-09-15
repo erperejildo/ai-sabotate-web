@@ -129,6 +129,33 @@ test.describe("AI Sabotage marketing site", () => {
     expect(await active.getAttribute("href")).toMatch(/friends\.html$/);
   });
 
+  test("narrow header wraps nav links instead of scrolling", async ({ page }) => {
+    for (const width of [320, 360]) {
+      await page.setViewportSize({ width, height: 720 });
+      for (const lang of LANGS) {
+        await page.goto(`/${lang}/`);
+        const metrics = await page.evaluate(() => {
+          const links = document.querySelector(".nav-links") as HTMLElement;
+          const nav = document.querySelector("header.nav") as HTMLElement;
+          const main = document.querySelector("main") as HTMLElement;
+          return {
+            overflowing: links.scrollWidth > links.clientWidth + 1,
+            navBottom: nav.getBoundingClientRect().bottom,
+            mainTop: main.getBoundingClientRect().top,
+            bodyOverflows:
+              document.documentElement.scrollWidth > document.documentElement.clientWidth + 1,
+          };
+        });
+        expect(metrics.overflowing, `nav links scroll at ${width}px (${lang})`).toBe(false);
+        expect(metrics.bodyOverflows, `page scrolls sideways at ${width}px (${lang})`).toBe(false);
+        expect(
+          metrics.mainTop,
+          `header pushes content down at ${width}px (${lang})`,
+        ).toBeGreaterThanOrEqual(metrics.navBottom - 1);
+      }
+    }
+  });
+
   test("--text-dim is brighter than dark on dark", async ({ page }) => {
     await page.goto("/en/");
     const rgb = await page.evaluate(() => {
