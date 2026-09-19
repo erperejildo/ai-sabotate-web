@@ -1284,6 +1284,49 @@ button {
   color: var(--neural-blue);
 }
 
+/* ---------- FAQ section (AEO) ---------- */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-lg) 0 0;
+}
+
+@media (max-width: 640px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faq-card {
+  background: var(--surface);
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.faq-card h3 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 0.03em;
+  color: var(--text-primary);
+  word-break: break-word;
+}
+
+.faq-card p {
+  margin: 0;
+  font-family: var(--font-data);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

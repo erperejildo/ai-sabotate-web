@@ -162,8 +162,8 @@
       name: { en: "Hardware Threat", es: "Amenaza de Hardware" },
       tag: "tagThreat",
       desc: {
-        en: "Parasitic worm that strips HP from a Hardware slot.",
-        es: "Gusano parásito que quita HP a un slot de Hardware.",
+        en: "Parasitic worm that infects a Hardware component; a second threat destroys it.",
+        es: "Gusano parásito que infecta un componente de Hardware; una segunda amenaza lo destruye.",
       },
     },
     {
@@ -173,8 +173,8 @@
       name: { en: "Dataset Threat", es: "Amenaza de Dataset" },
       tag: "tagThreat",
       desc: {
-        en: "Data leech that locks a Dataset slot for 1 turn.",
-        es: "Sanguijuela de datos que bloquea un slot de Dataset por 1 turno.",
+        en: "Data leech that infects a Dataset component; a second threat destroys it.",
+        es: "Sanguijuela de datos que infecta un componente de Dataset; una segunda amenaza lo destruye.",
       },
     },
     {
@@ -184,8 +184,8 @@
       name: { en: "Neural Net Threat", es: "Amenaza de Red Neuronal" },
       tag: "tagThreat",
       desc: {
-        en: "Spiked drone that disables a Neural Net until repaired.",
-        es: "Dron con púas que desactiva la Red Neuronal hasta repararla.",
+        en: "Spiked drone that infects a Neural Net component; a second threat destroys it.",
+        es: "Dron con púas que infecta un componente de Red Neuronal; una segunda amenaza lo destruye.",
       },
     },
     {
@@ -195,8 +195,8 @@
       name: { en: "Algorithm Threat", es: "Amenaza de Algoritmo" },
       tag: "tagThreat",
       desc: {
-        en: "Clockwork spider that injects a logic bomb into an Algorithm.",
-        es: "Araña mecánica que inyecta una bomba lógica en un Algoritmo.",
+        en: "Clockwork spider that infects an Algorithm component; a second threat destroys it.",
+        es: "Araña mecánica que infecta un componente de Algoritmo; una segunda amenaza lo destruye.",
       },
     },
     {
@@ -206,8 +206,8 @@
       name: { en: "Quantum Threat (Wildcard)", es: "Amenaza Quantum (comodín)" },
       tag: "tagThreat",
       desc: {
-        en: "Void serpent that hits the wildcard slot itself.",
-        es: "Serpiente del vacío que golpea al propio slot comodín.",
+        en: "Void serpent that infects any component or the Quantum Core wildcard.",
+        es: "Serpiente del vacío que infecta cualquier componente o el comodín Quantum Core.",
       },
     },
     // ---------- defenses ----------
@@ -218,8 +218,8 @@
       name: { en: "Hardware Defense", es: "Defensa de Hardware" },
       tag: "tagDefense",
       desc: {
-        en: "Armored blast-shield that blocks the next Hardware hit.",
-        es: "Escudo blindado que bloquea el próximo golpe a Hardware.",
+        en: "Armored blast-shield that protects a Hardware component, or locks it if doubled.",
+        es: "Escudo blindado que protege un componente de Hardware, o lo bloquea si se duplica.",
       },
     },
     {
@@ -229,8 +229,8 @@
       name: { en: "Dataset Defense", es: "Defensa de Dataset" },
       tag: "tagDefense",
       desc: {
-        en: "Firewall lattice and checksum seals. Restores 1 HP to a Dataset slot.",
-        es: "Malla de firewall y sellos de checksum. Restaura 1 HP en un slot de Dataset.",
+        en: "Firewall lattice that protects a Dataset component, or locks it if doubled.",
+        es: "Malla de firewall que protege un componente de Dataset, o lo bloquea si se duplica.",
       },
     },
     {
@@ -240,8 +240,8 @@
       name: { en: "Neural Net Defense", es: "Defensa de Red Neuronal" },
       tag: "tagDefense",
       desc: {
-        en: "Force-dome drones that stabilize Neural Net health.",
-        es: "Drones de cúpula de fuerza que estabilizan la salud de la Red Neuronal.",
+        en: "Force-dome drones that protect a Neural Net component, or lock it if doubled.",
+        es: "Cúpula de fuerza que protege un componente de Red Neuronal, o lo bloquea si se duplica.",
       },
     },
     {
@@ -251,8 +251,8 @@
       name: { en: "Algorithm Defense", es: "Defensa de Algoritmo" },
       tag: "tagDefense",
       desc: {
-        en: "Containment sigil that locks down an Algorithm slot.",
-        es: "Sigilo de contención que asegura un slot de Algoritmo.",
+        en: "Containment sigil that protects an Algorithm component, or locks it if doubled.",
+        es: "Sigilo de contención que protege un componente de Algoritmo, o lo bloquea si se duplica.",
       },
     },
     {
@@ -262,8 +262,8 @@
       name: { en: "Quantum Defense (Wildcard)", es: "Defensa Quantum (comodín)" },
       tag: "tagDefense",
       desc: {
-        en: "Prismatic shield-bubble protecting the Quantum Core.",
-        es: "Burbuja de escudo prismática que protege al Quantum Core.",
+        en: "Prismatic shield-bubble that protects any component or the Quantum Core wildcard.",
+        es: "Burbuja prismática que protege cualquier componente o el comodín Quantum Core.",
       },
     },
     // ---------- protocols ----------
