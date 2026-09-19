@@ -10,7 +10,7 @@
     "lint": "prettier --check .",
     "test": "playwright test",
     "test:install": "playwright install --with-deps chromium",
-    "stage": "rm -rf dist && mkdir -p dist && cp -R index.html manifest.webmanifest assets en es dist/ && touch dist/.nojekyll",
+    "stage": "rm -rf dist && mkdir -p dist && cp -R index.html manifest.webmanifest robots.txt sitemap.xml assets en es dist/ && touch dist/.nojekyll",
     "precommit:format": "prettier --write ."
   },
   "devDependencies": {
