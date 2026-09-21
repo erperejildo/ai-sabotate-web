@@ -66,11 +66,10 @@ Source = **GitHub Actions**. If it is left on "Deploy from a branch",
 GitHub's built-in `pages-build-deployment` workflow competes with this
 one and can publish the raw source instead of the built site.
 
-The site is served from a project subpath
-(`https://erperejildo.github.io/ai-sabotate-web/`), so every internal
+The site is served on the custom domain
+`https://aisabotage.store/` (with fallback GitHub Pages redirect), so every internal
 link is **relative**. `SITE_BASE` in `build-pages.js` drives the
-canonical/hreflang/og:url tags — update it there if a custom domain is
-added later.
+canonical/hreflang/og:url tags.
 
 ## ASO keywords used on the site
 

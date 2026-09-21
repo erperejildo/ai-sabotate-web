@@ -359,4 +359,47 @@ test.describe("AI Sabotage marketing site", () => {
     // Spanish rig.heading = "Cuatro slots. Una AGI." template: "%title% · AI Sabotage"
     await expect(page).toHaveTitle(/·\s*AI Sabotage/i);
   });
+
+  test("root index has valid search metadata, canonical, og:image, json-ld, and legal links", async ({
+    request,
+  }) => {
+    const res = await request.get("/");
+    expect(res.status()).toBeLessThan(400);
+    const html = await res.text();
+    expect(html).toMatch(/<meta\s+name="description"/);
+    expect(html).toMatch(
+      /<meta\s+property="og:image"\s+content="https:\/\/aisabotage\.store\/assets\/img\/icon\.jpg"/,
+    );
+    expect(html).toMatch(/<link\s+rel="canonical"\s+href="https:\/\/aisabotage\.store\/"/);
+    expect(html).toContain("application/ld+json");
+    expect(html).toContain("https://axislabs.eu/ai-sabotage/policy");
+    expect(html).toContain("https://axislabs.eu/ai-sabotage/terms-and-conditions");
+  });
+
+  test("footer contains valid legal links on all localized pages", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/`);
+      const privacy = page.locator(
+        '.footer-legal a[href="https://axislabs.eu/ai-sabotage/policy"]',
+      );
+      const terms = page.locator(
+        '.footer-legal a[href="https://axislabs.eu/ai-sabotage/terms-and-conditions"]',
+      );
+      await expect(privacy).toHaveCount(1);
+      await expect(terms).toHaveCount(1);
+      await expect(privacy).toHaveAttribute("target", "_blank");
+      await expect(terms).toHaveAttribute("target", "_blank");
+      await expect(privacy).toHaveAttribute("rel", "noopener");
+      await expect(terms).toHaveAttribute("rel", "noopener");
+    }
+  });
+
+  test("llms.txt is served and contains game overview", async ({ request }) => {
+    const res = await request.get("/llms.txt");
+    expect(res.status()).toBe(200);
+    const text = await res.text();
+    expect(text).toContain("# AI Sabotage: Cyber Cards");
+    expect(text).toContain("https://aisabotage.store");
+    expect(text).toContain("https://axislabs.eu/ai-sabotage/policy");
+  });
 });

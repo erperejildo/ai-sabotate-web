@@ -1,0 +1,49 @@
+# AI Sabotage: Cyber Cards
+
+> AI Sabotage: Cyber Cards is a fast-paced cyberpunk strategy card game where up to 4 players duel to construct an Artificial General Intelligence (AGI) rig while tactically sabotaging their rivals. Matches take approximately three minutes. Available free on iOS and Android.
+
+## Core Game Overview
+
+- **Objective**: Be the first operator to assemble four distinct, healthy components in your AGI rig, or substitute missing slots using the Quantum Core wildcard.
+- **Match Length**: ~3 minutes of rapid set collection and cyber sabotage.
+- **Players**: 2–4 players across online, local hot-seat, or private match modes.
+- **Offline Capable**: Full offline single-player mode vs CPU and local hot-seat on a single phone or tablet with zero internet required.
+
+## The AGI Rig Architecture
+
+An operational AGI requires 4 healthy component slots:
+1. **Hardware [01]**: High-density quantum tensor processing clusters.
+2. **Dataset [02]**: Petabyte neural training corpus and clean token pipelines.
+3. **Neural Net [03]**: Deep transformer architecture and cognitive synaptic graphs.
+4. **Algorithm [04]**: Self-optimizing reinforcement learning logic.
+- **Wildcard (Quantum Core)**: Substitutes for any missing component slot.
+
+## Tactical Card Types (54-Card Shared Deck)
+
+- **Components**: Installed into empty slots on your rig.
+- **Threats**: Targeted malware played onto rival components. The first threat infects the slot; a second threat of matching type destroys the entire stack to the discard pile.
+- **Defenses**: Firewalls that protect components. One defense absorbs an incoming threat; two defenses permanently lock the component against all future threats.
+- **Special Protocols**: Instant tactical programs:
+  - *Data Heist*: Steal an un-locked component from a rival rig.
+  - *EMP Purge*: Force an opponent to discard their entire hand.
+  - *System Override*: Swap your entire rig with a rival's rig.
+  - *Protocol Swap*: Exchange any two cards between players or slots.
+  - *Malware Migration*: Move an active threat from your rig onto a rival component.
+
+## Key Pages & Documentation
+
+- [Rig Architecture Guide](https://aisabotage.store/en/rig.html): Deep-dive into rig slots, defensive locks, and win conditions.
+- [Card Database & Reference](https://aisabotage.store/en/cards.html): Full directory of all 20 distinct cards across Components, Threats, Defenses, and Protocols.
+- [Private Matches with Friends](https://aisabotage.store/en/friends.html): Guide for creating and joining private lobbies using 6-character room codes.
+- [Global Ranking Ladder](https://aisabotage.store/en/ranking.html): Competitive ladder tiers (Novice, Script Kiddie, Netrunner, Cyber Overlord) and +10 PTS victory scoring.
+- [Download & System Requirements](https://aisabotage.store/en/play.html): Technical requirements (iOS 14+, Android 9+) and feature breakdown.
+
+## App Stores
+
+- iOS (App Store): https://apps.apple.com/us/app/ai-sabotage-build-the-agi/id6806422984
+- Android (Google Play): https://play.google.com/store/apps/details?id=com.axislabs.aisabotage
+
+## Legal & Terms
+
+- Privacy Policy: https://axislabs.eu/ai-sabotage/policy
+- Terms & Conditions: https://axislabs.eu/ai-sabotage/terms-and-conditions

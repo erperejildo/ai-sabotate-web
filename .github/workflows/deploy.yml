@@ -71,6 +71,7 @@ jobs:
           test -f dist/.nojekyll || (echo "MISSING dist/.nojekyll" && exit 1)
           test -f dist/en/index.html || (echo "MISSING dist/en/index.html" && exit 1)
           test -f dist/es/index.html || (echo "MISSING dist/es/index.html" && exit 1)
+          test -f dist/llms.txt || (echo "MISSING dist/llms.txt" && exit 1)
 
       - name: Setup Pages
         uses: actions/configure-pages@v6

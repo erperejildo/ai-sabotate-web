@@ -80,6 +80,8 @@ window.I18N = {
     },
     footer: {
       copy: "© %year% AI Sabotage · A cyberpunk strategy card game.",
+      privacy: "Privacy Policy",
+      terms: "Terms & Conditions",
     },
     hero: {
       eyebrow: "[ CYBERPUNK STRATEGY CARD GAME ]",
@@ -315,6 +317,8 @@ window.I18N = {
     },
     footer: {
       copy: "© %year% AI Sabotage · Un juego de cartas de estrategia cyberpunk.",
+      privacy: "Política de Privacidad",
+      terms: "Términos y Condiciones",
     },
     hero: {
       eyebrow: "[ JUEGO DE CARTAS CYBERPUNK ]",
