@@ -20,7 +20,7 @@ test.describe("AI Sabotage marketing site", () => {
   for (const lang of LANGS) {
     for (const slug of SLUGS) {
       test(`every page loads directly (${lang}/${slug})`, async ({ page }) => {
-        const path = slug === "index" ? `/${lang}/` : `/${lang}/${slug}.html`;
+        const path = slug === "index" ? `/${lang}/` : `/${lang}/${slug}`;
         const res = await page.goto(path);
         expect(res?.status(), path).toBeLessThan(400);
       });
@@ -51,19 +51,19 @@ test.describe("AI Sabotage marketing site", () => {
   });
 
   test("language switcher goes en -> es preserving slug", async ({ page }) => {
-    await page.goto("/en/rig.html");
+    await page.goto("/en/rig");
     await page.locator("[data-lang-switch='es']").click();
-    await expect(page).toHaveURL(/\/es\/(\/)?rig(\.html)?$/);
+    await expect(page).toHaveURL(/\/es\/(\/)?rig$/);
     const heading = await page.locator("h1.section-title").innerText();
     expect(heading.length).toBeGreaterThan(0);
   });
 
   test("i18n swaps every label on subpage", async ({ page }) => {
-    await page.goto("/en/cards.html");
+    await page.goto("/en/cards");
     const enDeckCount = await page.locator(".deck-card").count();
     expect(enDeckCount).toBe(20);
 
-    await page.goto("/es/cards.html");
+    await page.goto("/es/cards");
     const esDeckCount = await page.locator(".deck-card").count();
     expect(esDeckCount).toBe(20);
 
@@ -78,7 +78,7 @@ test.describe("AI Sabotage marketing site", () => {
   test("cards page is split into 4 blocks with all 20 cards", async ({ page }) => {
     const groups = ["components", "threats", "defenses", "protocols"];
     for (const lang of LANGS) {
-      await page.goto(`/${lang}/cards.html`);
+      await page.goto(`/${lang}/cards`);
       for (const group of groups) {
         const section = page.locator(`.deck-group[data-group="${group}"]`);
         await expect(section).toHaveCount(1);
@@ -125,7 +125,7 @@ test.describe("AI Sabotage marketing site", () => {
     const banned = ["paywall", "no ads", "leaderboard", "sin anuncios"];
     for (const lang of LANGS) {
       for (const slug of SLUGS) {
-        const path = slug === "index" ? `/${lang}/` : `/${lang}/${slug}.html`;
+        const path = slug === "index" ? `/${lang}/` : `/${lang}/${slug}`;
         await page.goto(path);
         const text = (await page.locator("body").innerText()).toLowerCase();
         for (const term of banned) {
@@ -136,10 +136,10 @@ test.describe("AI Sabotage marketing site", () => {
   });
 
   test("subpage nav link is marked active", async ({ page }) => {
-    await page.goto("/en/friends.html");
+    await page.goto("/en/friends");
     const active = page.locator(".nav-links a.is-active");
     await expect(active).toHaveCount(1);
-    expect(await active.getAttribute("href")).toMatch(/friends\.html$/);
+    expect(await active.getAttribute("href")).toMatch(/friends$/);
   });
 
   test("narrow header wraps nav links instead of scrolling", async ({ page }) => {
@@ -189,7 +189,7 @@ test.describe("AI Sabotage marketing site", () => {
   });
 
   test("play page no longer mentions version, size or age", async ({ page }) => {
-    await page.goto("/en/play.html");
+    await page.goto("/en/play");
     const text = (await page.locator("main").innerText()).toLowerCase();
     expect(text).not.toContain("v1.0.0");
     expect(text).not.toContain("60 mb");
@@ -288,13 +288,13 @@ test.describe("AI Sabotage marketing site", () => {
   });
 
   test("friends page covers private matches with the right keywords", async ({ page }) => {
-    await page.goto("/en/friends.html");
+    await page.goto("/en/friends");
     const en = (await page.locator("body").innerText()).toLowerCase();
     for (const term of ["play with friends", "private match", "invite", "multiplayer card game"]) {
       expect(en, `EN friends page should mention "${term}"`).toContain(term);
     }
 
-    await page.goto("/es/friends.html");
+    await page.goto("/es/friends");
     const es = (await page.locator("body").innerText()).toLowerCase();
     for (const term of ["partida privada", "jugar con amigos", "multiplayer card game"]) {
       expect(es, `ES friends page should mention "${term}"`).toContain(term);
@@ -305,6 +305,9 @@ test.describe("AI Sabotage marketing site", () => {
     for (const lang of LANGS) {
       const res = await page.request.get(`/${lang}/protocols.html`);
       expect(res.status(), `${lang}/protocols.html should not exist`).toBeGreaterThanOrEqual(400);
+
+      const resClean = await page.request.get(`/${lang}/protocols`);
+      expect(resClean.status(), `${lang}/protocols should not exist`).toBeGreaterThanOrEqual(400);
 
       await page.goto(`/${lang}/`);
       const hrefs = await page
@@ -324,7 +327,7 @@ test.describe("AI Sabotage marketing site", () => {
   test("all card images on every page return 200", async ({ page }) => {
     for (const lang of LANGS) {
       for (const slug of ["index", "rig", "cards", "friends", "ranking", "play"]) {
-        await page.goto(slug === "index" ? `/${lang}/` : `/${lang}/${slug}.html`);
+        await page.goto(slug === "index" ? `/${lang}/` : `/${lang}/${slug}`);
         const sources = await page
           .locator("img")
           .evaluateAll((imgs) => Array.from(new Set(imgs.map((i) => (i as HTMLImageElement).src))));
@@ -368,7 +371,7 @@ test.describe("AI Sabotage marketing site", () => {
   test("title is templated with the i18n site name", async ({ page }) => {
     await page.goto("/en/");
     await expect(page).toHaveTitle(/AI Sabotage/i);
-    await page.goto("/es/rig.html");
+    await page.goto("/es/rig");
     // Spanish rig.heading = "Cuatro slots. Una AGI." template: "%title% · AI Sabotage"
     await expect(page).toHaveTitle(/·\s*AI Sabotage/i);
   });
@@ -385,9 +388,9 @@ test.describe("AI Sabotage marketing site", () => {
     );
     expect(html).toMatch(/<link\s+rel="canonical"\s+href="https:\/\/aisabotage\.store\/"/);
     expect(html).toContain("application/ld+json");
-    expect(html).toContain("./en/privacy.html");
-    expect(html).toContain("./en/terms.html");
-    expect(html).toContain("./en/blog.html");
+    expect(html).toContain("./en/privacy");
+    expect(html).toContain("./en/terms");
+    expect(html).toContain("./en/blog");
   });
 
   test("Google Consent Mode v2 default signal is present in source of root and localized pages", async ({
@@ -408,8 +411,8 @@ test.describe("AI Sabotage marketing site", () => {
   test("footer contains valid native legal links on all localized pages", async ({ page }) => {
     for (const lang of LANGS) {
       await page.goto(`/${lang}/`);
-      const privacy = page.locator('.footer-legal a[href="privacy.html"]');
-      const terms = page.locator('.footer-legal a[href="terms.html"]');
+      const privacy = page.locator('.footer-legal a[href="privacy"]');
+      const terms = page.locator('.footer-legal a[href="terms"]');
       await expect(privacy).toHaveCount(1);
       await expect(terms).toHaveCount(1);
     }
@@ -417,27 +420,37 @@ test.describe("AI Sabotage marketing site", () => {
 
   test("native privacy and terms pages load and render full legal content", async ({ page }) => {
     for (const lang of LANGS) {
-      await page.goto(`/${lang}/privacy.html`);
+      await page.goto(`/${lang}/privacy`);
       await expect(page.locator("h1.section-title")).not.toHaveText("");
       await expect(page.locator(".legal-card h2")).toHaveCount(5);
+      const privacyP = await page.locator(".legal-card p").allInnerTexts();
+      expect(privacyP.length).toBe(5);
+      for (const p of privacyP) {
+        expect(p.trim().length).toBeGreaterThan(0);
+      }
 
-      await page.goto(`/${lang}/terms.html`);
+      await page.goto(`/${lang}/terms`);
       await expect(page.locator("h1.section-title")).not.toHaveText("");
       await expect(page.locator(".legal-card h2")).toHaveCount(5);
+      const termsP = await page.locator(".legal-card p").allInnerTexts();
+      expect(termsP.length).toBe(5);
+      for (const p of termsP) {
+        expect(p.trim().length).toBeGreaterThan(0);
+      }
     }
   });
 
   test("blog hub renders 3 articles ordered by date with relative links", async ({ page }) => {
     for (const lang of LANGS) {
-      await page.goto(`/${lang}/blog.html`);
+      await page.goto(`/${lang}/blog`);
       await expect(page.locator(".blog-card")).toHaveCount(3);
       const articleLinks = await page
         .locator(".blog-card-title a")
         .evaluateAll((els) => els.map((a) => a.getAttribute("href")));
       expect(articleLinks).toEqual([
-        "blog-cognitive-strategy-kids.html",
-        "blog-competitive-ladder-guide.html",
-        "blog-digital-board-games-connectivity.html",
+        "blog-cognitive-strategy-kids",
+        "blog-competitive-ladder-guide",
+        "blog-digital-board-games-connectivity",
       ]);
     }
   });
@@ -450,7 +463,7 @@ test.describe("AI Sabotage marketing site", () => {
     ];
     for (const lang of LANGS) {
       for (const slug of articles) {
-        await page.goto(`/${lang}/${slug}.html`);
+        await page.goto(`/${lang}/${slug}`);
         await expect(page.locator(".article-title")).not.toHaveText("");
         await expect(page.locator(".article-stat")).toHaveCount(1);
         await expect(page.locator(".article-cta [data-store]")).toHaveCount(1);
@@ -461,8 +474,8 @@ test.describe("AI Sabotage marketing site", () => {
   test("root legal and blog redirects exist and forward to localized versions", async ({
     request,
   }) => {
-    for (const file of ["privacy.html", "terms.html", "blog.html"]) {
-      const res = await request.get(`/${file}`);
+    for (const file of ["privacy", "terms", "blog"]) {
+      const res = await request.get(`/${file}.html`);
       expect(res.status()).toBeLessThan(400);
       const html = await res.text();
       expect(html).toContain(`./en/${file}`);
@@ -477,8 +490,16 @@ test.describe("AI Sabotage marketing site", () => {
     const text = await res.text();
     expect(text).toContain("# AI Sabotage: Cyber Cards");
     expect(text).toContain("https://aisabotage.store");
-    expect(text).toContain("https://aisabotage.store/en/blog.html");
-    expect(text).toContain("https://aisabotage.store/en/privacy.html");
-    expect(text).toContain("https://aisabotage.store/en/terms.html");
+    expect(text).toContain("https://aisabotage.store/en/blog");
+    expect(text).toContain("https://aisabotage.store/en/privacy");
+    expect(text).toContain("https://aisabotage.store/en/terms");
+  });
+
+  test("visiting a .html URL automatically strips the extension in browser history", async ({
+    page,
+  }) => {
+    await page.goto("/en/terms.html");
+    await page.waitForLoadState("domcontentloaded");
+    expect(page.url()).toMatch(/\/en\/terms$/);
   });
 });

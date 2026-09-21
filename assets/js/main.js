@@ -1,6 +1,23 @@
 (function () {
   "use strict";
 
+  // Clean URL: remove .html from address bar if directly visited
+  if (
+    typeof window !== "undefined" &&
+    window.location &&
+    window.location.pathname.endsWith(".html") &&
+    !window.location.pathname.endsWith("/index.html")
+  ) {
+    const cleanPath = window.location.pathname.replace(/\.html$/, "");
+    try {
+      window.history.replaceState(
+        null,
+        "",
+        cleanPath + window.location.search + window.location.hash,
+      );
+    } catch (_) {}
+  }
+
   const cfg = window.AI_SABOTAGE_CONFIG || {};
   const APP_STORE_URL = cfg.APP_STORE_URL || "#";
   const PLAY_STORE_URL = cfg.PLAY_STORE_URL || "#";
@@ -82,14 +99,14 @@
       try {
         localStorage.setItem("lang", target);
       } catch (_) {}
-      // translate URL path: <base>/en/<file> <-> <base>/es/<file> (preserves any base path)
-      const path = window.location.pathname;
+      // translate URL path: <base>/en/<file> <-> <base>/es/<file> (preserves clean extensionless paths)
+      const path = window.location.pathname.replace(/\.html$/, "");
       const m = path.match(/\/(en|es)(\/[^/]*)?$/);
       let next;
       if (m) {
         next = path.replace(/\/(en|es)(\/[^/]*)?$/, `/${target}/${m[2] ? m[2].slice(1) : ""}`);
       } else {
-        const file = path.substring(path.lastIndexOf("/") + 1) || "index.html";
+        const file = path.substring(path.lastIndexOf("/") + 1) || "";
         next = `../${target}/${file}`;
       }
       window.location.href = next || "/";

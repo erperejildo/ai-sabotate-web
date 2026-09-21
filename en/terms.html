@@ -20,6 +20,19 @@
       });
     </script>
 
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname.replace(/\.html$/, "") + window.location.search + window.location.hash,
+          );
+        } catch (_) {}
+      }
+    </script>
+
     <title data-title-meta>Terms & Conditions · AI Sabotage</title>
     <meta
       name="description"
@@ -41,7 +54,7 @@
       data-i18n-attr="content:meta.terms.ogDescription"
     />
     <meta property="og:image" content="https://aisabotage.store/assets/img/icon.jpg" />
-    <meta property="og:url" content="https://aisabotage.store/en/terms.html" />
+    <meta property="og:url" content="https://aisabotage.store/en/terms" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Terms & Conditions · AI Sabotage" data-i18n-attr="content:meta.terms.ogTitle" />
     <meta
@@ -54,14 +67,14 @@
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/terms.html" />
-    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/terms.html" />
-    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/terms.html" />
+    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/terms" />
+    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/terms" />
+    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/terms" />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
 
-    <link rel="canonical" href="https://aisabotage.store/en/terms.html" />
+    <link rel="canonical" href="https://aisabotage.store/en/terms" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
     <script type="application/ld+json">
@@ -71,14 +84,14 @@
           {
             "@type": "WebSite",
             "@id": "https://aisabotage.store/#website",
-            "url": "https://aisabotage.store/en/terms.html",
+            "url": "https://aisabotage.store/en/terms",
             "name": "AI Sabotage: Cyber Cards",
             "description": "A cyberpunk strategy card game. Build the AGI before your rivals do. Online ranking, offline play, hot-seat with friends. Two player set collection. Free on iOS and Android.",
             "inLanguage": "en"
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://aisabotage.store/en/terms.html#breadcrumb",
+            "@id": "https://aisabotage.store/en/terms#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -90,15 +103,15 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Terms & Conditions",
-                "item": "https://aisabotage.store/en/terms.html"
+                "item": "https://aisabotage.store/en/terms"
               }
             ]
           },
           {
             "@type": "WebPage",
-            "@id": "https://aisabotage.store/en/terms.html#webpage",
+            "@id": "https://aisabotage.store/en/terms#webpage",
             "name": "Terms & Conditions",
-            "url": "https://aisabotage.store/en/terms.html",
+            "url": "https://aisabotage.store/en/terms",
             "description": "Terms and conditions for using AI Sabotage: Cyber Cards apps, website, and online ranking services operated by Axis Labs."
           }
         ]
@@ -111,18 +124,18 @@
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand" href="index.html" aria-label="AI Sabotage home">
+        <a class="brand" href="./" aria-label="AI Sabotage home">
           <span class="brand-mark" aria-hidden="true">[</span>
           <span class="brand-name">AI SABOTAGE</span>
           <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="rig.html" data-i18n="nav.rig" class="">Rig</a>
-          <a href="cards.html" data-i18n="nav.cards" class="">Cards</a>
-          <a href="friends.html" data-i18n="nav.friends" class="">Friends</a>
-          <a href="ranking.html" data-i18n="nav.ranking" class="">Ranking</a>
-          <a href="play.html" data-i18n="nav.play" class="">Play</a>
-          <a href="blog.html" data-i18n="nav.blog" class="">Blog</a>
+          <a href="rig" data-i18n="nav.rig" class="">Rig</a>
+          <a href="cards" data-i18n="nav.cards" class="">Cards</a>
+          <a href="friends" data-i18n="nav.friends" class="">Friends</a>
+          <a href="ranking" data-i18n="nav.ranking" class="">Ranking</a>
+          <a href="play" data-i18n="nav.play" class="">Play</a>
+          <a href="blog" data-i18n="nav.blog" class="">Blog</a>
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="es" aria-label="Switch language">ES</button>
@@ -134,9 +147,9 @@
       <section class="subhero">
         <div class="wrap">
           <header class="section-head">
-            <p class="kicker" data-i18n="terms.kicker"></p>
+            <p class="kicker" data-i18n="terms.kicker">[ LEGAL PROTOCOL // 02 ]</p>
             <h1 class="section-title" data-i18n="terms.heading">Terms & Conditions</h1>
-            <p class="section-sub" data-i18n="terms.sub"></p>
+            <p class="section-sub" data-i18n="terms.sub">Last updated: September 2026 · Operator: Axis Labs</p>
           </header>
         </div>
       </section>
@@ -144,20 +157,40 @@
       <section class="section">
         <div class="legal-wrap">
           <article class="legal-card">
-            <h2 data-i18n="terms.sec1Title"></h2>
-            <p data-i18n="terms.sec1Body"></p>
+            <h2 data-i18n="terms.sec1Title">1. Acceptance of Terms</h2>
+            <p data-i18n="terms.sec1Body">
+              By accessing, downloading, or installing AI Sabotage: Cyber Cards on iOS or Android, you agree to comply
+              with these terms of service established by Axis Labs. If you do not accept these provisions, discontinue
+              use and remove the client from your device.
+            </p>
 
-            <h2 data-i18n="terms.sec2Title"></h2>
-            <p data-i18n="terms.sec2Body"></p>
+            <h2 data-i18n="terms.sec2Title">2. Intellectual Property and Card Assets</h2>
+            <p data-i18n="terms.sec2Body">
+              All visual card artwork, audio soundscapes, cyberpunk lore, codebase, interface layouts, and branding
+              emblems belong exclusively to Axis Labs. Operators receive a personal, revocable, non-exclusive license to
+              play the game for personal recreational purposes.
+            </p>
 
-            <h2 data-i18n="terms.sec3Title"></h2>
-            <p data-i18n="terms.sec3Body"></p>
+            <h2 data-i18n="terms.sec3Title">3. Fair Play and Competitive Integrity</h2>
+            <p data-i18n="terms.sec3Body">
+              AI Sabotage relies on skill, set collection tactics, and calculated risk. Any packet tampering,
+              reverse-engineering of multiplayer protocols, automated bots, network exploitation, or manipulation of the
+              global ranking ladder is strictly prohibited and subject to permanent matchmaking ban.
+            </p>
 
-            <h2 data-i18n="terms.sec4Title"></h2>
-            <p data-i18n="terms.sec4Body"></p>
+            <h2 data-i18n="terms.sec4Title">4. In-App Purchases and PRO Access</h2>
+            <p data-i18n="terms.sec4Body">
+              Optional PRO unlocks, cosmetic themes, or rewarded access tickets are handled securely via Apple App Store
+              or Google Play Store billing. Purchases are final and governed by the respective storefront's commercial
+              refund terms.
+            </p>
 
-            <h2 data-i18n="terms.sec5Title"></h2>
-            <p data-i18n="terms.sec5Body"></p>
+            <h2 data-i18n="terms.sec5Title">5. Disclaimer of Warranties and Limitation of Liability</h2>
+            <p data-i18n="terms.sec5Body">
+              AI Sabotage is provided on an 'as is' and 'as available' basis. Axis Labs is not liable for indirect
+              network dropouts, device incompatibility, or temporary server downtime. Inquiries may be directed to
+              support@axislabs.eu or https://axislabs.eu/ai-sabotage/terms-and-conditions.
+            </p>
           </article>
         </div>
       </section>
@@ -166,14 +199,14 @@
     <footer class="footer">
       <p data-i18n="footer.copy">© 2026 AI Sabotage · A cyberpunk strategy card game.</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">Rig</a> · <a href="cards.html" data-i18n="nav.cards">Cards</a> ·
-        <a href="friends.html" data-i18n="nav.friends">Friends</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">Ranking</a> · <a href="play.html" data-i18n="nav.play">Play</a> ·
-        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="rig" data-i18n="nav.rig">Rig</a> · <a href="cards" data-i18n="nav.cards">Cards</a> ·
+        <a href="friends" data-i18n="nav.friends">Friends</a> · <a href="ranking" data-i18n="nav.ranking">Ranking</a> ·
+        <a href="play" data-i18n="nav.play">Play</a> ·
+        <a href="blog" data-i18n="nav.blog">Blog</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a> ·
-        <a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a>
+        <a href="privacy" data-i18n="footer.privacy">Privacy Policy</a> ·
+        <a href="terms" data-i18n="footer.terms">Terms & Conditions</a>
       </p>
     </footer>
 

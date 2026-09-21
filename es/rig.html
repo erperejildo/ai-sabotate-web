@@ -20,6 +20,19 @@
       });
     </script>
 
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname.replace(/\.html$/, "") + window.location.search + window.location.hash,
+          );
+        } catch (_) {}
+      }
+    </script>
+
     <title data-title-meta>Cuatro slots. Una AGI. · AI Sabotage</title>
     <meta
       name="description"
@@ -45,7 +58,7 @@
       data-i18n-attr="content:meta.rig.ogDescription"
     />
     <meta property="og:image" content="https://aisabotage.store/assets/img/icon.jpg" />
-    <meta property="og:url" content="https://aisabotage.store/es/rig.html" />
+    <meta property="og:url" content="https://aisabotage.store/es/rig" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -62,14 +75,14 @@
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/rig.html" />
-    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/rig.html" />
-    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/rig.html" />
+    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/rig" />
+    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/rig" />
+    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/rig" />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
 
-    <link rel="canonical" href="https://aisabotage.store/es/rig.html" />
+    <link rel="canonical" href="https://aisabotage.store/es/rig" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
     <script type="application/ld+json">
@@ -79,14 +92,14 @@
           {
             "@type": "WebSite",
             "@id": "https://aisabotage.store/#website",
-            "url": "https://aisabotage.store/es/rig.html",
+            "url": "https://aisabotage.store/es/rig",
             "name": "AI Sabotage: Cyber Cards",
             "description": "Un juego de cartas de estrategia cyberpunk. Construye la AGI antes que tus rivales. Ranking online, partidas offline y hot-seat con amigos. Colección de sets para dos jugadores. Gratis en iOS y Android.",
             "inLanguage": "es"
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://aisabotage.store/es/rig.html#breadcrumb",
+            "@id": "https://aisabotage.store/es/rig#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -98,13 +111,13 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Cuatro slots. Una AGI.",
-                "item": "https://aisabotage.store/es/rig.html"
+                "item": "https://aisabotage.store/es/rig"
               }
             ]
           },
           {
             "@type": "HowTo",
-            "@id": "https://aisabotage.store/es/rig.html#howto",
+            "@id": "https://aisabotage.store/es/rig#howto",
             "name": "Cómo armar el Rig de AGI en AI Sabotage",
             "description": "Construye tu rig de AGI en AI Sabotage reuniendo cuatro componentes sanos: Hardware, Dataset, Red Neuronal y Algoritmo.",
             "step": [
@@ -132,7 +145,7 @@
           },
           {
             "@type": "FAQPage",
-            "@id": "https://aisabotage.store/es/rig.html#faq",
+            "@id": "https://aisabotage.store/es/rig#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -170,18 +183,18 @@
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand" href="index.html" aria-label="AI Sabotage home">
+        <a class="brand" href="./" aria-label="AI Sabotage home">
           <span class="brand-mark" aria-hidden="true">[</span>
           <span class="brand-name">AI SABOTAGE</span>
           <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="rig.html" data-i18n="nav.rig" class="is-active">Rig</a>
-          <a href="cards.html" data-i18n="nav.cards" class="">Cartas</a>
-          <a href="friends.html" data-i18n="nav.friends" class="">Amigos</a>
-          <a href="ranking.html" data-i18n="nav.ranking" class="">Ranking</a>
-          <a href="play.html" data-i18n="nav.play" class="">Jugar</a>
-          <a href="blog.html" data-i18n="nav.blog" class="">Blog</a>
+          <a href="rig" data-i18n="nav.rig" class="is-active">Rig</a>
+          <a href="cards" data-i18n="nav.cards" class="">Cartas</a>
+          <a href="friends" data-i18n="nav.friends" class="">Amigos</a>
+          <a href="ranking" data-i18n="nav.ranking" class="">Ranking</a>
+          <a href="play" data-i18n="nav.play" class="">Jugar</a>
+          <a href="blog" data-i18n="nav.blog" class="">Blog</a>
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="en" aria-label="Switch language">EN</button>
@@ -281,15 +294,14 @@
     <footer class="footer">
       <p data-i18n="footer.copy">© 2026 AI Sabotage · Un juego de cartas de estrategia cyberpunk.</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">Rig</a> · <a href="cards.html" data-i18n="nav.cards">Cartas</a> ·
-        <a href="friends.html" data-i18n="nav.friends">Amigos</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">Ranking</a> ·
-        <a href="play.html" data-i18n="nav.play">Jugar</a> ·
-        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="rig" data-i18n="nav.rig">Rig</a> · <a href="cards" data-i18n="nav.cards">Cartas</a> ·
+        <a href="friends" data-i18n="nav.friends">Amigos</a> · <a href="ranking" data-i18n="nav.ranking">Ranking</a> ·
+        <a href="play" data-i18n="nav.play">Jugar</a> ·
+        <a href="blog" data-i18n="nav.blog">Blog</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a> ·
-        <a href="terms.html" data-i18n="footer.terms">Términos y Condiciones</a>
+        <a href="privacy" data-i18n="footer.privacy">Política de Privacidad</a> ·
+        <a href="terms" data-i18n="footer.terms">Términos y Condiciones</a>
       </p>
     </footer>
 

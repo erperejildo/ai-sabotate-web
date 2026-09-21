@@ -20,9 +20,20 @@
       });
     </script>
 
-    <title data-title-meta>
-      Del Cartón al Código: Cómo los Juegos de Cartas y Mesa Digitales Conectan al Mundo · AI Sabotage
-    </title>
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname.replace(/\.html$/, "") + window.location.search + window.location.hash,
+          );
+        } catch (_) {}
+      }
+    </script>
+
+    <title data-title-meta>Del Tablero al Código: La Conectividad Mundial en Juegos de Cartas · AI Sabotage</title>
     <meta
       name="description"
       content="La evolución de los juegos de mesa y cartas hacia el entorno digital: sin esperas de montaje, códigos de sala privados y partidas multiplataforma."
@@ -47,7 +58,7 @@
       data-i18n-attr="content:meta.blog-digital-board-games-connectivity.ogDescription"
     />
     <meta property="og:image" content="https://aisabotage.store/assets/img/icon.jpg" />
-    <meta property="og:url" content="https://aisabotage.store/es/blog-digital-board-games-connectivity.html" />
+    <meta property="og:url" content="https://aisabotage.store/es/blog-digital-board-games-connectivity" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -64,18 +75,18 @@
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html" />
-    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-digital-board-games-connectivity.html" />
+    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-digital-board-games-connectivity" />
+    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-digital-board-games-connectivity" />
     <link
       rel="alternate"
       hreflang="x-default"
-      href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html"
+      href="https://aisabotage.store/en/blog-digital-board-games-connectivity"
     />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
 
-    <link rel="canonical" href="https://aisabotage.store/es/blog-digital-board-games-connectivity.html" />
+    <link rel="canonical" href="https://aisabotage.store/es/blog-digital-board-games-connectivity" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
     <script type="application/ld+json">
@@ -85,14 +96,14 @@
           {
             "@type": "WebSite",
             "@id": "https://aisabotage.store/#website",
-            "url": "https://aisabotage.store/es/blog-digital-board-games-connectivity.html",
+            "url": "https://aisabotage.store/es/blog-digital-board-games-connectivity",
             "name": "AI Sabotage: Cyber Cards",
             "description": "Un juego de cartas de estrategia cyberpunk. Construye la AGI antes que tus rivales. Ranking online, partidas offline y hot-seat con amigos. Colección de sets para dos jugadores. Gratis en iOS y Android.",
             "inLanguage": "es"
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://aisabotage.store/es/blog-digital-board-games-connectivity.html#breadcrumb",
+            "@id": "https://aisabotage.store/es/blog-digital-board-games-connectivity#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -103,17 +114,17 @@
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "Del Cartón al Código: Cómo los Juegos de Cartas y Mesa Digitales Conectan al Mundo",
-                "item": "https://aisabotage.store/es/blog-digital-board-games-connectivity.html"
+                "name": "Del Tablero al Código: La Conectividad Mundial en Juegos de Cartas",
+                "item": "https://aisabotage.store/es/blog-digital-board-games-connectivity"
               }
             ]
           },
           {
             "@type": "BlogPosting",
-            "@id": "https://aisabotage.store/es/blog-digital-board-games-connectivity.html#article",
+            "@id": "https://aisabotage.store/es/blog-digital-board-games-connectivity#article",
             "headline": "Cómo los Juegos de Mesa Digitales Conectan al Mundo · AI Sabotage",
             "description": "La evolución de los juegos de mesa y cartas hacia el entorno digital: sin esperas de montaje, códigos de sala privados y partidas multiplataforma.",
-            "url": "https://aisabotage.store/es/blog-digital-board-games-connectivity.html",
+            "url": "https://aisabotage.store/es/blog-digital-board-games-connectivity",
             "datePublished": "2026-07-15",
             "dateModified": "2026-07-15",
             "image": "https://aisabotage.store/assets/img/icon.jpg",
@@ -143,18 +154,18 @@
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand" href="index.html" aria-label="AI Sabotage home">
+        <a class="brand" href="./" aria-label="AI Sabotage home">
           <span class="brand-mark" aria-hidden="true">[</span>
           <span class="brand-name">AI SABOTAGE</span>
           <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="rig.html" data-i18n="nav.rig" class="">Rig</a>
-          <a href="cards.html" data-i18n="nav.cards" class="">Cartas</a>
-          <a href="friends.html" data-i18n="nav.friends" class="">Amigos</a>
-          <a href="ranking.html" data-i18n="nav.ranking" class="">Ranking</a>
-          <a href="play.html" data-i18n="nav.play" class="">Jugar</a>
-          <a href="blog.html" data-i18n="nav.blog" class="is-active">Blog</a>
+          <a href="rig" data-i18n="nav.rig" class="">Rig</a>
+          <a href="cards" data-i18n="nav.cards" class="">Cartas</a>
+          <a href="friends" data-i18n="nav.friends" class="">Amigos</a>
+          <a href="ranking" data-i18n="nav.ranking" class="">Ranking</a>
+          <a href="play" data-i18n="nav.play" class="">Jugar</a>
+          <a href="blog" data-i18n="nav.blog" class="is-active">Blog</a>
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="en" aria-label="Switch language">EN</button>
@@ -165,39 +176,60 @@
     <main>
       <article class="article-wrap">
         <header class="article-header">
-          <p class="article-kicker" data-i18n="blogDigital.kicker"></p>
+          <p class="article-kicker" data-i18n="blogDigital.kicker">[ TRANSMISIÓN // CULTURA DE JUEGO ]</p>
           <h1 class="article-title" data-i18n="blogDigital.title">
-            Del Cartón al Código: Cómo los Juegos de Cartas y Mesa Digitales Conectan al Mundo
+            Del Tablero al Código: La Conectividad Mundial en Juegos de Cartas
           </h1>
           <div class="article-meta">
-            <time datetime="2026-07-15" data-i18n="blogDigital.date">15 de Julio de 2026</time> ·
+            <time datetime="2026-07-15" data-i18n="blogDigital.date">15 de julio de 2026</time> ·
             <span data-i18n="blogDigital.readTime">5 min de lectura</span>
           </div>
         </header>
 
         <div class="article-prose">
-          <p class="article-intro" data-i18n="blogDigital.intro"></p>
+          <p class="article-intro" data-i18n="blogDigital.intro">
+            Durante décadas, los juegos de mesa y barajas reunieron a personas alrededor de una mesa física. Hoy, ese
+            dinamismo cobra nueva fuerza en terminales táctiles, eliminando distancias geográficas sin sacrificar la
+            emoción compartida.
+          </p>
 
           <aside class="article-stat">
-            <div class="stat-number" data-i18n="blogDigital.statNum"></div>
-            <div class="stat-label" data-i18n="blogDigital.statLabel"></div>
+            <div class="stat-number" data-i18n="blogDigital.statNum">14.8%</div>
+            <div class="stat-label" data-i18n="blogDigital.statLabel">
+              Tasa de expansión anual en juegos de mesa digitales y duelos móviles
+            </div>
           </aside>
 
-          <h2 data-i18n="blogDigital.sec1Title"></h2>
-          <p data-i18n="blogDigital.sec1Body"></p>
+          <h2 data-i18n="blogDigital.sec1Title">La Profundidad de Mesa en Formato Rápido</h2>
+          <p data-i18n="blogDigital.sec1Body">
+            Coordinar encuentros presenciales resulta complicado en el ritmo actual. El formato digital sintetiza
+            colecciones de sets, faroles y bloqueos tácticos en duelos de 3 minutos, ideales para disfrutar en cualquier
+            pausa o trayecto.
+          </p>
 
-          <blockquote class="article-callout" data-i18n="blogDigital.callout"></blockquote>
+          <blockquote class="article-callout" data-i18n="blogDigital.callout">
+            "Los juegos tácticos móviles han convertido la pasión por el tablero en un hábito social diario accesible a
+            escala mundial." — Informe Industrial de Ocio Digital
+          </blockquote>
 
-          <h2 data-i18n="blogDigital.sec2Title"></h2>
-          <p data-i18n="blogDigital.sec2Body"></p>
+          <h2 data-i18n="blogDigital.sec2Title">Salas Privadas: Conexión Sin Fronteras</h2>
+          <p data-i18n="blogDigital.sec2Body">
+            Mediante códigos de sala de 6 caracteres, amistades separadas por husos horarios pueden competir al instante
+            sin obstáculos. AI Sabotage ofrece salas online directas y duelos hot-seat en un único terminal móvil.
+          </p>
 
-          <h2 data-i18n="blogDigital.sec3Title"></h2>
-          <p data-i18n="blogDigital.sec3Body"></p>
+          <h2 data-i18n="blogDigital.sec3Title">Una Comunidad Global de Duelistas</h2>
+          <p data-i18n="blogDigital.sec3Body">
+            El entorno digital facilita que jugadores de Tokio a Madrid compartan tácticas y compitan en igualdad de
+            condiciones. El universo de las cartas tácticas vive su momento más accesible.
+          </p>
 
           <div class="article-cta">
-            <h3 data-i18n="blogDigital.ctaTitle"></h3>
-            <p data-i18n="blogDigital.ctaBody"></p>
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <h3 data-i18n="blogDigital.ctaTitle">Conecta y Disputa Partidas con Amigos</h3>
+            <p data-i18n="blogDigital.ctaBody">
+              Crea una sala privada en pocos segundos y comienza a retar a tus amigos en cualquier rincón del planeta.
+            </p>
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">DESCARGAR</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">Gratis en iOS y Android. La red está abierta.</span>
             </a>
@@ -209,15 +241,14 @@
     <footer class="footer">
       <p data-i18n="footer.copy">© 2026 AI Sabotage · Un juego de cartas de estrategia cyberpunk.</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">Rig</a> · <a href="cards.html" data-i18n="nav.cards">Cartas</a> ·
-        <a href="friends.html" data-i18n="nav.friends">Amigos</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">Ranking</a> ·
-        <a href="play.html" data-i18n="nav.play">Jugar</a> ·
-        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="rig" data-i18n="nav.rig">Rig</a> · <a href="cards" data-i18n="nav.cards">Cartas</a> ·
+        <a href="friends" data-i18n="nav.friends">Amigos</a> · <a href="ranking" data-i18n="nav.ranking">Ranking</a> ·
+        <a href="play" data-i18n="nav.play">Jugar</a> ·
+        <a href="blog" data-i18n="nav.blog">Blog</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Política de Privacidad</a> ·
-        <a href="terms.html" data-i18n="footer.terms">Términos y Condiciones</a>
+        <a href="privacy" data-i18n="footer.privacy">Política de Privacidad</a> ·
+        <a href="terms" data-i18n="footer.terms">Términos y Condiciones</a>
       </p>
     </footer>
 
