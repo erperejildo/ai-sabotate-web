@@ -30,6 +30,20 @@ const PAGES = [
   { slug: "friends", titleKey: "friends.heading", build: buildFriends },
   { slug: "ranking", titleKey: "ranking.heading", build: buildRanking },
   { slug: "play", titleKey: "play.heading", build: buildPlay },
+  { slug: "blog", titleKey: "blogHub.heading", build: buildBlog },
+  { slug: "blog-cognitive-strategy-kids", titleKey: "blogKids.title", build: buildBlogKids },
+  {
+    slug: "blog-competitive-ladder-guide",
+    titleKey: "blogCompetitive.title",
+    build: buildBlogCompetitive,
+  },
+  {
+    slug: "blog-digital-board-games-connectivity",
+    titleKey: "blogDigital.title",
+    build: buildBlogDigital,
+  },
+  { slug: "privacy", titleKey: "privacy.heading", build: buildPrivacy },
+  { slug: "terms", titleKey: "terms.heading", build: buildTerms },
 ];
 
 function nav(slug, lang) {
@@ -39,12 +53,13 @@ function nav(slug, lang) {
     { key: "friends", url: "friends.html" },
     { key: "ranking", url: "ranking.html" },
     { key: "play", url: "play.html" },
+    { key: "blog", url: "blog.html" },
   ];
   const links = items
     .map(
       (it) =>
         `<a href="${it.url}" data-i18n="nav.${it.key}" class="${
-          it.key === slug ? "is-active" : ""
+          it.key === slug || (it.key === "blog" && slug.startsWith("blog-")) ? "is-active" : ""
         }">${t("nav." + it.key, lang)}</a>`,
     )
     .join("\n          ");
@@ -466,6 +481,70 @@ function getSchemas(slug, lang) {
     });
   }
 
+  if (slug === "privacy") {
+    schemas.push({
+      "@type": "WebPage",
+      "@id": `${abs}#webpage`,
+      name: isEs ? "Política de Privacidad" : "Privacy Policy",
+      url: abs,
+      description: t("meta.privacy.description", lang),
+    });
+  }
+
+  if (slug === "terms") {
+    schemas.push({
+      "@type": "WebPage",
+      "@id": `${abs}#webpage`,
+      name: isEs ? "Términos y Condiciones" : "Terms & Conditions",
+      url: abs,
+      description: t("meta.terms.description", lang),
+    });
+  }
+
+  if (slug === "blog") {
+    schemas.push({
+      "@type": "CollectionPage",
+      "@id": `${abs}#blog`,
+      name: isEs ? "Blog Cyber Deck y Centro de Estrategia" : "Cyber Deck Blog & Strategy Hub",
+      url: abs,
+      description: t("meta.blog.description", lang),
+    });
+  }
+
+  if (slug.startsWith("blog-")) {
+    const articleDates = {
+      "blog-cognitive-strategy-kids": "2026-09-18",
+      "blog-competitive-ladder-guide": "2026-08-28",
+      "blog-digital-board-games-connectivity": "2026-07-15",
+    };
+    const pubDate = articleDates[slug] || "2026-09-01";
+    schemas.push({
+      "@type": "BlogPosting",
+      "@id": `${abs}#article`,
+      headline: t(`meta.${slug}.title`, lang),
+      description: t(`meta.${slug}.description`, lang),
+      url: abs,
+      datePublished: pubDate,
+      dateModified: pubDate,
+      image: `${SITE_BASE}/assets/img/icon.jpg`,
+      author: {
+        "@type": "Organization",
+        name: "Axis Labs",
+        url: "https://axislabs.eu",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Axis Labs",
+        url: "https://axislabs.eu",
+        logo: {
+          "@type": "ImageObject",
+          url: `${SITE_BASE}/assets/img/icon.jpg`,
+        },
+      },
+      inLanguage: lang,
+    });
+  }
+
   return schemas;
 }
 
@@ -496,6 +575,20 @@ function head({ slug, titleKey, lang }) {
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="theme-color" content="#0D0D12" />
     <meta name="color-scheme" content="dark" />
+
+    <!-- Google Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    </script>
 
     <title data-title-meta>${pageTitle}</title>
     <meta name="description" content="${description}" data-i18n-attr="content:meta.${slug}.description" />
@@ -542,11 +635,12 @@ function footer(lang) {
         <a href="cards.html" data-i18n="nav.cards">${t("nav.cards", lang)}</a> ·
         <a href="friends.html" data-i18n="nav.friends">${t("nav.friends", lang)}</a> ·
         <a href="ranking.html" data-i18n="nav.ranking">${t("nav.ranking", lang)}</a> ·
-        <a href="play.html" data-i18n="nav.play">${t("nav.play", lang)}</a>
+        <a href="play.html" data-i18n="nav.play">${t("nav.play", lang)}</a> ·
+        <a href="blog.html" data-i18n="nav.blog">${t("nav.blog", lang)}</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="https://axislabs.eu/ai-sabotage/policy" target="_blank" rel="noopener" data-i18n="footer.privacy">${t("footer.privacy", lang)}</a> ·
-        <a href="https://axislabs.eu/ai-sabotage/terms-and-conditions" target="_blank" rel="noopener" data-i18n="footer.terms">${t("footer.terms", lang)}</a>
+        <a href="privacy.html" data-i18n="footer.privacy">${t("footer.privacy", lang)}</a> ·
+        <a href="terms.html" data-i18n="footer.terms">${t("footer.terms", lang)}</a>
       </p>
     </footer>`;
 }
@@ -1065,6 +1159,360 @@ ${head({ slug: "play", titleKey: "play.heading", lang })}
   };
 }
 
+function buildPrivacy() {
+  return function render(lang) {
+    return `
+${head({ slug: "privacy", titleKey: "privacy.heading", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("privacy", lang)}
+
+    <main>
+      <section class="subhero">
+        <div class="wrap">
+          <header class="section-head">
+            <p class="kicker" data-i18n="privacy.kicker">${t("privacy.kicker", lang)}</p>
+            <h1 class="section-title" data-i18n="privacy.heading">${t("privacy.heading", lang)}</h1>
+            <p class="section-sub" data-i18n="privacy.sub">${t("privacy.sub", lang)}</p>
+          </header>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="legal-wrap">
+          <article class="legal-card">
+            <h2 data-i18n="privacy.sec1Title">${t("privacy.sec1Title", lang)}</h2>
+            <p data-i18n="privacy.sec1Body">${t("privacy.sec1Body", lang)}</p>
+
+            <h2 data-i18n="privacy.sec2Title">${t("privacy.sec2Title", lang)}</h2>
+            <p data-i18n="privacy.sec2Body">${t("privacy.sec2Body", lang)}</p>
+
+            <h2 data-i18n="privacy.sec3Title">${t("privacy.sec3Title", lang)}</h2>
+            <p data-i18n="privacy.sec3Body">${t("privacy.sec3Body", lang)}</p>
+
+            <h2 data-i18n="privacy.sec4Title">${t("privacy.sec4Title", lang)}</h2>
+            <p data-i18n="privacy.sec4Body">${t("privacy.sec4Body", lang)}</p>
+
+            <h2 data-i18n="privacy.sec5Title">${t("privacy.sec5Title", lang)}</h2>
+            <p data-i18n="privacy.sec5Body">${t("privacy.sec5Body", lang)}</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
+function buildTerms() {
+  return function render(lang) {
+    return `
+${head({ slug: "terms", titleKey: "terms.heading", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("terms", lang)}
+
+    <main>
+      <section class="subhero">
+        <div class="wrap">
+          <header class="section-head">
+            <p class="kicker" data-i18n="terms.kicker">${t("terms.kicker", lang)}</p>
+            <h1 class="section-title" data-i18n="terms.heading">${t("terms.heading", lang)}</h1>
+            <p class="section-sub" data-i18n="terms.sub">${t("terms.sub", lang)}</p>
+          </header>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="legal-wrap">
+          <article class="legal-card">
+            <h2 data-i18n="terms.sec1Title">${t("terms.sec1Title", lang)}</h2>
+            <p data-i18n="terms.sec1Body">${t("terms.sec1Body", lang)}</p>
+
+            <h2 data-i18n="terms.sec2Title">${t("terms.sec2Title", lang)}</h2>
+            <p data-i18n="terms.sec2Body">${t("terms.sec2Body", lang)}</p>
+
+            <h2 data-i18n="terms.sec3Title">${t("terms.sec3Title", lang)}</h2>
+            <p data-i18n="terms.sec3Body">${t("terms.sec3Body", lang)}</p>
+
+            <h2 data-i18n="terms.sec4Title">${t("terms.sec4Title", lang)}</h2>
+            <p data-i18n="terms.sec4Body">${t("terms.sec4Body", lang)}</p>
+
+            <h2 data-i18n="terms.sec5Title">${t("terms.sec5Title", lang)}</h2>
+            <p data-i18n="terms.sec5Body">${t("terms.sec5Body", lang)}</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
+function buildBlog() {
+  return function render(lang) {
+    return `
+${head({ slug: "blog", titleKey: "blogHub.heading", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("blog", lang)}
+
+    <main>
+      <section class="subhero">
+        <div class="wrap">
+          <header class="section-head">
+            <p class="kicker" data-i18n="blogHub.kicker">${t("blogHub.kicker", lang)}</p>
+            <h1 class="section-title" data-i18n="blogHub.heading">${t("blogHub.heading", lang)}</h1>
+            <p class="section-sub" data-i18n="blogHub.sub">${t("blogHub.sub", lang)}</p>
+          </header>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="wrap">
+          <div class="blog-grid">
+            <article class="blog-card">
+              <header class="blog-meta">
+                <span class="blog-badge" data-i18n="blogHub.card1Badge">${t("blogHub.card1Badge", lang)}</span>
+                <time class="blog-date" datetime="2026-09-18" data-i18n="blogHub.card1Date">${t("blogHub.card1Date", lang)}</time>
+              </header>
+              <h2 class="blog-card-title"><a href="blog-cognitive-strategy-kids.html" data-i18n="blogHub.card1Title">${t("blogHub.card1Title", lang)}</a></h2>
+              <p class="blog-excerpt" data-i18n="blogHub.card1Excerpt">${t("blogHub.card1Excerpt", lang)}</p>
+              <div class="blog-card-footer">
+                <a class="blog-read-more" href="blog-cognitive-strategy-kids.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <header class="blog-meta">
+                <span class="blog-badge" data-i18n="blogHub.card2Badge">${t("blogHub.card2Badge", lang)}</span>
+                <time class="blog-date" datetime="2026-08-28" data-i18n="blogHub.card2Date">${t("blogHub.card2Date", lang)}</time>
+              </header>
+              <h2 class="blog-card-title"><a href="blog-competitive-ladder-guide.html" data-i18n="blogHub.card2Title">${t("blogHub.card2Title", lang)}</a></h2>
+              <p class="blog-excerpt" data-i18n="blogHub.card2Excerpt">${t("blogHub.card2Excerpt", lang)}</p>
+              <div class="blog-card-footer">
+                <a class="blog-read-more" href="blog-competitive-ladder-guide.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+              </div>
+            </article>
+
+            <article class="blog-card">
+              <header class="blog-meta">
+                <span class="blog-badge" data-i18n="blogHub.card3Badge">${t("blogHub.card3Badge", lang)}</span>
+                <time class="blog-date" datetime="2026-07-15" data-i18n="blogHub.card3Date">${t("blogHub.card3Date", lang)}</time>
+              </header>
+              <h2 class="blog-card-title"><a href="blog-digital-board-games-connectivity.html" data-i18n="blogHub.card3Title">${t("blogHub.card3Title", lang)}</a></h2>
+              <p class="blog-excerpt" data-i18n="blogHub.card3Excerpt">${t("blogHub.card3Excerpt", lang)}</p>
+              <div class="blog-card-footer">
+                <a class="blog-read-more" href="blog-digital-board-games-connectivity.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
+function buildBlogKids() {
+  return function render(lang) {
+    return `
+${head({ slug: "blog-cognitive-strategy-kids", titleKey: "blogKids.title", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("blog-cognitive-strategy-kids", lang)}
+
+    <main>
+      <article class="article-wrap">
+        <header class="article-header">
+          <p class="article-kicker" data-i18n="blogKids.kicker">${t("blogKids.kicker", lang)}</p>
+          <h1 class="article-title" data-i18n="blogKids.title">${t("blogKids.title", lang)}</h1>
+          <div class="article-meta">
+            <time datetime="2026-09-18" data-i18n="blogKids.date">${t("blogKids.date", lang)}</time> ·
+            <span data-i18n="blogKids.readTime">${t("blogKids.readTime", lang)}</span>
+          </div>
+        </header>
+
+        <div class="article-prose">
+          <p class="article-intro" data-i18n="blogKids.intro">${t("blogKids.intro", lang)}</p>
+
+          <aside class="article-stat">
+            <div class="stat-number" data-i18n="blogKids.statNum">${t("blogKids.statNum", lang)}</div>
+            <div class="stat-label" data-i18n="blogKids.statLabel">${t("blogKids.statLabel", lang)}</div>
+          </aside>
+
+          <h2 data-i18n="blogKids.sec1Title">${t("blogKids.sec1Title", lang)}</h2>
+          <p data-i18n="blogKids.sec1Body">${t("blogKids.sec1Body", lang)}</p>
+
+          <blockquote class="article-callout" data-i18n="blogKids.callout">${t("blogKids.callout", lang)}</blockquote>
+
+          <h2 data-i18n="blogKids.sec2Title">${t("blogKids.sec2Title", lang)}</h2>
+          <p data-i18n="blogKids.sec2Body">${t("blogKids.sec2Body", lang)}</p>
+
+          <h2 data-i18n="blogKids.sec3Title">${t("blogKids.sec3Title", lang)}</h2>
+          <p data-i18n="blogKids.sec3Body">${t("blogKids.sec3Body", lang)}</p>
+
+          <div class="article-cta">
+            <h3 data-i18n="blogKids.ctaTitle">${t("blogKids.ctaTitle", lang)}</h3>
+            <p data-i18n="blogKids.ctaBody">${t("blogKids.ctaBody", lang)}</p>
+            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+              <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
+              <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
+function buildBlogCompetitive() {
+  return function render(lang) {
+    return `
+${head({ slug: "blog-competitive-ladder-guide", titleKey: "blogCompetitive.title", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("blog-competitive-ladder-guide", lang)}
+
+    <main>
+      <article class="article-wrap">
+        <header class="article-header">
+          <p class="article-kicker" data-i18n="blogCompetitive.kicker">${t("blogCompetitive.kicker", lang)}</p>
+          <h1 class="article-title" data-i18n="blogCompetitive.title">${t("blogCompetitive.title", lang)}</h1>
+          <div class="article-meta">
+            <time datetime="2026-08-28" data-i18n="blogCompetitive.date">${t("blogCompetitive.date", lang)}</time> ·
+            <span data-i18n="blogCompetitive.readTime">${t("blogCompetitive.readTime", lang)}</span>
+          </div>
+        </header>
+
+        <div class="article-prose">
+          <p class="article-intro" data-i18n="blogCompetitive.intro">${t("blogCompetitive.intro", lang)}</p>
+
+          <aside class="article-stat">
+            <div class="stat-number" data-i18n="blogCompetitive.statNum">${t("blogCompetitive.statNum", lang)}</div>
+            <div class="stat-label" data-i18n="blogCompetitive.statLabel">${t("blogCompetitive.statLabel", lang)}</div>
+          </aside>
+
+          <h2 data-i18n="blogCompetitive.sec1Title">${t("blogCompetitive.sec1Title", lang)}</h2>
+          <p data-i18n="blogCompetitive.sec1Body">${t("blogCompetitive.sec1Body", lang)}</p>
+
+          <blockquote class="article-callout" data-i18n="blogCompetitive.callout">${t("blogCompetitive.callout", lang)}</blockquote>
+
+          <h2 data-i18n="blogCompetitive.sec2Title">${t("blogCompetitive.sec2Title", lang)}</h2>
+          <p data-i18n="blogCompetitive.sec2Body">${t("blogCompetitive.sec2Body", lang)}</p>
+
+          <h2 data-i18n="blogCompetitive.sec3Title">${t("blogCompetitive.sec3Title", lang)}</h2>
+          <p data-i18n="blogCompetitive.sec3Body">${t("blogCompetitive.sec3Body", lang)}</p>
+
+          <div class="article-cta">
+            <h3 data-i18n="blogCompetitive.ctaTitle">${t("blogCompetitive.ctaTitle", lang)}</h3>
+            <p data-i18n="blogCompetitive.ctaBody">${t("blogCompetitive.ctaBody", lang)}</p>
+            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+              <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
+              <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
+function buildBlogDigital() {
+  return function render(lang) {
+    return `
+${head({ slug: "blog-digital-board-games-connectivity", titleKey: "blogDigital.title", lang })}
+  <body>
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+
+    ${nav("blog-digital-board-games-connectivity", lang)}
+
+    <main>
+      <article class="article-wrap">
+        <header class="article-header">
+          <p class="article-kicker" data-i18n="blogDigital.kicker">${t("blogDigital.kicker", lang)}</p>
+          <h1 class="article-title" data-i18n="blogDigital.title">${t("blogDigital.title", lang)}</h1>
+          <div class="article-meta">
+            <time datetime="2026-07-15" data-i18n="blogDigital.date">${t("blogDigital.date", lang)}</time> ·
+            <span data-i18n="blogDigital.readTime">${t("blogDigital.readTime", lang)}</span>
+          </div>
+        </header>
+
+        <div class="article-prose">
+          <p class="article-intro" data-i18n="blogDigital.intro">${t("blogDigital.intro", lang)}</p>
+
+          <aside class="article-stat">
+            <div class="stat-number" data-i18n="blogDigital.statNum">${t("blogDigital.statNum", lang)}</div>
+            <div class="stat-label" data-i18n="blogDigital.statLabel">${t("blogDigital.statLabel", lang)}</div>
+          </aside>
+
+          <h2 data-i18n="blogDigital.sec1Title">${t("blogDigital.sec1Title", lang)}</h2>
+          <p data-i18n="blogDigital.sec1Body">${t("blogDigital.sec1Body", lang)}</p>
+
+          <blockquote class="article-callout" data-i18n="blogDigital.callout">${t("blogDigital.callout", lang)}</blockquote>
+
+          <h2 data-i18n="blogDigital.sec2Title">${t("blogDigital.sec2Title", lang)}</h2>
+          <p data-i18n="blogDigital.sec2Body">${t("blogDigital.sec2Body", lang)}</p>
+
+          <h2 data-i18n="blogDigital.sec3Title">${t("blogDigital.sec3Title", lang)}</h2>
+          <p data-i18n="blogDigital.sec3Body">${t("blogDigital.sec3Body", lang)}</p>
+
+          <div class="article-cta">
+            <h3 data-i18n="blogDigital.ctaTitle">${t("blogDigital.ctaTitle", lang)}</h3>
+            <p data-i18n="blogDigital.ctaBody">${t("blogDigital.ctaBody", lang)}</p>
+            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+              <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
+              <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+
+    ${footer(lang)}
+    ${scripts()}
+  </body>
+</html>
+`;
+  };
+}
+
 // ---------- emit ----------
 
 for (const page of PAGES) {
@@ -1131,6 +1579,20 @@ fs.writeFileSync(
     <meta name="theme-color" content="#0D0D12" />
     <meta name="color-scheme" content="dark" />
 
+    <!-- Google Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    </script>
+
     <title>AI Sabotage: Cyber Cards</title>
     <meta name="description" content="${rootMetaDesc}" />
     <meta name="keywords" content="${rootMetaKeywords}" />
@@ -1170,8 +1632,9 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": rootSchemas }, nu
     </main>
     <footer>
       <p>
-        <a href="https://axislabs.eu/ai-sabotage/policy" target="_blank" rel="noopener">Privacy Policy</a> ·
-        <a href="https://axislabs.eu/ai-sabotage/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+        <a href="./en/blog.html">Blog</a> ·
+        <a href="./en/privacy.html">Privacy Policy</a> ·
+        <a href="./en/terms.html">Terms &amp; Conditions</a>
       </p>
     </footer>
   </body>
@@ -1180,3 +1643,46 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": rootSchemas }, nu
 );
 
 console.log("wrote root index.html → /en/");
+
+function writeRedirect(relPath, targetUrl, pageTitle) {
+  const fullPath = path.join(ROOT, relPath);
+  fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+  fs.writeFileSync(
+    fullPath,
+    `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0D0D12" />
+    <meta name="color-scheme" content="dark" />
+    <!-- Google Consent Mode v2 -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        window.dataLayer.push(arguments);
+      }
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    </script>
+    <title>${pageTitle} · AI Sabotage</title>
+    <meta http-equiv="refresh" content="0; url=${targetUrl}" />
+    <script>window.location.replace("${targetUrl}");</script>
+  </head>
+  <body>
+    <p>Redirecting to <a href="${targetUrl}">${pageTitle}</a>...</p>
+  </body>
+</html>
+`,
+  );
+  console.log("wrote redirect", relPath, "→", targetUrl);
+}
+
+writeRedirect("privacy.html", "./en/privacy.html", "Privacy Policy");
+writeRedirect("terms.html", "./en/terms.html", "Terms & Conditions");
+writeRedirect("blog.html", "./en/blog.html", "Blog");
+writeRedirect("blog/index.html", "../en/blog.html", "Blog");

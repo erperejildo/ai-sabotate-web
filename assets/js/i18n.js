@@ -69,6 +69,63 @@ window.I18N = {
         ogDescription:
           "Offline solo mode with tutorial, hot-seat multiplayer for 2–4 players, and competitive online ladder.",
       },
+      privacy: {
+        title: "Privacy Policy · AI Sabotage",
+        description:
+          "Privacy policy for AI Sabotage: Cyber Cards. Learn how we handle personal information, device data, and respect your privacy rights.",
+        keywords: "privacy policy, AI Sabotage privacy, data protection, GDPR, security, card game",
+        ogTitle: "Privacy Policy · AI Sabotage",
+        ogDescription: "Official privacy notice and data handling policy for AI Sabotage.",
+      },
+      terms: {
+        title: "Terms & Conditions · AI Sabotage",
+        description:
+          "Terms and conditions for using AI Sabotage: Cyber Cards apps, website, and online ranking services operated by Axis Labs.",
+        keywords: "terms and conditions, AI Sabotage terms, conditions of use, EULA, fair play",
+        ogTitle: "Terms & Conditions · AI Sabotage",
+        ogDescription:
+          "Conditions of use, intellectual property, and service terms for AI Sabotage.",
+      },
+      blog: {
+        title: "Cyber Deck Blog & Strategy Hub · AI Sabotage",
+        description:
+          "Explore the AI Sabotage strategy hub: cognitive science of card games, competitive ladder climbing guides, and the digital tabletop revolution.",
+        keywords:
+          "AI Sabotage blog, strategy card game blog, card game tactics, cognitive development, digital board games, competitive card games",
+        ogTitle: "Transmissions · Cyber Deck Blog · AI Sabotage",
+        ogDescription:
+          "Tactical guides, cognitive research, and competitive strategies for AI Sabotage.",
+      },
+      "blog-cognitive-strategy-kids": {
+        title: "Tactical Card Games & Cognitive Brain Development · AI Sabotage",
+        description:
+          "Discover how tactical card games like AI Sabotage accelerate executive function, working memory, and strategic problem-solving in young minds.",
+        keywords:
+          "card games cognitive development, kids strategic thinking, executive function card games, educational strategy games, set collection logic, brain development",
+        ogTitle: "Tactical Card Games & Cognitive Development · AI Sabotage Blog",
+        ogDescription:
+          "How tactical card play sharpens working memory and cognitive flexibility in young players.",
+      },
+      "blog-competitive-ladder-guide": {
+        title: "Advanced Tactics to Climb the Global Ranking Ladder · AI Sabotage",
+        description:
+          "Master competitive AI Sabotage play: card advantage, double-defense component locking, protocol timing, and Quantum Core wildcard tactics.",
+        keywords:
+          "climb ranking ladder, competitive card game strategy, AI Sabotage guide, card duel tactics, component locking, win rate card game",
+        ogTitle: "Climb the Global Ranking Ladder · Competitive Masterclass",
+        ogDescription:
+          "Tactical masterclass for operators looking to dominate the online ranking ladder.",
+      },
+      "blog-digital-board-games-connectivity": {
+        title: "How Digital Board & Card Games Connect the World · AI Sabotage",
+        description:
+          "The evolution of tabletop card and board games into digital apps: zero-friction setup, private room codes, cross-platform play, and global community.",
+        keywords:
+          "digital board games, multiplayer card game, play with friends, private match, cross platform games, mobile card game, tabletop digital evolution",
+        ogTitle: "The Digital Tabletop Revolution · AI Sabotage Blog",
+        ogDescription:
+          "From cardboard to code: how digital card mechanics connect friends worldwide across iOS and Android.",
+      },
     },
     nav: {
       rig: "Rig",
@@ -76,6 +133,7 @@ window.I18N = {
       friends: "Friends",
       ranking: "Ranking",
       play: "Play",
+      blog: "Blog",
       langToggle: "ES",
     },
     footer: {
@@ -236,6 +294,45 @@ window.I18N = {
       reqIos: "iOS 14 or later.",
       reqAndroid: "Android 9 or later.",
     },
+    privacy: {
+      eyebrow: "[ LEGAL PROTOCOL // 01 ]",
+      heading: "Privacy Policy",
+      lastUpdated: "Last updated: September 2026",
+    },
+    terms: {
+      eyebrow: "[ LEGAL PROTOCOL // 02 ]",
+      heading: "Terms & Conditions",
+      lastUpdated: "Last updated: September 2026",
+    },
+    blogHub: {
+      eyebrow: "[ TRANSMISSIONS // STRATEGY & CULTURE ]",
+      heading: "Cyber Deck Blog & Strategy Hub",
+      sub: "Deep-dives into cognitive game theory, ladder climbing masterclasses, and the digital tabletop revolution.",
+      readMore: "Read Transmission →",
+      minRead: "min read",
+    },
+    blogKids: {
+      eyebrow: "[ TRANSMISSION // COGNITIVE SCIENCE ]",
+      title:
+        "How Tactical Card Games Sharpen Executive Function and Strategic Thinking in Young Minds",
+      date: "September 18, 2026",
+      readTime: "5 min read",
+      category: "Cognitive Science // Brain Development",
+    },
+    blogCompetitive: {
+      eyebrow: "[ TRANSMISSION // COMPETITIVE TACTICS ]",
+      title: "Mastering the Net: Advanced Tactics to Climb the AI Sabotage Global Ranking Ladder",
+      date: "August 28, 2026",
+      readTime: "6 min read",
+      category: "Competitive Play // Tactics",
+    },
+    blogDigital: {
+      eyebrow: "[ TRANSMISSION // GAMING CULTURE ]",
+      title: "From Cardboard to Code: How Digital Card and Board Games Are Connecting the World",
+      date: "July 15, 2026",
+      readTime: "5 min read",
+      category: "Gaming Culture // Global Play",
+    },
   },
   es: {
     siteTitle: "AI Sabotage: Cyber Cards",
@@ -306,6 +403,63 @@ window.I18N = {
         ogDescription:
           "Modo solitario offline con tutorial, multijugador hot-seat para 2–4 jugadores y ranking competitivo online.",
       },
+      privacy: {
+        title: "Política de Privacidad · AI Sabotage",
+        description:
+          "Aviso de privacidad de AI Sabotage: Cyber Cards. Conoce cómo tratamos los datos personales y protegemos tus derechos de privacidad.",
+        keywords:
+          "politica de privacidad, privacidad AI Sabotage, proteccion de datos, RGPD, terminos",
+        ogTitle: "Política de Privacidad · AI Sabotage",
+        ogDescription: "Aviso de privacidad oficial y gestión de datos de AI Sabotage.",
+      },
+      terms: {
+        title: "Términos y Condiciones · AI Sabotage",
+        description:
+          "Términos y condiciones de uso de las aplicaciones, web y servicios de ranking online de AI Sabotage operados por Axis Labs.",
+        keywords: "terminos y condiciones, terminos AI Sabotage, condiciones de uso, juego limpio",
+        ogTitle: "Términos y Condiciones · AI Sabotage",
+        ogDescription:
+          "Condiciones de uso, propiedad intelectual y términos de servicio de AI Sabotage.",
+      },
+      blog: {
+        title: "Transmisiones · Blog y Centro de Estrategia · AI Sabotage",
+        description:
+          "Explora el blog de AI Sabotage: ciencia cognitiva aplicada a juegos de cartas, tácticas para escalar el ranking y la evolución digital de los juegos de mesa.",
+        keywords:
+          "blog AI Sabotage, blog juegos de cartas, tacticas de cartas, desarrollo cognitivo, juegos de mesa digitales",
+        ogTitle: "Transmisiones · Blog de Estrategia Cyber · AI Sabotage",
+        ogDescription:
+          "Guías tácticas, estudios cognitivos y estrategias competitivas para AI Sabotage.",
+      },
+      "blog-cognitive-strategy-kids": {
+        title: "Juegos de Cartas Tácticos y Desarrollo Cognitivo · AI Sabotage",
+        description:
+          "Descubre cómo los juegos de cartas tácticos impulsan la función ejecutiva, la memoria de trabajo y la toma de decisiones estratégicas en mentes jóvenes.",
+        keywords:
+          "juegos de cartas desarrollo cognitivo, pensamiento estrategico ninos, funcion ejecutiva, juegos de mesa educativos, coleccion de sets",
+        ogTitle: "Juegos de Cartas y Desarrollo Cognitivo · Blog AI Sabotage",
+        ogDescription:
+          "Cómo el juego de cartas táctico fortalece la memoria operativa y la flexibilidad mental en jóvenes operadores.",
+      },
+      "blog-competitive-ladder-guide": {
+        title: "Tácticas Avanzadas para Escalar el Ranking Global · AI Sabotage",
+        description:
+          "Domina el juego competitivo en AI Sabotage: ventaja de cartas, bloqueo defensivo de componentes, uso de protocolos y comodines Quantum Core.",
+        keywords:
+          "escalar ranking global, estrategia juego de cartas, guia AI Sabotage, duelo de cartas, bloqueo componentes",
+        ogTitle: "Escala el Ranking Global · Clase Magistral Competitiva",
+        ogDescription: "Guía táctica para operadores que buscan dominar la clasificación online.",
+      },
+      "blog-digital-board-games-connectivity": {
+        title: "Cómo los Juegos de Mesa Digitales Conectan al Mundo · AI Sabotage",
+        description:
+          "La evolución de los juegos de mesa y cartas hacia el entorno digital: sin esperas de montaje, códigos de sala privados y partidas multiplataforma.",
+        keywords:
+          "juegos de mesa digitales, juego de cartas multijugador, jugar con amigos, partida privada, juegos multiplataforma",
+        ogTitle: "La Revolución de los Juegos de Mesa Digitales · Blog AI Sabotage",
+        ogDescription:
+          "Del cartón al código: cómo las mecánicas digitales unen a amigos de todo el mundo en iOS y Android.",
+      },
     },
     nav: {
       rig: "Rig",
@@ -313,6 +467,7 @@ window.I18N = {
       friends: "Amigos",
       ranking: "Ranking",
       play: "Jugar",
+      blog: "Blog",
       langToggle: "EN",
     },
     footer: {
@@ -476,6 +631,45 @@ window.I18N = {
       requirementsTitle: "Requisitos",
       reqIos: "iOS 14 o superior.",
       reqAndroid: "Android 9 o superior.",
+    },
+    privacy: {
+      eyebrow: "[ PROTOCOLO LEGAL // 01 ]",
+      heading: "Política de Privacidad",
+      lastUpdated: "Última actualización: Septiembre 2026",
+    },
+    terms: {
+      eyebrow: "[ PROTOCOLO LEGAL // 02 ]",
+      heading: "Términos y Condiciones",
+      lastUpdated: "Última actualización: Septiembre 2026",
+    },
+    blogHub: {
+      eyebrow: "[ TRANSMISIONES // ESTRATEGIA Y CULTURA ]",
+      heading: "Blog Cyber Deck y Centro de Estrategia",
+      sub: "Análisis táctico, ciencia cognitiva aplicada y la evolución digital de los juegos de cartas.",
+      readMore: "Leer Transmisión →",
+      minRead: "min de lectura",
+    },
+    blogKids: {
+      eyebrow: "[ TRANSMISIÓN // CIENCIA COGNITIVA ]",
+      title:
+        "Cómo los Juegos de Cartas Tácticos Desarrollan la Función Ejecutiva y el Pensamiento Estratégico",
+      date: "18 de Septiembre de 2026",
+      readTime: "5 min de lectura",
+      category: "Ciencia Cognitiva // Mente Estratégica",
+    },
+    blogCompetitive: {
+      eyebrow: "[ TRANSMISIÓN // TÁCTICAS COMPETITIVAS ]",
+      title: "Dominar la Red: Tácticas Avanzadas para Escalar el Ranking Global de AI Sabotage",
+      date: "28 de Agosto de 2026",
+      readTime: "6 min de lectura",
+      category: "Juego Competitivo // Tácticas",
+    },
+    blogDigital: {
+      eyebrow: "[ TRANSMISIÓN // CULTURA DE JUEGO ]",
+      title: "Del Cartón al Código: Cómo los Juegos de Cartas y Mesa Digitales Conectan al Mundo",
+      date: "15 de Julio de 2026",
+      readTime: "5 min de lectura",
+      category: "Cultura de Juego // Conexión Global",
     },
   },
 };
