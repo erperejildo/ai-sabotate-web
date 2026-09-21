@@ -20,6 +20,19 @@
       });
     </script>
 
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname.replace(/\.html$/, "") + window.location.search + window.location.hash,
+          );
+        } catch (_) {}
+      }
+    </script>
+
     <title data-title-meta>Privacy Policy · AI Sabotage</title>
     <meta
       name="description"
@@ -41,7 +54,7 @@
       data-i18n-attr="content:meta.privacy.ogDescription"
     />
     <meta property="og:image" content="https://aisabotage.store/assets/img/icon.jpg" />
-    <meta property="og:url" content="https://aisabotage.store/en/privacy.html" />
+    <meta property="og:url" content="https://aisabotage.store/en/privacy" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Privacy Policy · AI Sabotage" data-i18n-attr="content:meta.privacy.ogTitle" />
     <meta
@@ -54,14 +67,14 @@
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/privacy.html" />
-    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/privacy.html" />
-    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/privacy.html" />
+    <link rel="alternate" hreflang="en" href="https://aisabotage.store/en/privacy" />
+    <link rel="alternate" hreflang="es" href="https://aisabotage.store/es/privacy" />
+    <link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/privacy" />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
 
-    <link rel="canonical" href="https://aisabotage.store/en/privacy.html" />
+    <link rel="canonical" href="https://aisabotage.store/en/privacy" />
     <link rel="stylesheet" href="../assets/css/style.css" />
 
     <script type="application/ld+json">
@@ -71,14 +84,14 @@
           {
             "@type": "WebSite",
             "@id": "https://aisabotage.store/#website",
-            "url": "https://aisabotage.store/en/privacy.html",
+            "url": "https://aisabotage.store/en/privacy",
             "name": "AI Sabotage: Cyber Cards",
             "description": "A cyberpunk strategy card game. Build the AGI before your rivals do. Online ranking, offline play, hot-seat with friends. Two player set collection. Free on iOS and Android.",
             "inLanguage": "en"
           },
           {
             "@type": "BreadcrumbList",
-            "@id": "https://aisabotage.store/en/privacy.html#breadcrumb",
+            "@id": "https://aisabotage.store/en/privacy#breadcrumb",
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -90,15 +103,15 @@
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Privacy Policy",
-                "item": "https://aisabotage.store/en/privacy.html"
+                "item": "https://aisabotage.store/en/privacy"
               }
             ]
           },
           {
             "@type": "WebPage",
-            "@id": "https://aisabotage.store/en/privacy.html#webpage",
+            "@id": "https://aisabotage.store/en/privacy#webpage",
             "name": "Privacy Policy",
-            "url": "https://aisabotage.store/en/privacy.html",
+            "url": "https://aisabotage.store/en/privacy",
             "description": "Privacy policy for AI Sabotage: Cyber Cards. Learn how we handle personal information, device data, and respect your privacy rights."
           }
         ]
@@ -111,18 +124,18 @@
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand" href="index.html" aria-label="AI Sabotage home">
+        <a class="brand" href="./" aria-label="AI Sabotage home">
           <span class="brand-mark" aria-hidden="true">[</span>
           <span class="brand-name">AI SABOTAGE</span>
           <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="rig.html" data-i18n="nav.rig" class="">Rig</a>
-          <a href="cards.html" data-i18n="nav.cards" class="">Cards</a>
-          <a href="friends.html" data-i18n="nav.friends" class="">Friends</a>
-          <a href="ranking.html" data-i18n="nav.ranking" class="">Ranking</a>
-          <a href="play.html" data-i18n="nav.play" class="">Play</a>
-          <a href="blog.html" data-i18n="nav.blog" class="">Blog</a>
+          <a href="rig" data-i18n="nav.rig" class="">Rig</a>
+          <a href="cards" data-i18n="nav.cards" class="">Cards</a>
+          <a href="friends" data-i18n="nav.friends" class="">Friends</a>
+          <a href="ranking" data-i18n="nav.ranking" class="">Ranking</a>
+          <a href="play" data-i18n="nav.play" class="">Play</a>
+          <a href="blog" data-i18n="nav.blog" class="">Blog</a>
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="es" aria-label="Switch language">ES</button>
@@ -134,9 +147,9 @@
       <section class="subhero">
         <div class="wrap">
           <header class="section-head">
-            <p class="kicker" data-i18n="privacy.kicker"></p>
+            <p class="kicker" data-i18n="privacy.kicker">[ LEGAL PROTOCOL // 01 ]</p>
             <h1 class="section-title" data-i18n="privacy.heading">Privacy Policy</h1>
-            <p class="section-sub" data-i18n="privacy.sub"></p>
+            <p class="section-sub" data-i18n="privacy.sub">Last updated: September 2026 · Operator: Axis Labs</p>
           </header>
         </div>
       </section>
@@ -144,20 +157,40 @@
       <section class="section">
         <div class="legal-wrap">
           <article class="legal-card">
-            <h2 data-i18n="privacy.sec1Title"></h2>
-            <p data-i18n="privacy.sec1Body"></p>
+            <h2 data-i18n="privacy.sec1Title">1. Data Collection and Usage</h2>
+            <p data-i18n="privacy.sec1Body">
+              AI Sabotage: Cyber Cards is engineered by Axis Labs. We believe in minimal data footprint. The game does
+              not require account registration to play locally or offline. When playing online multiplayer matches or
+              ranking duels, minimal diagnostic logs and unique match identifiers are processed to orchestrate lobby
+              pairing and competitive score updates.
+            </p>
 
-            <h2 data-i18n="privacy.sec2Title"></h2>
-            <p data-i18n="privacy.sec2Body"></p>
+            <h2 data-i18n="privacy.sec2Title">2. Third-Party Services and Platform Store APIs</h2>
+            <p data-i18n="privacy.sec2Body">
+              The application interacts with standard mobile operating platform services, including Apple App Store and
+              Google Play Services for purchase fulfillment and game distribution. Third-party telemetry is limited to
+              privacy-compliant performance reporting and crash diagnostics.
+            </p>
 
-            <h2 data-i18n="privacy.sec3Title"></h2>
-            <p data-i18n="privacy.sec3Body"></p>
+            <h2 data-i18n="privacy.sec3Title">3. Local Device Storage and Hot-Seat Data</h2>
+            <p data-i18n="privacy.sec3Body">
+              Offline match history, custom rig loadouts, unlocked sound settings, and local multi-player profiles
+              reside strictly on your local device storage. We do not transmit your local hot-seat records to external
+              cloud databases without an active online multiplayer session.
+            </p>
 
-            <h2 data-i18n="privacy.sec4Title"></h2>
-            <p data-i18n="privacy.sec4Body"></p>
+            <h2 data-i18n="privacy.sec4Title">4. User Privacy Rights (GDPR and CCPA)</h2>
+            <p data-i18n="privacy.sec4Body">
+              Regardless of your global location, you hold complete ownership of your data footprint. You may request
+              data inspection, account disconnection, or permanent telemetry record deletion at any time by contacting
+              Axis Labs directly at support@axislabs.eu.
+            </p>
 
-            <h2 data-i18n="privacy.sec5Title"></h2>
-            <p data-i18n="privacy.sec5Body"></p>
+            <h2 data-i18n="privacy.sec5Title">5. Policy Modifications and Contact</h2>
+            <p data-i18n="privacy.sec5Body">
+              We reserve the right to revise this privacy protocol to align with mobile security standards. For legal
+              inquiries, contact Axis Labs at support@axislabs.eu or visit https://axislabs.eu/ai-sabotage/policy.
+            </p>
           </article>
         </div>
       </section>
@@ -166,14 +199,14 @@
     <footer class="footer">
       <p data-i18n="footer.copy">© 2026 AI Sabotage · A cyberpunk strategy card game.</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">Rig</a> · <a href="cards.html" data-i18n="nav.cards">Cards</a> ·
-        <a href="friends.html" data-i18n="nav.friends">Friends</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">Ranking</a> · <a href="play.html" data-i18n="nav.play">Play</a> ·
-        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="rig" data-i18n="nav.rig">Rig</a> · <a href="cards" data-i18n="nav.cards">Cards</a> ·
+        <a href="friends" data-i18n="nav.friends">Friends</a> · <a href="ranking" data-i18n="nav.ranking">Ranking</a> ·
+        <a href="play" data-i18n="nav.play">Play</a> ·
+        <a href="blog" data-i18n="nav.blog">Blog</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a> ·
-        <a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a>
+        <a href="privacy" data-i18n="footer.privacy">Privacy Policy</a> ·
+        <a href="terms" data-i18n="footer.terms">Terms & Conditions</a>
       </p>
     </footer>
 

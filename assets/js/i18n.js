@@ -295,43 +295,137 @@ window.I18N = {
       reqAndroid: "Android 9 or later.",
     },
     privacy: {
-      eyebrow: "[ LEGAL PROTOCOL // 01 ]",
+      kicker: "[ LEGAL PROTOCOL // 01 ]",
       heading: "Privacy Policy",
-      lastUpdated: "Last updated: September 2026",
+      sub: "Last updated: September 2026 · Operator: Axis Labs",
+      sec1Title: "1. Data Collection and Usage",
+      sec1Body:
+        "AI Sabotage: Cyber Cards is engineered by Axis Labs. We believe in minimal data footprint. The game does not require account registration to play locally or offline. When playing online multiplayer matches or ranking duels, minimal diagnostic logs and unique match identifiers are processed to orchestrate lobby pairing and competitive score updates.",
+      sec2Title: "2. Third-Party Services and Platform Store APIs",
+      sec2Body:
+        "The application interacts with standard mobile operating platform services, including Apple App Store and Google Play Services for purchase fulfillment and game distribution. Third-party telemetry is limited to privacy-compliant performance reporting and crash diagnostics.",
+      sec3Title: "3. Local Device Storage and Hot-Seat Data",
+      sec3Body:
+        "Offline match history, custom rig loadouts, unlocked sound settings, and local multi-player profiles reside strictly on your local device storage. We do not transmit your local hot-seat records to external cloud databases without an active online multiplayer session.",
+      sec4Title: "4. User Privacy Rights (GDPR and CCPA)",
+      sec4Body:
+        "Regardless of your global location, you hold complete ownership of your data footprint. You may request data inspection, account disconnection, or permanent telemetry record deletion at any time by contacting Axis Labs directly at support@axislabs.eu.",
+      sec5Title: "5. Policy Modifications and Contact",
+      sec5Body:
+        "We reserve the right to revise this privacy protocol to align with mobile security standards. For legal inquiries, contact Axis Labs at support@axislabs.eu or visit https://axislabs.eu/ai-sabotage/policy.",
     },
     terms: {
-      eyebrow: "[ LEGAL PROTOCOL // 02 ]",
+      kicker: "[ LEGAL PROTOCOL // 02 ]",
       heading: "Terms & Conditions",
-      lastUpdated: "Last updated: September 2026",
+      sub: "Last updated: September 2026 · Operator: Axis Labs",
+      sec1Title: "1. Acceptance of Terms",
+      sec1Body:
+        "By accessing, downloading, or installing AI Sabotage: Cyber Cards on iOS or Android, you agree to comply with these terms of service established by Axis Labs. If you do not accept these provisions, discontinue use and remove the client from your device.",
+      sec2Title: "2. Intellectual Property and Card Assets",
+      sec2Body:
+        "All visual card artwork, audio soundscapes, cyberpunk lore, codebase, interface layouts, and branding emblems belong exclusively to Axis Labs. Operators receive a personal, revocable, non-exclusive license to play the game for personal recreational purposes.",
+      sec3Title: "3. Fair Play and Competitive Integrity",
+      sec3Body:
+        "AI Sabotage relies on skill, set collection tactics, and calculated risk. Any packet tampering, reverse-engineering of multiplayer protocols, automated bots, network exploitation, or manipulation of the global ranking ladder is strictly prohibited and subject to permanent matchmaking ban.",
+      sec4Title: "4. In-App Purchases and PRO Access",
+      sec4Body:
+        "Optional PRO unlocks, cosmetic themes, or rewarded access tickets are handled securely via Apple App Store or Google Play Store billing. Purchases are final and governed by the respective storefront's commercial refund terms.",
+      sec5Title: "5. Disclaimer of Warranties and Limitation of Liability",
+      sec5Body:
+        "AI Sabotage is provided on an 'as is' and 'as available' basis. Axis Labs is not liable for indirect network dropouts, device incompatibility, or temporary server downtime. Inquiries may be directed to support@axislabs.eu or https://axislabs.eu/ai-sabotage/terms-and-conditions.",
     },
     blogHub: {
-      eyebrow: "[ TRANSMISSIONS // STRATEGY & CULTURE ]",
+      kicker: "[ TRANSMISSIONS // STRATEGY & CULTURE ]",
       heading: "Cyber Deck Blog & Strategy Hub",
       sub: "Deep-dives into cognitive game theory, ladder climbing masterclasses, and the digital tabletop revolution.",
+      card1Badge: "Cognitive Science",
+      card1Date: "September 18, 2026",
+      card1Title: "How Strategy Card Games Train Executive Function in Young Minds",
+      card1Excerpt:
+        "Cognitive research demonstrates how set collection, tactical foresight, and counter-threat planning boost mental flexibility and working memory.",
+      card2Badge: "Competitive Play",
+      card2Date: "August 28, 2026",
+      card2Title: "Mastering the Net: Advanced Tactics to Top the Ranking Ladder",
+      card2Excerpt:
+        "Learn component locking, tempo economics, protocol sequencing, and wildcard baiting to climb from Novice to Cyber Overlord.",
+      card3Badge: "Gaming Culture",
+      card3Date: "July 15, 2026",
+      card3Title: "The Digital Tabletop Evolution: How Board Games Connected the World",
+      card3Excerpt:
+        "Explore how classic tabletop mechanics evolved into high-speed mobile duels that bring friends together across continents.",
       readMore: "Read Transmission →",
-      minRead: "min read",
     },
     blogKids: {
-      eyebrow: "[ TRANSMISSION // COGNITIVE SCIENCE ]",
-      title:
-        "How Tactical Card Games Sharpen Executive Function and Strategic Thinking in Young Minds",
+      kicker: "[ TRANSMISSION // COGNITIVE SCIENCE ]",
+      title: "How Strategy Card Games Train Executive Function in Young Minds",
       date: "September 18, 2026",
       readTime: "5 min read",
-      category: "Cognitive Science // Brain Development",
+      intro:
+        "In an era dominated by passive screen consumption, strategic card duels stand out as powerful cognitive simulators. By challenging players to manage imperfect information, prioritize competing goals, and anticipate adversary moves, games like AI Sabotage exercise neural networks essential for executive function.",
+      statNum: "+28%",
+      statLabel: "Working memory & task-switching boost observed in strategic game studies",
+      sec1Title: "The Neuroscience of Strategic Decision-Making",
+      sec1Body:
+        "Executive function encompasses the mental processes that enable goal-directed behavior, including working memory, cognitive flexibility, and inhibitory control. A landmark 2023 cognitive meta-analysis established that adolescents engaging in tactical turn-based strategy games showed significant gains in problem-solving speed and spatial reasoning compared to control groups.",
+      callout:
+        '"Strategy games act as cognitive calisthenics: players must hold multiple future states in memory while actively updating their assessment of current risk." — Prof. Fernand Gobet, Cognitive Science Researcher',
+      sec2Title: "Set Collection as Working Memory Training",
+      sec2Body:
+        "In AI Sabotage, victory requires assembling 4 distinct component categories: Hardware, Dataset, Neural Net, and Algorithm. Balancing this construction against rival threats forces players to retain hand composition, calculate draw probabilities, and weigh defensive investments. This continuous feedback loop cultivates delayed gratification over impulsive plays.",
+      sec3Title: "Cultivating Resilience Through Counter-Play",
+      sec3Body:
+        "When an opponent deploys Malware or launches an EMP Purge, the player must immediately adapt their strategy rather than panic. This teaches cognitive reframing: treating disruptions as tactical puzzles to resolve rather than insurmountable setbacks.",
+      ctaTitle: "Test Your Strategic Acumen",
+      ctaBody:
+        "Ready to challenge your intellect? Download AI Sabotage and test your tactical skills in rapid 3-minute cyber card duels.",
     },
     blogCompetitive: {
-      eyebrow: "[ TRANSMISSION // COMPETITIVE TACTICS ]",
-      title: "Mastering the Net: Advanced Tactics to Climb the AI Sabotage Global Ranking Ladder",
+      kicker: "[ TRANSMISSION // COMPETITIVE PLAY ]",
+      title: "Mastering the Net: Advanced Tactics to Top the Ranking Ladder",
       date: "August 28, 2026",
       readTime: "6 min read",
-      category: "Competitive Play // Tactics",
+      intro:
+        "Climbing from Novice to Cyber Overlord on the global ranking ladder requires more than card luck. Top operators analyze tempo economics, bait opponent threats, and sequence game-winning protocols with mathematical precision.",
+      statNum: "+10 PTS",
+      statLabel: "Ranking points earned per competitive ladder victory",
+      sec1Title: "1. The Power of Double-Defense Component Locking",
+      sec1Body:
+        "A common beginner mistake is playing components as quickly as they enter your hand without defensive protection. Experienced operators wait until they can immediately apply a Defense firewall. Placing two Defenses permanently locks that slot, making it completely immune to Malware and rival theft.",
+      callout:
+        '"A locked slot is guaranteed victory progress. Never deploy an unshielded quantum core unless you can secure victory on the exact same turn." — CIPHER, Rank #2 Netrunner',
+      sec2Title: "2. Master the Protocol Sequence",
+      sec2Body:
+        "Protocols like Data Heist, EMP Purge, and System Override swing match momentum instantly. Do not use EMP Purge early; hold it until your rival holds 4 or 5 cards to maximize their card advantage deficit. Use Data Heist specifically when an opponent reveals a rare component that finishes your own rig.",
+      sec3Title: "3. Wildcard Psychology and Baiting Threats",
+      sec3Body:
+        "The Quantum Core wildcard substitutes for any missing slot. Keep it hidden in your hand while installing standard components first. Bait out the opponent's threats on disposable hardware, then drop the Quantum Core for an uncontested win.",
+      ctaTitle: "Climb the Global Ranking Ladder",
+      ctaBody:
+        "Put these tactics into action today. Battle players worldwide and claim your place among the top Netrunners.",
     },
     blogDigital: {
-      eyebrow: "[ TRANSMISSION // GAMING CULTURE ]",
-      title: "From Cardboard to Code: How Digital Card and Board Games Are Connecting the World",
+      kicker: "[ TRANSMISSION // GAMING CULTURE ]",
+      title: "The Digital Tabletop Evolution: How Board Games Connected the World",
       date: "July 15, 2026",
       readTime: "5 min read",
-      category: "Gaming Culture // Global Play",
+      intro:
+        "For centuries, tabletop card and board games brought families and friends together around wooden tables. Today, the tactile brilliance of tabletop design is finding new life on digital touchscreens, bridging physical distances without losing social intimacy.",
+      statNum: "14.8%",
+      statLabel: "Compound annual growth rate in digital tabletop and hybrid card games",
+      sec1Title: "Preserving Tactile Depth in a Fast-Paced World",
+      sec1Body:
+        "Modern life makes scheduling in-person game nights challenging. Digital tabletop card games condense complex board game mechanics—drafting, set collection, counter-play, bluffing—into tight 3-minute mobile sessions that can be enjoyed during a commute or quick break.",
+      callout:
+        '"Digital card games have transformed tabletop design from an occasional weekend luxury into a daily social ritual shared across continents." — Industry Tabletop Analysis',
+      sec2Title: "Private Matchmaking: Connecting Across Borders",
+      sec2Body:
+        "With features like instant 6-character room codes, friends living in different time zones can duel in private lobbies with zero friction. AI Sabotage supports both seamless online rooms and local hot-seat duels on a single mobile screen, giving players the best of both worlds.",
+      sec3Title: "A Global Tabletop Community",
+      sec3Body:
+        "Digital platforms allow players from Tokyo to Madrid to share strategies, test decks, and compete on equal ground. The future of board gaming is vibrant, connected, and always within reach in your pocket.",
+      ctaTitle: "Connect and Duel with Friends",
+      ctaBody:
+        "Create a private match room in seconds and start dueling friends anywhere on the planet.",
     },
   },
   es: {
@@ -633,43 +727,138 @@ window.I18N = {
       reqAndroid: "Android 9 o superior.",
     },
     privacy: {
-      eyebrow: "[ PROTOCOLO LEGAL // 01 ]",
+      kicker: "[ PROTOCOLO LEGAL // 01 ]",
       heading: "Política de Privacidad",
-      lastUpdated: "Última actualización: Septiembre 2026",
+      sub: "Última actualización: Septiembre 2026 · Operador: Axis Labs",
+      sec1Title: "1. Tratamiento de Datos y Finalidad",
+      sec1Body:
+        "AI Sabotage: Cyber Cards es una creación de Axis Labs. Aplicamos el principio de minimización de datos. El juego no requiere registro de cuenta para disfrutar de partidas locales u offline. Al disputar partidas multijugador online o duelos de clasificación, únicamente se procesan registros de diagnóstico mínimos e identificadores de sala para coordinar el emparejamiento y actualizar las puntuaciones.",
+      sec2Title: "2. Servicios de Plataforma de Terceros",
+      sec2Body:
+        "La aplicación interactúa con los servicios oficiales de Apple App Store y Google Play Store para la distribución y gestión de compras. La telemetría externa se limita a métricas de rendimiento y diagnóstico técnico respetuosos con la privacidad.",
+      sec3Title: "3. Almacenamiento Local y Partidas Hot-Seat",
+      sec3Body:
+        "El historial de partidas offline, la configuración de sonido y los perfiles de juego local en un mismo dispositivo residen exclusivamente en la memoria de tu dispositivo. No transferimos tus registros locales a servidores externos sin una sesión multijugador activa.",
+      sec4Title: "4. Derechos del Usuario (RGPD y Normativa de Privacidad)",
+      sec4Body:
+        "Cuentas con plenos derechos sobre tus datos. Puedes solicitar en cualquier instante la consulta o supresión definitiva de tus registros técnicos contactando directamente con Axis Labs en support@axislabs.eu.",
+      sec5Title: "5. Actualizaciones y Contacto",
+      sec5Body:
+        "Nos reservamos el derecho de actualizar este protocolo para mantener la máxima seguridad técnica. Para consultas legales adicionales, contacta con support@axislabs.eu o visita https://axislabs.eu/ai-sabotage/policy.",
     },
     terms: {
-      eyebrow: "[ PROTOCOLO LEGAL // 02 ]",
+      kicker: "[ PROTOCOLO LEGAL // 02 ]",
       heading: "Términos y Condiciones",
-      lastUpdated: "Última actualización: Septiembre 2026",
+      sub: "Última actualización: Septiembre 2026 · Operador: Axis Labs",
+      sec1Title: "1. Aceptación de los Términos",
+      sec1Body:
+        "Al descargar, instalar o utilizar AI Sabotage: Cyber Cards en iOS o Android, aceptas plenamente las condiciones de servicio establecidas por Axis Labs. Si discrepas de alguna cláusula, desinstala la aplicación de tu terminal.",
+      sec2Title: "2. Propiedad Intelectual y Activos del Juego",
+      sec2Body:
+        "Todo el arte visual de las cartas, efectos sonoros, ambientación cyberpunk, código informático y distintivos pertenecen de forma exclusiva a Axis Labs. Se concede una licencia personal, revocable y no exclusiva para disfrutar del juego con fines recreativos.",
+      sec3Title: "3. Juego Limpio e Integridad Competitiva",
+      sec3Body:
+        "AI Sabotage premia la habilidad táctica y el cálculo de riesgos. Queda terminantemente prohibido el uso de bots, la alteración de paquetes de red o la manipulación de la clasificación competitiva, conductas que conllevan la expulsión del servicio multijugador.",
+      sec4Title: "4. Compras en la Aplicación y Acceso PRO",
+      sec4Body:
+        "Las opciones de compra PRO o pases temporales se tramitan a través de los sistemas de pago de Apple App Store o Google Play Store. Toda transacción se rige por las políticas comerciales de la tienda correspondiente.",
+      sec5Title: "5. Limitación de Responsabilidad",
+      sec5Body:
+        "El juego se suministra tal cual está disponible. Axis Labs declina responsabilidades por interrupciones de red o incompatibilidades técnicas del dispositivo. Consultas en support@axislabs.eu o https://axislabs.eu/ai-sabotage/terms-and-conditions.",
     },
     blogHub: {
-      eyebrow: "[ TRANSMISIONES // ESTRATEGIA Y CULTURA ]",
+      kicker: "[ TRANSMISIONES // ESTRATEGIA Y CULTURA ]",
       heading: "Blog Cyber Deck y Centro de Estrategia",
-      sub: "Análisis táctico, ciencia cognitiva aplicada y la evolución digital de los juegos de cartas.",
+      sub: "Análisis sobre teoría de juegos cognitivos, tácticas maestras de clasificación y la evolución de los juegos de mesa.",
+      card1Badge: "Ciencia Cognitiva",
+      card1Date: "18 de septiembre de 2026",
+      card1Title: "Cómo los Juegos de Cartas Tácticos Entrenan la Función Ejecutiva",
+      card1Excerpt:
+        "Estudios de neurociencia demuestran que la colección de sets, la anticipación táctica y la mitigación de riesgos impulsan la flexibilidad mental y la memoria de trabajo.",
+      card2Badge: "Juego Competitivo",
+      card2Date: "28 de agosto de 2026",
+      card2Title: "Dominio de la Red: Tácticas Avanzadas para Coronar la Clasificación",
+      card2Excerpt:
+        "Aprende bloqueo de componentes con doble cortafuegos, economía de turnos y uso de comodines para ascender hasta el rango Cyber Overlord.",
+      card3Badge: "Cultura de Juego",
+      card3Date: "15 de julio de 2026",
+      card3Title: "Del Tablero al Código: La Conectividad Mundial en Juegos de Cartas",
+      card3Excerpt:
+        "Descubre cómo las mecánicas clásicas de mesa se adaptaron a partidas móviles rápidas que unen a jugadores de todo el planeta.",
       readMore: "Leer Transmisión →",
-      minRead: "min de lectura",
     },
     blogKids: {
-      eyebrow: "[ TRANSMISIÓN // CIENCIA COGNITIVA ]",
-      title:
-        "Cómo los Juegos de Cartas Tácticos Desarrollan la Función Ejecutiva y el Pensamiento Estratégico",
-      date: "18 de Septiembre de 2026",
+      kicker: "[ TRANSMISIÓN // CIENCIA COGNITIVA ]",
+      title: "Cómo los Juegos de Cartas Tácticos Entrenan la Función Ejecutiva",
+      date: "18 de septiembre de 2026",
       readTime: "5 min de lectura",
-      category: "Ciencia Cognitiva // Mente Estratégica",
+      intro:
+        "En un entorno con predominio del consumo pasivo de pantallas, las partidas de estrategia destacan como entrenamientos cognitivos de primer nivel. Al exigir evaluar riesgos, ordenar prioridades y anticipar las jugadas del rival, AI Sabotage ejercita los circuitos mentales de la función ejecutiva.",
+      statNum: "+28%",
+      statLabel:
+        "Aumento en memoria de trabajo y flexibilidad mental observado en estudios tácticos",
+      sec1Title: "Neurociencia y Toma de Decisiones Tácticas",
+      sec1Body:
+        "La función ejecutiva comprende los procesos cognitivos que hacen posible actuar hacia metas concretas: memoria operativa, adaptabilidad mental y control de impulsos. Un análisis publicado en revisiones científicas de neurociencia demostró que los jóvenes que practican juegos tácticos por turnos experimentan avances claros en rapidez analítica respecto a grupos de control.",
+      callout:
+        '"Los juegos de estrategia actúan como gimnasia mental: el jugador debe sostener en memoria múltiples escenarios futuros mientras recalcula el riesgo actual." — Prof. Fernand Gobet',
+      sec2Title: "Colección de Sets y Memoria de Trabajo",
+      sec2Body:
+        "Para triunfar en AI Sabotage es necesario reunir 4 componentes distintos: Hardware, Dataset, Red Neuronal y Algoritmo. Coordinar este ensamblaje frente al sabotaje rival obliga a recordar descartes, calcular opciones y preferir recompensas reflexivas frente a impulsos inmediatos.",
+      sec3Title: "Construir Fortaleza Mental Frente al Sabotaje",
+      sec3Body:
+        "Cuando el contrincante infiltra Malware o fuerza un EMP Purge, el jugador aprende a mantener la calma y responder con criterio. Así se consolida la habilidad de ver los imprevistos como retos tácticos que resolver.",
+      ctaTitle: "Pon a Prueba tu Habilidad Táctica",
+      ctaBody:
+        "¿Aceptas el reto? Descarga AI Sabotage y demuestra tu destreza en partidas cibernéticas de 3 minutos.",
     },
     blogCompetitive: {
-      eyebrow: "[ TRANSMISIÓN // TÁCTICAS COMPETITIVAS ]",
-      title: "Dominar la Red: Tácticas Avanzadas para Escalar el Ranking Global de AI Sabotage",
-      date: "28 de Agosto de 2026",
+      kicker: "[ TRANSMISIÓN // JUEGO COMPETITIVO ]",
+      title: "Dominio de la Red: Tácticas Avanzadas para Coronar la Clasificación",
+      date: "28 de agosto de 2026",
       readTime: "6 min de lectura",
-      category: "Juego Competitivo // Tácticas",
+      intro:
+        "Ascender desde Novice hasta la cúspide de Cyber Overlord en la clasificación global requiere mucho más que azar con las cartas. Los duelistas experimentados dominan los tiempos de partida, provocan las amenazas del oponente y ejecutan protocolos ganadores.",
+      statNum: "+10 PTS",
+      statLabel: "Puntos de clasificación sumados por cada victoria competitiva",
+      sec1Title: "1. El Valor del Bloqueo con Doble Cortafuegos",
+      sec1Body:
+        "Un fallo habitual consiste en colocar componentes sin protección. Los jugadores expertos esperan a contar con una carta de Defensa. Aplicar dos defensas en un slot fija el componente de forma definitiva, haciéndolo inmune a Malware y robos rivales.",
+      callout:
+        '"Un componente blindado es un paso irrevocable hacia el triunfo. No expongas tu núcleo cuántico sin protección a menos que ganes en ese mismo turno." — CIPHER, Rango #2',
+      sec2Title: "2. Coordinación Maestra de Protocolos",
+      sec2Body:
+        "Cartas como Data Heist, EMP Purge y System Override deciden partidas enteras. Reserva EMP Purge para cuando el contrincante acumule 4 o 5 cartas en mano. Despliega Data Heist con precisión para sustraer un componente clave que complete tu rig.",
+      sec3Title: "3. Psicología del Comodín y Señuelos Tácticos",
+      sec3Body:
+        "El Quantum Core actúa como comodín para cualquier slot vacante. Mantenlo oculto en tu mano mientras colocas componentes habituales. Deja que el oponente malgaste sus amenazas y lanza tu núcleo cuántico para rematar la partida.",
+      ctaTitle: "Asciende en la Clasificación Mundial",
+      ctaBody:
+        "Aplica estas lecciones en la arena competitiva. Enfréntate a duelistas de todo el mundo y alcanza los puestos de honor.",
     },
     blogDigital: {
-      eyebrow: "[ TRANSMISIÓN // CULTURA DE JUEGO ]",
-      title: "Del Cartón al Código: Cómo los Juegos de Cartas y Mesa Digitales Conectan al Mundo",
-      date: "15 de Julio de 2026",
+      kicker: "[ TRANSMISIÓN // CULTURA DE JUEGO ]",
+      title: "Del Tablero al Código: La Conectividad Mundial en Juegos de Cartas",
+      date: "15 de julio de 2026",
       readTime: "5 min de lectura",
-      category: "Cultura de Juego // Conexión Global",
+      intro:
+        "Durante décadas, los juegos de mesa y barajas reunieron a personas alrededor de una mesa física. Hoy, ese dinamismo cobra nueva fuerza en terminales táctiles, eliminando distancias geográficas sin sacrificar la emoción compartida.",
+      statNum: "14.8%",
+      statLabel: "Tasa de expansión anual en juegos de mesa digitales y duelos móviles",
+      sec1Title: "La Profundidad de Mesa en Formato Rápido",
+      sec1Body:
+        "Coordinar encuentros presenciales resulta complicado en el ritmo actual. El formato digital sintetiza colecciones de sets, faroles y bloqueos tácticos en duelos de 3 minutos, ideales para disfrutar en cualquier pausa o trayecto.",
+      callout:
+        '"Los juegos tácticos móviles han convertido la pasión por el tablero en un hábito social diario accesible a escala mundial." — Informe Industrial de Ocio Digital',
+      sec2Title: "Salas Privadas: Conexión Sin Fronteras",
+      sec2Body:
+        "Mediante códigos de sala de 6 caracteres, amistades separadas por husos horarios pueden competir al instante sin obstáculos. AI Sabotage ofrece salas online directas y duelos hot-seat en un único terminal móvil.",
+      sec3Title: "Una Comunidad Global de Duelistas",
+      sec3Body:
+        "El entorno digital facilita que jugadores de Tokio a Madrid compartan tácticas y compitan en igualdad de condiciones. El universo de las cartas tácticas vive su momento más accesible.",
+      ctaTitle: "Conecta y Disputa Partidas con Amigos",
+      ctaBody:
+        "Crea una sala privada en pocos segundos y comienza a retar a tus amigos en cualquier rincón del planeta.",
     },
   },
 };

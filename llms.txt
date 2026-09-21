@@ -32,15 +32,15 @@ An operational AGI requires 4 healthy component slots:
 
 ## Key Pages & Documentation
 
-- [Rig Architecture Guide](https://aisabotage.store/en/rig.html): Deep-dive into rig slots, defensive locks, and win conditions.
-- [Card Database & Reference](https://aisabotage.store/en/cards.html): Full directory of all 20 distinct cards across Components, Threats, Defenses, and Protocols.
-- [Private Matches with Friends](https://aisabotage.store/en/friends.html): Guide for creating and joining private lobbies using 6-character room codes.
-- [Global Ranking Ladder](https://aisabotage.store/en/ranking.html): Competitive ladder tiers (Novice, Script Kiddie, Netrunner, Cyber Overlord) and +10 PTS victory scoring.
-- [Download & System Requirements](https://aisabotage.store/en/play.html): Technical requirements (iOS 14+, Android 9+) and feature breakdown.
-- [Cyber Deck Blog & Strategy Hub](https://aisabotage.store/en/blog.html): Articles and tactical guides for AI Sabotage.
-  - [Developing Strategic Thinking: How Strategy Card Games Train Executive Function](https://aisabotage.store/en/blog-cognitive-strategy-kids.html): Neuroscience and cognitive research on set collection, working memory, and tactical foresight.
-  - [Competitive Ladder Tactics: How to Win Duels and Top the Ranking Ladder](https://aisabotage.store/en/blog-competitive-ladder-guide.html): Component locking, tempo economics, and protocol sequencing to reach Cyber Overlord tier.
-  - [The Digital Tabletop Evolution: How Board Games Connected the World](https://aisabotage.store/en/blog-digital-board-games-connectivity.html): The transition from physical cardboard to mobile strategy duels and cross-border connectivity.
+- [Rig Architecture Guide](https://aisabotage.store/en/rig): Deep-dive into rig slots, defensive locks, and win conditions.
+- [Card Database & Reference](https://aisabotage.store/en/cards): Full directory of all 20 distinct cards across Components, Threats, Defenses, and Protocols.
+- [Private Matches with Friends](https://aisabotage.store/en/friends): Guide for creating and joining private lobbies using 6-character room codes.
+- [Global Ranking Ladder](https://aisabotage.store/en/ranking): Competitive ladder tiers (Novice, Script Kiddie, Netrunner, Cyber Overlord) and +10 PTS victory scoring.
+- [Download & System Requirements](https://aisabotage.store/en/play): Technical requirements (iOS 14+, Android 9+) and feature breakdown.
+- [Cyber Deck Blog & Strategy Hub](https://aisabotage.store/en/blog): Articles and tactical guides for AI Sabotage.
+  - [Developing Strategic Thinking: How Strategy Card Games Train Executive Function](https://aisabotage.store/en/blog-cognitive-strategy-kids): Neuroscience and cognitive research on set collection, working memory, and tactical foresight.
+  - [Competitive Ladder Tactics: How to Win Duels and Top the Ranking Ladder](https://aisabotage.store/en/blog-competitive-ladder-guide): Component locking, tempo economics, and protocol sequencing to reach Cyber Overlord tier.
+  - [The Digital Tabletop Evolution: How Board Games Connected the World](https://aisabotage.store/en/blog-digital-board-games-connectivity): The transition from physical cardboard to mobile strategy duels and cross-border connectivity.
 
 ## App Stores
 
@@ -49,6 +49,6 @@ An operational AGI requires 4 healthy component slots:
 
 ## Legal & Terms
 
-- Privacy Policy: https://aisabotage.store/en/privacy.html (Official: https://axislabs.eu/ai-sabotage/policy)
-- Terms & Conditions: https://aisabotage.store/en/terms.html (Official: https://axislabs.eu/ai-sabotage/terms-and-conditions)
+- Privacy Policy: https://aisabotage.store/en/privacy (Official: https://axislabs.eu/ai-sabotage/policy)
+- Terms & Conditions: https://aisabotage.store/en/terms (Official: https://axislabs.eu/ai-sabotage/terms-and-conditions)
 

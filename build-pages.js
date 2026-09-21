@@ -48,12 +48,12 @@ const PAGES = [
 
 function nav(slug, lang) {
   const items = [
-    { key: "rig", url: "rig.html" },
-    { key: "cards", url: "cards.html" },
-    { key: "friends", url: "friends.html" },
-    { key: "ranking", url: "ranking.html" },
-    { key: "play", url: "play.html" },
-    { key: "blog", url: "blog.html" },
+    { key: "rig", url: "rig" },
+    { key: "cards", url: "cards" },
+    { key: "friends", url: "friends" },
+    { key: "ranking", url: "ranking" },
+    { key: "play", url: "play" },
+    { key: "blog", url: "blog" },
   ];
   const links = items
     .map(
@@ -63,7 +63,7 @@ function nav(slug, lang) {
         }">${t("nav." + it.key, lang)}</a>`,
     )
     .join("\n          ");
-  const homeHref = "index.html";
+  const homeHref = "./";
   const brandClass = slug === "index" ? "is-active" : "";
   const otherLang = lang === "en" ? "es" : "en";
   const switchLabel = lang === "en" ? "ES" : "EN";
@@ -87,8 +87,8 @@ function nav(slug, lang) {
 }
 
 function getSchemas(slug, lang) {
-  const file = slug === "index" ? "" : slug + ".html";
-  const abs = `${SITE_BASE}/${lang}/${file}`;
+  const pathSeg = slug === "index" ? "" : slug;
+  const abs = `${SITE_BASE}/${lang}/${pathSeg}`;
   const siteDesc = t("meta.description", lang);
   const isEs = lang === "es";
 
@@ -549,8 +549,8 @@ function getSchemas(slug, lang) {
 }
 
 function head({ slug, titleKey, lang }) {
-  const file = slug === "index" ? "" : slug + ".html";
-  const abs = `${SITE_BASE}/${lang}/${file}`;
+  const pathSeg = slug === "index" ? "" : slug;
+  const abs = `${SITE_BASE}/${lang}/${pathSeg}`;
   const isEs = lang === "es";
 
   // Per-page metadata
@@ -590,6 +590,15 @@ function head({ slug, titleKey, lang }) {
       });
     </script>
 
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(null, "", window.location.pathname.replace(/\\.html$/, "") + window.location.search + window.location.hash);
+        } catch (_) {}
+      }
+    </script>
+
     <title data-title-meta>${pageTitle}</title>
     <meta name="description" content="${description}" data-i18n-attr="content:meta.${slug}.description" />
     <meta name="keywords" content="${keywords}" data-i18n-attr="content:meta.${slug}.keywords" />
@@ -608,9 +617,9 @@ function head({ slug, titleKey, lang }) {
     <link rel="icon" type="image/jpeg" href="../assets/img/icon.jpg" />
     <link rel="apple-touch-icon" href="../assets/img/icon.jpg" />
     <link rel="manifest" href="../manifest.webmanifest" />
-    <link rel="alternate" hreflang="en" href="${SITE_BASE}/en/${file}" />
-    <link rel="alternate" hreflang="es" href="${SITE_BASE}/es/${file}" />
-    <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/en/${file}" />
+    <link rel="alternate" hreflang="en" href="${SITE_BASE}/en/${pathSeg}" />
+    <link rel="alternate" hreflang="es" href="${SITE_BASE}/es/${pathSeg}" />
+    <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/en/${pathSeg}" />
 
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/Orbitron.ttf" crossorigin />
     <link rel="preload" as="font" type="font/ttf" href="../assets/fonts/JetBrainsMono.ttf" crossorigin />
@@ -631,16 +640,16 @@ function footer(lang) {
     <footer class="footer">
       <p data-i18n="footer.copy">${copyText}</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">${t("nav.rig", lang)}</a> ·
-        <a href="cards.html" data-i18n="nav.cards">${t("nav.cards", lang)}</a> ·
-        <a href="friends.html" data-i18n="nav.friends">${t("nav.friends", lang)}</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">${t("nav.ranking", lang)}</a> ·
-        <a href="play.html" data-i18n="nav.play">${t("nav.play", lang)}</a> ·
-        <a href="blog.html" data-i18n="nav.blog">${t("nav.blog", lang)}</a>
+        <a href="rig" data-i18n="nav.rig">${t("nav.rig", lang)}</a> ·
+        <a href="cards" data-i18n="nav.cards">${t("nav.cards", lang)}</a> ·
+        <a href="friends" data-i18n="nav.friends">${t("nav.friends", lang)}</a> ·
+        <a href="ranking" data-i18n="nav.ranking">${t("nav.ranking", lang)}</a> ·
+        <a href="play" data-i18n="nav.play">${t("nav.play", lang)}</a> ·
+        <a href="blog" data-i18n="nav.blog">${t("nav.blog", lang)}</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">${t("footer.privacy", lang)}</a> ·
-        <a href="terms.html" data-i18n="footer.terms">${t("footer.terms", lang)}</a>
+        <a href="privacy" data-i18n="footer.privacy">${t("footer.privacy", lang)}</a> ·
+        <a href="terms" data-i18n="footer.terms">${t("footer.terms", lang)}</a>
       </p>
     </footer>`;
 }
@@ -691,7 +700,7 @@ ${head({ slug: "index", titleKey: "siteTitle", lang })}
           <p class="lede" data-i18n="hero.lede">${t("hero.lede", lang)}</p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" data-store="download" href="play.html">
+            <a class="btn btn-primary" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
             </a>
           </div>
@@ -778,7 +787,7 @@ ${head({ slug: "index", titleKey: "siteTitle", lang })}
             <p class="section-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</p>
           </header>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
             </a>
@@ -1015,7 +1024,7 @@ ${head({ slug: "friends", titleKey: "friends.heading", lang })}
             <p class="section-sub" data-i18n="friends.ctaSub">${t("friends.ctaSub", lang)}</p>
           </header>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
             </a>
@@ -1290,10 +1299,10 @@ ${head({ slug: "blog", titleKey: "blogHub.heading", lang })}
                 <span class="blog-badge" data-i18n="blogHub.card1Badge">${t("blogHub.card1Badge", lang)}</span>
                 <time class="blog-date" datetime="2026-09-18" data-i18n="blogHub.card1Date">${t("blogHub.card1Date", lang)}</time>
               </header>
-              <h2 class="blog-card-title"><a href="blog-cognitive-strategy-kids.html" data-i18n="blogHub.card1Title">${t("blogHub.card1Title", lang)}</a></h2>
+              <h2 class="blog-card-title"><a href="blog-cognitive-strategy-kids" data-i18n="blogHub.card1Title">${t("blogHub.card1Title", lang)}</a></h2>
               <p class="blog-excerpt" data-i18n="blogHub.card1Excerpt">${t("blogHub.card1Excerpt", lang)}</p>
               <div class="blog-card-footer">
-                <a class="blog-read-more" href="blog-cognitive-strategy-kids.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+                <a class="blog-read-more" href="blog-cognitive-strategy-kids" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
               </div>
             </article>
 
@@ -1302,10 +1311,10 @@ ${head({ slug: "blog", titleKey: "blogHub.heading", lang })}
                 <span class="blog-badge" data-i18n="blogHub.card2Badge">${t("blogHub.card2Badge", lang)}</span>
                 <time class="blog-date" datetime="2026-08-28" data-i18n="blogHub.card2Date">${t("blogHub.card2Date", lang)}</time>
               </header>
-              <h2 class="blog-card-title"><a href="blog-competitive-ladder-guide.html" data-i18n="blogHub.card2Title">${t("blogHub.card2Title", lang)}</a></h2>
+              <h2 class="blog-card-title"><a href="blog-competitive-ladder-guide" data-i18n="blogHub.card2Title">${t("blogHub.card2Title", lang)}</a></h2>
               <p class="blog-excerpt" data-i18n="blogHub.card2Excerpt">${t("blogHub.card2Excerpt", lang)}</p>
               <div class="blog-card-footer">
-                <a class="blog-read-more" href="blog-competitive-ladder-guide.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+                <a class="blog-read-more" href="blog-competitive-ladder-guide" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
               </div>
             </article>
 
@@ -1314,10 +1323,10 @@ ${head({ slug: "blog", titleKey: "blogHub.heading", lang })}
                 <span class="blog-badge" data-i18n="blogHub.card3Badge">${t("blogHub.card3Badge", lang)}</span>
                 <time class="blog-date" datetime="2026-07-15" data-i18n="blogHub.card3Date">${t("blogHub.card3Date", lang)}</time>
               </header>
-              <h2 class="blog-card-title"><a href="blog-digital-board-games-connectivity.html" data-i18n="blogHub.card3Title">${t("blogHub.card3Title", lang)}</a></h2>
+              <h2 class="blog-card-title"><a href="blog-digital-board-games-connectivity" data-i18n="blogHub.card3Title">${t("blogHub.card3Title", lang)}</a></h2>
               <p class="blog-excerpt" data-i18n="blogHub.card3Excerpt">${t("blogHub.card3Excerpt", lang)}</p>
               <div class="blog-card-footer">
-                <a class="blog-read-more" href="blog-digital-board-games-connectivity.html" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
+                <a class="blog-read-more" href="blog-digital-board-games-connectivity" data-i18n="blogHub.readMore">${t("blogHub.readMore", lang)}</a>
               </div>
             </article>
           </div>
@@ -1376,7 +1385,7 @@ ${head({ slug: "blog-cognitive-strategy-kids", titleKey: "blogKids.title", lang 
           <div class="article-cta">
             <h3 data-i18n="blogKids.ctaTitle">${t("blogKids.ctaTitle", lang)}</h3>
             <p data-i18n="blogKids.ctaBody">${t("blogKids.ctaBody", lang)}</p>
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
             </a>
@@ -1436,7 +1445,7 @@ ${head({ slug: "blog-competitive-ladder-guide", titleKey: "blogCompetitive.title
           <div class="article-cta">
             <h3 data-i18n="blogCompetitive.ctaTitle">${t("blogCompetitive.ctaTitle", lang)}</h3>
             <p data-i18n="blogCompetitive.ctaBody">${t("blogCompetitive.ctaBody", lang)}</p>
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
             </a>
@@ -1496,7 +1505,7 @@ ${head({ slug: "blog-digital-board-games-connectivity", titleKey: "blogDigital.t
           <div class="article-cta">
             <h3 data-i18n="blogDigital.ctaTitle">${t("blogDigital.ctaTitle", lang)}</h3>
             <p data-i18n="blogDigital.ctaBody">${t("blogDigital.ctaBody", lang)}</p>
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">${t("hero.cta", lang)}</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">${t("extra.ctaSub", lang)}</span>
             </a>
@@ -1632,9 +1641,9 @@ ${JSON.stringify({ "@context": "https://schema.org", "@graph": rootSchemas }, nu
     </main>
     <footer>
       <p>
-        <a href="./en/blog.html">Blog</a> ·
-        <a href="./en/privacy.html">Privacy Policy</a> ·
-        <a href="./en/terms.html">Terms &amp; Conditions</a>
+        <a href="./en/blog">Blog</a> ·
+        <a href="./en/privacy">Privacy Policy</a> ·
+        <a href="./en/terms">Terms &amp; Conditions</a>
       </p>
     </footer>
   </body>
@@ -1682,7 +1691,7 @@ function writeRedirect(relPath, targetUrl, pageTitle) {
   console.log("wrote redirect", relPath, "→", targetUrl);
 }
 
-writeRedirect("privacy.html", "./en/privacy.html", "Privacy Policy");
-writeRedirect("terms.html", "./en/terms.html", "Terms & Conditions");
-writeRedirect("blog.html", "./en/blog.html", "Blog");
-writeRedirect("blog/index.html", "../en/blog.html", "Blog");
+writeRedirect("privacy.html", "./en/privacy", "Privacy Policy");
+writeRedirect("terms.html", "./en/terms", "Terms & Conditions");
+writeRedirect("blog.html", "./en/blog", "Blog");
+writeRedirect("blog/index.html", "../en/blog", "Blog");

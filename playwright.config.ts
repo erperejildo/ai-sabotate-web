@@ -15,7 +15,7 @@ export default defineConfig({
   webServer: process.env.SITE_URL
     ? undefined
     : {
-        command: "python3 -m http.server 4173 --bind 127.0.0.1",
+        command: "npx serve -l 4173 --no-clipboard .",
         port: 4173,
         timeout: 30_000,
         reuseExistingServer: !process.env.CI,

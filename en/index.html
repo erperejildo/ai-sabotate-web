@@ -20,6 +20,19 @@
       });
     </script>
 
+    <!-- Clean URL: remove .html from address bar if directly visited -->
+    <script>
+      if (window.location.pathname.endsWith(".html") && !window.location.pathname.endsWith("/index.html")) {
+        try {
+          window.history.replaceState(
+            null,
+            "",
+            window.location.pathname.replace(/\.html$/, "") + window.location.search + window.location.hash,
+          );
+        } catch (_) {}
+      }
+    </script>
+
     <title data-title-meta>AI Sabotage: Cyber Cards</title>
     <meta
       name="description"
@@ -138,18 +151,18 @@
 
     <header class="nav">
       <div class="wrap nav-inner">
-        <a class="brand is-active" href="index.html" aria-label="AI Sabotage home">
+        <a class="brand is-active" href="./" aria-label="AI Sabotage home">
           <span class="brand-mark" aria-hidden="true">[</span>
           <span class="brand-name">AI SABOTAGE</span>
           <span class="brand-mark" aria-hidden="true">]</span>
         </a>
         <nav class="nav-links" aria-label="Sections">
-          <a href="rig.html" data-i18n="nav.rig" class="">Rig</a>
-          <a href="cards.html" data-i18n="nav.cards" class="">Cards</a>
-          <a href="friends.html" data-i18n="nav.friends" class="">Friends</a>
-          <a href="ranking.html" data-i18n="nav.ranking" class="">Ranking</a>
-          <a href="play.html" data-i18n="nav.play" class="">Play</a>
-          <a href="blog.html" data-i18n="nav.blog" class="">Blog</a>
+          <a href="rig" data-i18n="nav.rig" class="">Rig</a>
+          <a href="cards" data-i18n="nav.cards" class="">Cards</a>
+          <a href="friends" data-i18n="nav.friends" class="">Friends</a>
+          <a href="ranking" data-i18n="nav.ranking" class="">Ranking</a>
+          <a href="play" data-i18n="nav.play" class="">Play</a>
+          <a href="blog" data-i18n="nav.blog" class="">Blog</a>
         </nav>
         <div class="nav-end">
           <button class="lang-switch" type="button" data-lang-switch="es" aria-label="Switch language">ES</button>
@@ -185,7 +198,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" data-store="download" href="play.html">
+            <a class="btn btn-primary" data-store="download" href="play">
               <span data-i18n="hero.cta">DOWNLOAD</span>
             </a>
           </div>
@@ -296,7 +309,7 @@
             <p class="section-sub" data-i18n="extra.ctaSub">Free on iOS and Android. The grid is open.</p>
           </header>
           <div class="cta-row">
-            <a class="btn btn-primary btn-lg" data-store="download" href="play.html">
+            <a class="btn btn-primary btn-lg" data-store="download" href="play">
               <span data-i18n="hero.cta">DOWNLOAD</span>
               <span class="btn-sub" data-i18n="extra.ctaSub">Free on iOS and Android. The grid is open.</span>
             </a>
@@ -308,14 +321,14 @@
     <footer class="footer">
       <p data-i18n="footer.copy">© 2026 AI Sabotage · A cyberpunk strategy card game.</p>
       <p class="footer-links" id="footer-links">
-        <a href="rig.html" data-i18n="nav.rig">Rig</a> · <a href="cards.html" data-i18n="nav.cards">Cards</a> ·
-        <a href="friends.html" data-i18n="nav.friends">Friends</a> ·
-        <a href="ranking.html" data-i18n="nav.ranking">Ranking</a> · <a href="play.html" data-i18n="nav.play">Play</a> ·
-        <a href="blog.html" data-i18n="nav.blog">Blog</a>
+        <a href="rig" data-i18n="nav.rig">Rig</a> · <a href="cards" data-i18n="nav.cards">Cards</a> ·
+        <a href="friends" data-i18n="nav.friends">Friends</a> · <a href="ranking" data-i18n="nav.ranking">Ranking</a> ·
+        <a href="play" data-i18n="nav.play">Play</a> ·
+        <a href="blog" data-i18n="nav.blog">Blog</a>
       </p>
       <p class="footer-legal" id="footer-legal">
-        <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a> ·
-        <a href="terms.html" data-i18n="footer.terms">Terms & Conditions</a>
+        <a href="privacy" data-i18n="footer.privacy">Privacy Policy</a> ·
+        <a href="terms" data-i18n="footer.terms">Terms & Conditions</a>
       </p>
     </footer>
 
