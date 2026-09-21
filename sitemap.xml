@@ -97,4 +97,100 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
+  <url>
+    <loc>https://aisabotage.store/en/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/blog.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog.html"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/en/blog-cognitive-strategy-kids.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-cognitive-strategy-kids.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-cognitive-strategy-kids.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-cognitive-strategy-kids.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/blog-cognitive-strategy-kids.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-cognitive-strategy-kids.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-cognitive-strategy-kids.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-cognitive-strategy-kids.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/en/blog-competitive-ladder-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-competitive-ladder-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-competitive-ladder-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-competitive-ladder-guide.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/blog-competitive-ladder-guide.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-competitive-ladder-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-competitive-ladder-guide.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-competitive-ladder-guide.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/en/blog-digital-board-games-connectivity.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-digital-board-games-connectivity.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/blog-digital-board-games-connectivity.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/blog-digital-board-games-connectivity.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/blog-digital-board-games-connectivity.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/privacy.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/privacy.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/en/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/terms.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aisabotage.store/es/terms.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aisabotage.store/en/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aisabotage.store/es/terms.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aisabotage.store/en/terms.html"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
 </urlset>

@@ -1,7 +1,20 @@
 import { test, expect } from "@playwright/test";
 
 const LANGS = ["en", "es"];
-const SLUGS = ["index", "rig", "cards", "friends", "ranking", "play"];
+const SLUGS = [
+  "index",
+  "rig",
+  "cards",
+  "friends",
+  "ranking",
+  "play",
+  "blog",
+  "blog-cognitive-strategy-kids",
+  "blog-competitive-ladder-guide",
+  "blog-digital-board-games-connectivity",
+  "privacy",
+  "terms",
+];
 
 test.describe("AI Sabotage marketing site", () => {
   for (const lang of LANGS) {
@@ -372,34 +385,100 @@ test.describe("AI Sabotage marketing site", () => {
     );
     expect(html).toMatch(/<link\s+rel="canonical"\s+href="https:\/\/aisabotage\.store\/"/);
     expect(html).toContain("application/ld+json");
-    expect(html).toContain("https://axislabs.eu/ai-sabotage/policy");
-    expect(html).toContain("https://axislabs.eu/ai-sabotage/terms-and-conditions");
+    expect(html).toContain("./en/privacy.html");
+    expect(html).toContain("./en/terms.html");
+    expect(html).toContain("./en/blog.html");
   });
 
-  test("footer contains valid legal links on all localized pages", async ({ page }) => {
+  test("Google Consent Mode v2 default signal is present in source of root and localized pages", async ({
+    page,
+    request,
+  }) => {
+    const rootRes = await request.get("/");
+    const rootHtml = await rootRes.text();
+    expect(rootHtml).toContain('gtag("consent", "default"');
+
     for (const lang of LANGS) {
       await page.goto(`/${lang}/`);
-      const privacy = page.locator(
-        '.footer-legal a[href="https://axislabs.eu/ai-sabotage/policy"]',
-      );
-      const terms = page.locator(
-        '.footer-legal a[href="https://axislabs.eu/ai-sabotage/terms-and-conditions"]',
-      );
-      await expect(privacy).toHaveCount(1);
-      await expect(terms).toHaveCount(1);
-      await expect(privacy).toHaveAttribute("target", "_blank");
-      await expect(terms).toHaveAttribute("target", "_blank");
-      await expect(privacy).toHaveAttribute("rel", "noopener");
-      await expect(terms).toHaveAttribute("rel", "noopener");
+      const headHtml = await page.locator("head").innerHTML();
+      expect(headHtml).toContain('gtag("consent", "default"');
     }
   });
 
-  test("llms.txt is served and contains game overview", async ({ request }) => {
+  test("footer contains valid native legal links on all localized pages", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/`);
+      const privacy = page.locator('.footer-legal a[href="privacy.html"]');
+      const terms = page.locator('.footer-legal a[href="terms.html"]');
+      await expect(privacy).toHaveCount(1);
+      await expect(terms).toHaveCount(1);
+    }
+  });
+
+  test("native privacy and terms pages load and render full legal content", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/privacy.html`);
+      await expect(page.locator("h1.section-title")).not.toHaveText("");
+      await expect(page.locator(".legal-card h2")).toHaveCount(5);
+
+      await page.goto(`/${lang}/terms.html`);
+      await expect(page.locator("h1.section-title")).not.toHaveText("");
+      await expect(page.locator(".legal-card h2")).toHaveCount(5);
+    }
+  });
+
+  test("blog hub renders 3 articles ordered by date with relative links", async ({ page }) => {
+    for (const lang of LANGS) {
+      await page.goto(`/${lang}/blog.html`);
+      await expect(page.locator(".blog-card")).toHaveCount(3);
+      const articleLinks = await page
+        .locator(".blog-card-title a")
+        .evaluateAll((els) => els.map((a) => a.getAttribute("href")));
+      expect(articleLinks).toEqual([
+        "blog-cognitive-strategy-kids.html",
+        "blog-competitive-ladder-guide.html",
+        "blog-digital-board-games-connectivity.html",
+      ]);
+    }
+  });
+
+  test("blog articles render content with studies, stats, and download CTAs", async ({ page }) => {
+    const articles = [
+      "blog-cognitive-strategy-kids",
+      "blog-competitive-ladder-guide",
+      "blog-digital-board-games-connectivity",
+    ];
+    for (const lang of LANGS) {
+      for (const slug of articles) {
+        await page.goto(`/${lang}/${slug}.html`);
+        await expect(page.locator(".article-title")).not.toHaveText("");
+        await expect(page.locator(".article-stat")).toHaveCount(1);
+        await expect(page.locator(".article-cta [data-store]")).toHaveCount(1);
+      }
+    }
+  });
+
+  test("root legal and blog redirects exist and forward to localized versions", async ({
+    request,
+  }) => {
+    for (const file of ["privacy.html", "terms.html", "blog.html"]) {
+      const res = await request.get(`/${file}`);
+      expect(res.status()).toBeLessThan(400);
+      const html = await res.text();
+      expect(html).toContain(`./en/${file}`);
+    }
+  });
+
+  test("llms.txt is served and contains game overview, blog articles, and legal links", async ({
+    request,
+  }) => {
     const res = await request.get("/llms.txt");
     expect(res.status()).toBe(200);
     const text = await res.text();
     expect(text).toContain("# AI Sabotage: Cyber Cards");
     expect(text).toContain("https://aisabotage.store");
-    expect(text).toContain("https://axislabs.eu/ai-sabotage/policy");
+    expect(text).toContain("https://aisabotage.store/en/blog.html");
+    expect(text).toContain("https://aisabotage.store/en/privacy.html");
+    expect(text).toContain("https://aisabotage.store/en/terms.html");
   });
 });
