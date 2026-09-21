@@ -9,11 +9,11 @@ strategy card game (source app: `/Users/dani/Desktop/repos/ai_sabotage`).
 The site's job is to drive app installs: it mirrors the app's ASO keywords,
 looks like the game's HUD, and routes visitors straight to the stores.
 
-- Live: <https://erperejildo.github.io/ai-sabotate-web/>
+- Live: <https://aisabotage.store/>
 - Repo: <https://github.com/erperejildo/ai-sabotate-web>
 - Languages: **English (`/en/`)** and **Spanish (`/es/`)**, Castilian only.
-- Hosting: **GitHub Pages**, served from the `/ai-sabotate-web/` subpath
-  (so **all internal links must stay relative**).
+- Hosting: **GitHub Pages**, custom domain `aisabotage.store`
+  (keep all internal links relative).
 
 ## Tech stack & key decisions
 
@@ -61,8 +61,8 @@ Single source of truth for every HTML page. **After ANY edit to it, run
 
 Structure:
 
-- `SITE_BASE = "https://erperejildo.github.io/ai-sabotate-web"` — drives
-  `canonical`, `hreflang`, `og:url`. **Update this if a custom domain is added.**
+- `SITE_BASE = "https://aisabotage.store"` — drives
+  `canonical`, `hreflang`, `og:url`.
 - `PAGES` array — `{ slug, titleKey, build }` for
   `index, rig, cards, friends, ranking, play`.
 - Helpers: `head()` (meta/OG/Twitter/fonts preload/CSS links),

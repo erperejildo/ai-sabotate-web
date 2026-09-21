@@ -3,7 +3,7 @@
 const fs = require("fs");
 const path = require("path");
 
-const SITE_BASE = "https://erperejildo.github.io/ai-sabotate-web";
+const SITE_BASE = "https://aisabotage.store";
 const ROOT = __dirname;
 const enDir = path.join(ROOT, "en");
 const esDir = path.join(ROOT, "es");
@@ -544,6 +544,10 @@ function footer(lang) {
         <a href="ranking.html" data-i18n="nav.ranking">${t("nav.ranking", lang)}</a> ·
         <a href="play.html" data-i18n="nav.play">${t("nav.play", lang)}</a>
       </p>
+      <p class="footer-legal" id="footer-legal">
+        <a href="https://axislabs.eu/ai-sabotage/policy" target="_blank" rel="noopener" data-i18n="footer.privacy">${t("footer.privacy", lang)}</a> ·
+        <a href="https://axislabs.eu/ai-sabotage/terms-and-conditions" target="_blank" rel="noopener" data-i18n="footer.terms">${t("footer.terms", lang)}</a>
+      </p>
     </footer>`;
 }
 
@@ -1075,19 +1079,101 @@ for (const page of PAGES) {
 }
 
 // root index → redirect to /en/
+const rootMetaDesc =
+  t("meta.index.description", "en") ||
+  "A cyberpunk strategy card game. Build the AGI before your rivals do. Online ranking, offline play, hot-seat with friends. Two player set collection. Free on iOS and Android.";
+const rootMetaKeywords =
+  t("meta.index.keywords", "en") ||
+  "AI card game, cyberpunk, AGI, hacking game, robot games, card duel, strategy card game, two player, card game offline, ranking, set collection, artificial intelligence, offline, sabotage";
+const rootOgDesc =
+  t("meta.index.ogDescription", "en") || "Cyberpunk strategy card game. Top the global ranking.";
+
+const rootSchemas = [
+  {
+    "@type": "WebSite",
+    "@id": `${SITE_BASE}/#website`,
+    url: `${SITE_BASE}/`,
+    name: "AI Sabotage: Cyber Cards",
+    description: rootMetaDesc,
+    inLanguage: ["en", "es"],
+  },
+  {
+    "@type": "VideoGame",
+    "@id": `${SITE_BASE}/#game`,
+    name: "AI Sabotage: Cyber Cards",
+    url: `${SITE_BASE}/`,
+    image: `${SITE_BASE}/assets/img/icon.jpg`,
+    description: rootMetaDesc,
+    genre: ["Card Game", "Strategy Game", "Cyberpunk"],
+    gamePlatform: ["iOS", "Android"],
+    operatingSystem: "iOS 14+, Android 9+",
+    applicationCategory: "GameApplication",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    author: {
+      "@type": "Organization",
+      name: "Axis Labs",
+      url: "https://axislabs.eu",
+    },
+  },
+];
+
 fs.writeFileSync(
   path.join(ROOT, "index.html"),
   `<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0D0D12" />
+    <meta name="color-scheme" content="dark" />
+
     <title>AI Sabotage: Cyber Cards</title>
+    <meta name="description" content="${rootMetaDesc}" />
+    <meta name="keywords" content="${rootMetaKeywords}" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="AI Sabotage: Cyber Cards" />
+    <meta property="og:title" content="AI Sabotage: Build the AGI" />
+    <meta property="og:description" content="${rootOgDesc}" />
+    <meta property="og:image" content="${SITE_BASE}/assets/img/icon.jpg" />
+    <meta property="og:url" content="${SITE_BASE}/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="AI Sabotage: Build the AGI" />
+    <meta name="twitter:description" content="${rootOgDesc}" />
+    <meta name="twitter:image" content="${SITE_BASE}/assets/img/icon.jpg" />
+
+    <link rel="icon" type="image/jpeg" href="assets/img/icon.jpg" />
+    <link rel="apple-touch-icon" href="assets/img/icon.jpg" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="alternate" hreflang="en" href="${SITE_BASE}/en/" />
+    <link rel="alternate" hreflang="es" href="${SITE_BASE}/es/" />
+    <link rel="alternate" hreflang="x-default" href="${SITE_BASE}/en/" />
+
+    <link rel="canonical" href="${SITE_BASE}/" />
+
+    <script type="application/ld+json">
+${JSON.stringify({ "@context": "https://schema.org", "@graph": rootSchemas }, null, 2)}
+    </script>
+
     <meta http-equiv="refresh" content="0; url=./en/" />
-    <link rel="canonical" href="${SITE_BASE}/en/" />
     <script>window.location.replace("./en/");</script>
   </head>
   <body>
-    <p>Redirecting to <a href="./en/">AI Sabotage</a>...</p>
+    <main>
+      <h1>AI Sabotage: Cyber Cards</h1>
+      <p>A cyberpunk strategy card game. Build the AGI before your rivals do.</p>
+      <p>Redirecting to <a href="./en/">AI Sabotage (English)</a> or <a href="./es/">AI Sabotage (Español)</a>...</p>
+    </main>
+    <footer>
+      <p>
+        <a href="https://axislabs.eu/ai-sabotage/policy" target="_blank" rel="noopener">Privacy Policy</a> ·
+        <a href="https://axislabs.eu/ai-sabotage/terms-and-conditions" target="_blank" rel="noopener">Terms &amp; Conditions</a>
+      </p>
+    </footer>
   </body>
 </html>
 `,

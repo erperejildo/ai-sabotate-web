@@ -1275,13 +1275,21 @@ button {
   margin: 0 0 6px;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-legal a {
   color: var(--text-dim);
   text-transform: uppercase;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-legal a:hover {
   color: var(--neural-blue);
+}
+
+.footer-legal {
+  margin-top: 4px;
+  font-size: 10px;
+  opacity: 0.85;
 }
 
 /* ---------- FAQ section (AEO) ---------- */

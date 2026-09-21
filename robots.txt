@@ -23,4 +23,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://erperejildo.github.io/ai-sabotate-web/sitemap.xml
+Sitemap: https://aisabotage.store/sitemap.xml
