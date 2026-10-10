@@ -495,6 +495,15 @@ test.describe("AI Sabotage marketing site", () => {
     expect(text).toContain("https://aisabotage.store/en/terms");
   });
 
+  test("app-ads.txt is served and contains publisher records", async ({ request }) => {
+    const res = await request.get("/app-ads.txt");
+    expect(res.status()).toBe(200);
+    const text = await res.text();
+    expect(text).toContain("google.com, pub-2945024608555072, DIRECT, f08c47fec0942fa0");
+    expect(text).toContain("facebook.com");
+    expect(text).toContain("vungle.com");
+  });
+
   test("visiting a .html URL automatically strips the extension in browser history", async ({
     page,
   }) => {
